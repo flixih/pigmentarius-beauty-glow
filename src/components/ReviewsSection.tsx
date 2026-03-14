@@ -3,44 +3,44 @@ import { Star, Quote } from "lucide-react";
 const reviews = [
   {
     name: "María G.",
-    text: "I've been coming here for over 20 years. The service is always amazing and the staff is incredibly welcoming.",
+    text: "Llevo más de 20 años viniendo aquí. El servicio siempre es increíble y el personal es sumamente acogedor.",
     rating: 5,
   },
   {
     name: "Ana R.",
-    text: "The salon is beautiful, clean, and relaxing. The results exceeded my expectations. Highly recommend!",
+    text: "El salón es hermoso, limpio y relajante. Los resultados superaron mis expectativas. ¡Lo recomiendo!",
     rating: 5,
   },
   {
     name: "Carmen L.",
-    text: "The best place for eyebrows and hair in Puerto Rico. Professional, friendly, and always consistent.",
+    text: "El mejor lugar para cejas y cabello en Puerto Rico. Profesionales, amables y siempre consistentes.",
     rating: 5,
   },
   {
     name: "Laura M.",
-    text: "My hair has never looked better! The keratin treatment was exactly what I needed. Amazing results.",
+    text: "¡Mi cabello nunca se ha visto mejor! El tratamiento de keratina fue exactamente lo que necesitaba. Resultados increíbles.",
     rating: 5,
   },
   {
-    name: "Sofia P.",
-    text: "A truly luxury experience without the pretension. I feel pampered every time I visit.",
+    name: "Sofía P.",
+    text: "Una experiencia verdaderamente de lujo sin pretensiones. Me siento consentida cada vez que visito.",
     rating: 5,
   },
   {
     name: "Isabella D.",
-    text: "The microblading was flawless. Natural-looking, perfectly shaped brows. I couldn't be happier!",
+    text: "El microblading quedó impecable. Cejas de aspecto natural, perfectamente moldeadas. ¡No podría estar más feliz!",
     rating: 5,
   },
 ];
 
 const ReviewsSection = () => {
   return (
-    <section id="reviews" className="py-24 bg-cream-dark">
+    <section id="resenas" className="py-24 bg-cream-dark">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <p className="text-primary text-sm font-semibold tracking-widest uppercase mb-4">Client Love</p>
+          <p className="text-primary text-sm font-semibold tracking-widest uppercase mb-4">Opiniones de Clientes</p>
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-4">
-            What Our Clients <span className="italic text-primary">Say</span>
+            Lo Que Dicen Nuestros <span className="italic text-primary">Clientes</span>
           </h2>
           <div className="flex items-center justify-center gap-2 mt-4">
             <div className="flex">
@@ -49,7 +49,7 @@ const ReviewsSection = () => {
               ))}
             </div>
             <span className="text-foreground font-semibold">4.8</span>
-            <span className="text-muted-foreground text-sm">· 215+ happy clients</span>
+            <span className="text-muted-foreground text-sm">· 215+ clientes felices</span>
           </div>
         </div>
 
@@ -64,7 +64,7 @@ const ReviewsSection = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="font-serif font-semibold text-foreground">{review.name}</p>
-                  <p className="text-xs text-muted-foreground">Verified Client</p>
+                  <p className="text-xs text-muted-foreground">Cliente Verificado</p>
                 </div>
                 <div className="flex">
                   {[...Array(review.rating)].map((_, j) => (

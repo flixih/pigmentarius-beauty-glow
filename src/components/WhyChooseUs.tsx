@@ -1,12 +1,12 @@
 import { Award, Users, Gem, MessageCircle, Flower2, Heart } from "lucide-react";
 
 const benefits = [
-  { icon: Award, title: "20+ Years Experience", description: "Two decades of trusted beauty expertise in Puerto Rico." },
-  { icon: Users, title: "Highly Trained Stylists", description: "Continuously educated team mastering the latest techniques." },
-  { icon: Gem, title: "Premium Products", description: "Only the finest professional-grade beauty products." },
-  { icon: MessageCircle, title: "Personalized Consultations", description: "Every service begins with understanding your unique needs." },
-  { icon: Flower2, title: "Luxury Atmosphere", description: "A serene, beautiful space designed for your comfort." },
-  { icon: Heart, title: "Hundreds of Happy Clients", description: "Trusted by our community with 215+ glowing reviews." },
+  { icon: Award, title: "20+ Años de Experiencia", description: "Dos décadas de experiencia de belleza confiable en Puerto Rico." },
+  { icon: Users, title: "Estilistas Altamente Capacitados", description: "Equipo en constante capacitación dominando las últimas técnicas." },
+  { icon: Gem, title: "Productos Premium", description: "Solo los mejores productos profesionales de belleza." },
+  { icon: MessageCircle, title: "Consultas Personalizadas", description: "Cada servicio comienza entendiendo tus necesidades únicas." },
+  { icon: Flower2, title: "Atmósfera de Lujo", description: "Un espacio sereno y hermoso diseñado para tu comodidad." },
+  { icon: Heart, title: "Cientos de Clientes Felices", description: "Confianza de nuestra comunidad con 215+ reseñas positivas." },
 ];
 
 const WhyChooseUs = () => {
@@ -14,9 +14,9 @@ const WhyChooseUs = () => {
     <section className="py-24 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <p className="text-primary text-sm font-semibold tracking-widest uppercase mb-4">The Pigmentarius Difference</p>
+          <p className="text-primary text-sm font-semibold tracking-widest uppercase mb-4">La Diferencia Pigmentarius</p>
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground">
-            Why Choose <span className="italic text-primary">Us</span>
+            Por Qué <span className="italic text-primary">Elegirnos</span>
           </h2>
         </div>
 
