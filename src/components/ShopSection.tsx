@@ -1,4 +1,5 @@
 import { ShoppingBag } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const categories = [
   "Productos de Reparación Capilar",
