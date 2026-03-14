@@ -51,7 +51,7 @@ const HeroSection = () => {
           </div>
 
           <div className="flex flex-wrap gap-4 mt-12 animate-fade-in-up" style={{ animationDelay: "0.6s" }}>
-            {["Mujer Empresaria", "LGBTQ+ Friendly", "20+ Años"].map((badge) => (
+            {["Innovación y Tecnología", "LGBTQ+ Friendly", "20+ Años"].map((badge) => (
               <span
                 key={badge}
                 className="text-cream/70 text-xs tracking-widest uppercase border border-cream/20 rounded-full px-4 py-1.5"
