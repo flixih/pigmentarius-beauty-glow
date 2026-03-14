@@ -39,13 +39,14 @@ const ShopSection = () => {
         </div>
 
         <div className="text-center">
-          <p className="text-muted-foreground mb-4">La tienda completa estará disponible pronto.</p>
-          <a
-            href="#contact"
-            className="inline-flex items-center justify-center bg-primary text-primary-foreground px-8 py-4 rounded-full text-sm font-semibold tracking-wide hover:bg-gold-dark transition-all duration-300 shadow-glow"
+          <p className="text-muted-foreground mb-4">Descubre nuestros productos profesionales de belleza.</p>
+          <Link
+            to="/tienda"
+            className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-full text-sm font-semibold tracking-wide hover:bg-gold-dark transition-all duration-300 shadow-glow"
           >
-            Contáctanos para Productos
-          </a>
+            <ShoppingBag size={16} />
+            Ver Tienda
+          </Link>
         </div>
       </div>
     </section>
