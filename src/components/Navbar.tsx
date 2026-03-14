@@ -30,8 +30,12 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
-        <a href="#inicio" className="font-serif text-xl md:text-2xl font-semibold tracking-wide text-foreground">
-          Pigmentarius
+        <a href="#inicio" className="flex items-center">
+          <img
+            src="/src/assets/logo.png"
+            alt="Pigmentarius Hair & Brow Salon"
+            className="h-10 md:h-12 w-auto object-contain"
+          />
         </a>
 
         <div className="hidden lg:flex items-center gap-8">
