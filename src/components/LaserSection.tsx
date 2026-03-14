@@ -1,4 +1,5 @@
 import { Zap, Shield, Sparkles, Target } from "lucide-react";
+import laserTreatment from "@/assets/laser-treatment.png";
 
 const benefits = [
   { icon: Zap, title: "Piel Suave y Sin Vello", description: "Resultados visibles desde la primera sesión para una piel impecable." },
@@ -21,21 +22,32 @@ const LaserSection = () => {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          {benefits.map((b) => (
-            <div key={b.title} className="text-center group">
-              <div className="w-16 h-16 rounded-full bg-accent flex items-center justify-center mx-auto mb-5 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
-                <b.icon size={26} />
+        <div className="grid lg:grid-cols-2 gap-16 items-center mb-16">
+          <div className="rounded-2xl overflow-hidden shadow-elevated aspect-[4/3]">
+            <img
+              src={laserTreatment}
+              alt="Tratamiento de depilación láser profesional"
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-8">
+            {benefits.map((b) => (
+              <div key={b.title} className="text-center group">
+                <div className="w-16 h-16 rounded-full bg-accent flex items-center justify-center mx-auto mb-5 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                  <b.icon size={26} />
+                </div>
+                <h3 className="font-serif text-lg font-semibold text-foreground mb-2">{b.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{b.description}</p>
               </div>
-              <h3 className="font-serif text-lg font-semibold text-foreground mb-2">{b.title}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">{b.description}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         <div className="text-center">
           <a
-            href="#contact"
+            href="#contacto"
             className="inline-flex items-center justify-center bg-primary text-primary-foreground px-8 py-4 rounded-full text-sm font-semibold tracking-wide hover:bg-gold-dark transition-all duration-300 shadow-glow"
           >
             Reservar Consulta
