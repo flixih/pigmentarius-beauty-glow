@@ -2,26 +2,28 @@ import heroSalon from "@/assets/hero-salon.jpg";
 import hairStyling from "@/assets/hair-styling.jpg";
 import eyebrowDesign from "@/assets/eyebrow-design.jpg";
 import hairColor from "@/assets/hair-color.jpg";
-import blowout from "@/assets/blowout.jpg";
-import treatment from "@/assets/treatment.jpg";
+import straightHair from "@/assets/straight-hair.png";
+import copperHair from "@/assets/copper-hair.png";
+import redCurls from "@/assets/red-curls.png";
+import eyebrowCloseup from "@/assets/eyebrow-closeup.png";
 
 const images = [
-  { src: hairStyling, alt: "Beautiful hair styling result", label: "Hair Artistry" },
-  { src: eyebrowDesign, alt: "Perfect eyebrow design", label: "Brow Design" },
-  { src: hairColor, alt: "Professional hair coloring", label: "Color & Highlights" },
-  { src: heroSalon, alt: "Luxury salon interior", label: "Our Salon" },
-  { src: blowout, alt: "Professional blowout styling", label: "Blowout" },
-  { src: treatment, alt: "Luxury salon treatment room", label: "Treatments" },
+  { src: straightHair, alt: "Resultado de tratamiento capilar profesional", label: "Tratamiento Capilar" },
+  { src: eyebrowCloseup, alt: "Diseño perfecto de cejas", label: "Diseño de Cejas" },
+  { src: copperHair, alt: "Coloración profesional de cabello", label: "Color & Highlights" },
+  { src: heroSalon, alt: "Interior de lujo del salón", label: "Nuestro Salón" },
+  { src: redCurls, alt: "Resultado de color rojo vibrante", label: "Color Vibrante" },
+  { src: hairStyling, alt: "Estilismo capilar profesional", label: "Estilismo" },
 ];
 
 const GallerySection = () => {
   return (
-    <section id="gallery" className="py-24 bg-background">
+    <section id="galeria" className="py-24 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <p className="text-primary text-sm font-semibold tracking-widest uppercase mb-4">Our Work</p>
+          <p className="text-primary text-sm font-semibold tracking-widest uppercase mb-4">Nuestro Trabajo</p>
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground">
-            Beauty <span className="italic text-primary">Gallery</span>
+            Galería de <span className="italic text-primary">Belleza</span>
           </h2>
         </div>
 

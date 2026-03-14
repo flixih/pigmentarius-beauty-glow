@@ -2,24 +2,23 @@ import { MapPin, Phone, Clock, Instagram, Facebook } from "lucide-react";
 
 const ContactSection = () => {
   return (
-    <section id="contact" className="py-24 bg-cream-dark">
+    <section id="contacto" className="py-24 bg-cream-dark">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <p className="text-primary text-sm font-semibold tracking-widest uppercase mb-4">Get In Touch</p>
+          <p className="text-primary text-sm font-semibold tracking-widest uppercase mb-4">Contáctanos</p>
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground">
-            Visit <span className="italic text-primary">Us</span>
+            Visítanos <span className="italic text-primary">Hoy</span>
           </h2>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* Info */}
           <div className="space-y-8">
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center flex-shrink-0">
                 <MapPin size={20} className="text-primary" />
               </div>
               <div>
-                <h3 className="font-serif font-semibold text-foreground mb-1">Address</h3>
+                <h3 className="font-serif font-semibold text-foreground mb-1">Dirección</h3>
                 <p className="text-muted-foreground">Plaza del Valle Mall, Suite 1</p>
                 <p className="text-muted-foreground">Añasco, Puerto Rico</p>
               </div>
@@ -30,7 +29,7 @@ const ContactSection = () => {
                 <Phone size={20} className="text-primary" />
               </div>
               <div>
-                <h3 className="font-serif font-semibold text-foreground mb-1">Phone</h3>
+                <h3 className="font-serif font-semibold text-foreground mb-1">Teléfono</h3>
                 <a href="tel:7878261684" className="text-primary hover:text-gold-dark transition-colors">
                   (787) 826-1684
                 </a>
@@ -42,8 +41,8 @@ const ContactSection = () => {
                 <Clock size={20} className="text-primary" />
               </div>
               <div>
-                <h3 className="font-serif font-semibold text-foreground mb-1">Hours</h3>
-                <p className="text-muted-foreground">Open daily until 5:30 PM</p>
+                <h3 className="font-serif font-semibold text-foreground mb-1">Horario</h3>
+                <p className="text-muted-foreground">Abierto todos los días hasta las 5:30 PM</p>
               </div>
             </div>
 
@@ -69,10 +68,9 @@ const ContactSection = () => {
             </div>
           </div>
 
-          {/* Map */}
           <div className="rounded-2xl overflow-hidden shadow-elevated h-80 lg:h-auto">
             <iframe
-              title="Pigmentarius Hair & Brow Salon Location"
+              title="Ubicación de Pigmentarius Hair & Brow Salon"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3795.8!2d-67.14!3d18.28!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTjCsDE2JzQ4LjAiTiA2N8KwMDgnMjQuMCJX!5e0!3m2!1sen!2spr!4v1700000000000!5m2!1sen!2spr"
               width="100%"
               height="100%"

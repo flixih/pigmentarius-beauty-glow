@@ -2,12 +2,13 @@ import { useState, useEffect } from "react";
 import { Menu, X, Phone } from "lucide-react";
 
 const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "Services", href: "#services" },
-  { label: "About", href: "#about" },
-  { label: "Gallery", href: "#gallery" },
-  { label: "Reviews", href: "#reviews" },
-  { label: "Contact", href: "#contact" },
+  { label: "Inicio", href: "#inicio" },
+  { label: "Servicios", href: "#servicios" },
+  { label: "Nosotros", href: "#nosotros" },
+  { label: "Galería", href: "#galeria" },
+  { label: "Reseñas", href: "#resenas" },
+  { label: "Tienda", href: "#tienda" },
+  { label: "Contacto", href: "#contacto" },
 ];
 
 const Navbar = () => {
@@ -29,11 +30,10 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
-        <a href="#home" className="font-serif text-xl md:text-2xl font-semibold tracking-wide text-foreground">
+        <a href="#inicio" className="font-serif text-xl md:text-2xl font-semibold tracking-wide text-foreground">
           Pigmentarius
         </a>
 
-        {/* Desktop Nav */}
         <div className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
@@ -49,21 +49,19 @@ const Navbar = () => {
             className="ml-4 inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-2.5 rounded-full text-sm font-semibold tracking-wide hover:bg-gold-dark transition-colors duration-300"
           >
             <Phone size={14} />
-            Book Now
+            Reservar
           </a>
         </div>
 
-        {/* Mobile toggle */}
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="lg:hidden text-foreground p-2"
-          aria-label="Toggle menu"
+          aria-label="Abrir menú"
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
-      {/* Mobile menu */}
       {isOpen && (
         <div className="lg:hidden bg-background/98 backdrop-blur-lg border-t border-border animate-fade-in">
           <div className="container mx-auto px-4 py-6 flex flex-col gap-4">
@@ -82,7 +80,7 @@ const Navbar = () => {
               className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-full text-sm font-semibold mt-2"
             >
               <Phone size={14} />
-              Book Now
+              Reservar Cita
             </a>
           </div>
         </div>
