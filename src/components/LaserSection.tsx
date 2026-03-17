@@ -48,6 +48,9 @@ const LaserSection = () => {
         <div className="text-center">
           <a
             href="#contacto"
+            className="inline-flex items-center justify-center bg-primary text-primary-foreground px-8 py-4 rounded-full text-sm font-semibold tracking-wide hover:bg-gold-dark transition-all duration-300 shadow-glow"
+          >
+            Reservar Consulta
           </a>
         </div>
       </div>
