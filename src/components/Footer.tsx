@@ -41,7 +41,7 @@ const Footer = () => {
               <p>Plaza del Valle Mall, Suite 1</p>
               <p>Añasco, Puerto Rico 00610</p>
               <a href="tel:7878261684" className="block hover:text-gold-light transition-colors">(787) 826-1684</a>
-              <p className="text-xs pt-1">Mar–Sáb / Tue–Sat: 9AM–5:30PM</p>
+              <p className="text-xs pt-1">Mar–Sáb / Tue–Sat: 9AM–5PM</p>
             </div>
           </div>
         </div>

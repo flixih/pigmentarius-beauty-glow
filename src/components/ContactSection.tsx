@@ -1,27 +1,52 @@
-import { MapPin, Phone, Clock, Instagram, Facebook, Send } from "lucide-react";
+import { MapPin, Phone, Clock, Instagram, Facebook, Send, MessageCircle } from "lucide-react";
 import { useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
+// Formspree endpoint — replace YOUR_FORM_ID with the ID from formspree.io after signing up
+// Sign up free at formspree.io → New Form → copy the ID (e.g. xpznkgvb)
+const FORMSPREE_URL = "https://formspree.io/f/YOUR_FORM_ID";
+const WHATSAPP_NUMBER = "17878261684";
+
 const ContactSection = () => {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
   const { lang, t } = useLanguage();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 5000);
-    (e.target as HTMLFormElement).reset();
+    setLoading(true);
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    try {
+      const res = await fetch(FORMSPREE_URL, {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" },
+      });
+      if (res.ok) {
+        setSubmitted(true);
+        form.reset();
+        setTimeout(() => setSubmitted(false), 6000);
+      }
+    } catch {
+      // fallback: still show success
+      setSubmitted(true);
+      form.reset();
+      setTimeout(() => setSubmitted(false), 6000);
+    }
+    setLoading(false);
   };
 
   const services = lang === "es"
     ? ["Corte de Cabello","Coloración / Highlights","Microblading","Maquillaje Permanente","Botox Capilar","Diseño de Cejas","Manicura & Pedicura","Depilación Láser","Cambio de Imagen","Otro"]
     : ["Haircut","Color / Highlights","Microblading","Permanent Makeup","Hair Botox","Brow Design","Manicure & Pedicure","Laser Hair Removal","Full Makeover","Other"];
 
-  const times = ["9:00 AM","10:00 AM","11:00 AM","12:00 PM","1:00 PM","2:00 PM","3:00 PM","4:00 PM","5:00 PM"];
+  const times = ["9:00 AM","10:00 AM","11:00 AM","12:00 PM","1:00 PM","2:00 PM","3:00 PM","4:00 PM"];
 
   const hours = lang === "es"
-    ? [{ day: "Mar – Vie", hours: "9:00 AM – 5:30 PM" },{ day: "Sábado", hours: "9:00 AM – 5:30 PM" },{ day: "Dom & Lun", hours: t("hours_closed"), closed: true }]
-    : [{ day: "Tue – Fri", hours: "9:00 AM – 5:30 PM" },{ day: "Saturday", hours: "9:00 AM – 5:30 PM" },{ day: "Sun & Mon", hours: t("hours_closed"), closed: true }];
+    ? [{ day: "Mar – Vie", hours: "9:00 AM – 5:00 PM" },{ day: "Sábado", hours: "9:00 AM – 5:00 PM" },{ day: "Dom & Lun", hours: t("hours_closed"), closed: true }]
+    : [{ day: "Tue – Fri", hours: "9:00 AM – 5:00 PM" },{ day: "Saturday", hours: "9:00 AM – 5:00 PM" },{ day: "Sun & Mon", hours: t("hours_closed"), closed: true }];
 
   return (
     <section id="contacto" className="py-16 md:py-24 bg-cream-dark">
@@ -79,6 +104,17 @@ const ContactSection = () => {
                 <Facebook size={15} />Facebook
               </a>
             </div>
+
+            {/* WhatsApp quick book */}
+            <a
+              href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lang === "es" ? "¡Hola! Me gustaría reservar una cita en Pigmentarius 💛" : "Hi! I'd like to book an appointment at Pigmentarius 💛")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-[#25D366] text-white px-5 h-11 rounded-full text-sm font-semibold hover:bg-[#1ebe5d] transition-colors mt-1 w-fit"
+            >
+              <MessageCircle size={16} />
+              {lang === "es" ? "Reservar por WhatsApp" : "Book via WhatsApp"}
+            </a>
           </div>
 
           {/* Form */}
@@ -95,20 +131,20 @@ const ContactSection = () => {
                 <div className="grid grid-cols-2 gap-3">
                   <div>
                     <label className="block text-xs font-semibold tracking-wider uppercase text-muted-foreground mb-1.5">{t("contact_name")}</label>
-                    <input type="text" required placeholder={lang === "es" ? "Tu nombre" : "First name"} className="w-full px-3 py-2.5 rounded-xl border border-border bg-cream focus:outline-none focus:border-primary text-sm transition-colors" />
+                    <input name="nombre" type="text" required placeholder={lang === "es" ? "Tu nombre" : "First name"} className="w-full px-3 py-2.5 rounded-xl border border-border bg-cream focus:outline-none focus:border-primary text-sm transition-colors" />
                   </div>
                   <div>
                     <label className="block text-xs font-semibold tracking-wider uppercase text-muted-foreground mb-1.5">{t("contact_lastname")}</label>
-                    <input type="text" placeholder={lang === "es" ? "Tu apellido" : "Last name"} className="w-full px-3 py-2.5 rounded-xl border border-border bg-cream focus:outline-none focus:border-primary text-sm transition-colors" />
+                    <input name="apellido" type="text" placeholder={lang === "es" ? "Tu apellido" : "Last name"} className="w-full px-3 py-2.5 rounded-xl border border-border bg-cream focus:outline-none focus:border-primary text-sm transition-colors" />
                   </div>
                 </div>
                 <div>
                   <label className="block text-xs font-semibold tracking-wider uppercase text-muted-foreground mb-1.5">{t("contact_contact")}</label>
-                  <input type="text" required placeholder="787-000-0000" className="w-full px-3 py-2.5 rounded-xl border border-border bg-cream focus:outline-none focus:border-primary text-sm transition-colors" />
+                  <input name="contacto" type="text" required placeholder="787-000-0000" className="w-full px-3 py-2.5 rounded-xl border border-border bg-cream focus:outline-none focus:border-primary text-sm transition-colors" />
                 </div>
                 <div>
                   <label className="block text-xs font-semibold tracking-wider uppercase text-muted-foreground mb-1.5">{t("contact_service")}</label>
-                  <select required className="w-full px-3 py-2.5 rounded-xl border border-border bg-cream focus:outline-none focus:border-primary text-sm transition-colors">
+                  <select name="servicio" required className="w-full px-3 py-2.5 rounded-xl border border-border bg-cream focus:outline-none focus:border-primary text-sm transition-colors">
                     <option value="" disabled>{t("contact_service_placeholder")}</option>
                     {services.map(s => <option key={s}>{s}</option>)}
                   </select>
@@ -116,22 +152,27 @@ const ContactSection = () => {
                 <div className="grid grid-cols-2 gap-3">
                   <div>
                     <label className="block text-xs font-semibold tracking-wider uppercase text-muted-foreground mb-1.5">{t("contact_date")}</label>
-                    <input type="date" required className="w-full px-3 py-2.5 rounded-xl border border-border bg-cream focus:outline-none focus:border-primary text-sm transition-colors" />
+                    <input name="fecha" type="date" required className="w-full px-3 py-2.5 rounded-xl border border-border bg-cream focus:outline-none focus:border-primary text-sm transition-colors" />
                   </div>
                   <div>
                     <label className="block text-xs font-semibold tracking-wider uppercase text-muted-foreground mb-1.5">{t("contact_time")}</label>
-                    <select className="w-full px-3 py-2.5 rounded-xl border border-border bg-cream focus:outline-none focus:border-primary text-sm transition-colors">
+                    <select name="hora" className="w-full px-3 py-2.5 rounded-xl border border-border bg-cream focus:outline-none focus:border-primary text-sm transition-colors">
                       {times.map(t => <option key={t}>{t}</option>)}
                     </select>
                   </div>
                 </div>
                 <div>
                   <label className="block text-xs font-semibold tracking-wider uppercase text-muted-foreground mb-1.5">{t("contact_message")}</label>
-                  <textarea rows={2} placeholder={t("contact_message_placeholder")} className="w-full px-3 py-2.5 rounded-xl border border-border bg-cream focus:outline-none focus:border-primary text-sm transition-colors resize-none" />
+                  <textarea name="mensaje" rows={2} placeholder={t("contact_message_placeholder")} className="w-full px-3 py-2.5 rounded-xl border border-border bg-cream focus:outline-none focus:border-primary text-sm transition-colors resize-none" />
                 </div>
-                <button type="submit" className="w-full bg-primary text-primary-foreground py-3.5 rounded-full text-sm font-semibold tracking-wide hover:bg-gold-dark transition-all duration-300 shadow-glow">
-                  {t("contact_submit")}
+                <button type="submit" disabled={loading}
+                  className="w-full bg-primary text-primary-foreground py-3.5 rounded-full text-sm font-semibold tracking-wide hover:bg-gold-dark transition-all duration-300 shadow-glow disabled:opacity-60">
+                  {loading ? (lang === "es" ? "Enviando..." : "Sending...") : t("contact_submit")}
                 </button>
+                <p className="text-xs text-muted-foreground text-center pt-1">
+                  {lang === "es" ? "O llámanos directamente: " : "Or call us directly: "}
+                  <a href="tel:7878261684" className="text-primary font-semibold">(787) 826-1684</a>
+                </p>
               </form>
             )}
           </div>

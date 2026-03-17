@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Phone, Globe } from "lucide-react";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo-real.png";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const Navbar = () => {
@@ -29,7 +29,7 @@ const Navbar = () => {
     }`}>
       <div className="container mx-auto px-4 flex items-center justify-between">
         <a href="#inicio" className="flex items-center">
-          <img src={logo} alt="Pigmentarius" className="h-9 md:h-11 w-auto object-contain" />
+          <img src={logo} alt="Pigmentarius" className="h-10 md:h-14 w-auto object-contain brightness-0 invert" />
         </a>
 
         <div className="hidden lg:flex items-center gap-6">
