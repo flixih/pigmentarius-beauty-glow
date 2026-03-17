@@ -28,13 +28,13 @@ const AboutSection = () => {
             </h2>
             <div className="space-y-5 text-muted-foreground leading-relaxed">
               <p>
-                Pigmentarius Hair & Brow Salon es un destino de belleza de confianza en Puerto Rico, reconocido por su excepcional arte capilar, diseño perfecto de cejas y cuidado personalizado.
+                Pigmentarius Hair & Brow Salon es el destino de belleza de confianza en el oeste de Puerto Rico, reconocido por su excepcional arte capilar, diseño perfecto de cejas y cuidado personalizado.
               </p>
               <p>
-                Por más de dos décadas, nuestros estilistas expertos han ayudado a nuestros clientes a lucir y sentirse mejor con técnicas profesionales, productos de alta calidad y un ambiente acogedor.
+                Nuestra fundadora y directora artística, <strong className="text-foreground">Windy Arroyo</strong>, es especialista en cabello rizado, coloración avanzada y microblading. Su pasión por la belleza y su dedicación al cliente crean una experiencia que nuestras clientas describen como "la Clínica Mayo del cabello."
               </p>
               <p>
-                Nuestro salón es orgullosamente un negocio de mujeres, dedicado a crear un espacio relajante e inclusivo para cada cliente.
+                Desde el primer contacto —en persona o por teléfono— te llamamos Princesa y te tratamos con el cariño y atención que mereces. Nuestro equipo trabaja como familia con profesionalismo sin igual.
               </p>
             </div>
             <div className="grid grid-cols-3 gap-6 mt-10 pt-10 border-t border-border">

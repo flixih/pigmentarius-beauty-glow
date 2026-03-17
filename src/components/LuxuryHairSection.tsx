@@ -1,12 +1,16 @@
-import straightHair from "@/assets/straight-hair.png";
 import copperHair from "@/assets/copper-hair.png";
-import { Droplets, Sparkles, Sun, Shield } from "lucide-react";
+import redCurls from "@/assets/red-curls.png";
+import { Droplets, Sparkles, Sun, Shield, Scissors, Wind } from "lucide-react";
+
+const REAL_HAIR = "https://picheapp.com/wp-content/uploads/2025/09/import-9610.jpg";
 
 const treatments = [
-  { icon: Droplets, title: "Tratamientos de Keratina", description: "Control total del frizz con resultados que duran meses." },
-  { icon: Sparkles, title: "Hair Botox", description: "Rejuvenecimiento capilar profundo para un cabello sedoso." },
-  { icon: Sun, title: "Hidratación Profunda", description: "Restaura la vitalidad del cabello seco y dañado." },
-  { icon: Shield, title: "Reparación y Fortalecimiento", description: "Fortalece las fibras capilares desde la raíz hasta las puntas." },
+  { icon: Droplets, title: "Tratamientos de Keratina", description: "Control total del frizz con resultados que duran meses. Perfecto para el clima tropical de Puerto Rico.", price: "Desde $120" },
+  { icon: Sparkles, title: "Botox Capilar", description: "Rejuvenecimiento capilar profundo con colágeno para un cabello sedoso, brillante y sin frizz.", price: "Desde $130" },
+  { icon: Sun, title: "Coloración & Highlights", description: "Color, mechas, balayage y corrección de color con técnicas avanzadas y productos premium.", price: "Desde $80" },
+  { icon: Scissors, title: "Cortes Especializados", description: "Especialistas en cabello rizado, liso, fino y grueso. Cortes de capas, pixie y cambios de imagen.", price: "Desde $35" },
+  { icon: Shield, title: "Cirugía Plástica Capilar", description: "Tratamiento intensivo de reparación y fortalecimiento para cabello muy dañado.", price: "Desde $150" },
+  { icon: Wind, title: "Blowouts Profesionales", description: "Blowouts voluminosos y perfectos. Salte del salón con el cabello de tus sueños.", price: "Desde $45" },
 ];
 
 const LuxuryHairSection = () => {
@@ -19,35 +23,42 @@ const LuxuryHairSection = () => {
             Tratamientos Capilares <span className="italic text-primary">Premium</span>
           </h2>
           <p className="text-muted-foreground max-w-lg mx-auto text-lg">
-            Transforma tu cabello con nuestros tratamientos profesionales de alta gama. Control del frizz, brillo intenso y suavidad incomparable.
+            Transforma tu cabello con nuestros tratamientos profesionales. Control del frizz, brillo intenso y suavidad incomparable.
           </p>
         </div>
 
-        {/* Before/After Images */}
-        <div className="grid md:grid-cols-2 gap-6 mb-16">
-          <div className="rounded-2xl overflow-hidden shadow-elevated aspect-[4/3]">
-            <img src={straightHair} alt="Resultado de tratamiento capilar - cabello liso" className="w-full h-full object-cover" loading="lazy" />
+        {/* Real photo + accent photos */}
+        <div className="grid md:grid-cols-3 gap-4 mb-16">
+          <div className="md:col-span-2 rounded-2xl overflow-hidden shadow-elevated aspect-video">
+            <img src={REAL_HAIR} alt="Transformación capilar en Pigmentarius" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="lazy" />
           </div>
-          <div className="rounded-2xl overflow-hidden shadow-elevated aspect-[4/3]">
-            <img src={copperHair} alt="Resultado de color y tratamiento capilar" className="w-full h-full object-cover" loading="lazy" />
+          <div className="grid grid-rows-2 gap-4">
+            <div className="rounded-2xl overflow-hidden shadow-soft">
+              <img src={copperHair} alt="Coloración cobre" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="lazy" />
+            </div>
+            <div className="rounded-2xl overflow-hidden shadow-soft">
+              <img src={redCurls} alt="Rizos con color" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="lazy" />
+            </div>
           </div>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        {/* Treatment cards with pricing */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {treatments.map((t) => (
-            <div key={t.title} className="bg-background rounded-2xl p-8 shadow-soft text-center hover:shadow-elevated transition-all duration-500 hover:-translate-y-1">
-              <div className="w-14 h-14 rounded-full bg-accent flex items-center justify-center mx-auto mb-5">
-                <t.icon size={24} className="text-primary" />
+            <div key={t.title} className="bg-background rounded-2xl p-7 shadow-soft hover:shadow-elevated transition-all duration-500 hover:-translate-y-1 group">
+              <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center mb-5 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                <t.icon size={22} />
               </div>
               <h3 className="font-serif text-lg font-semibold text-foreground mb-2">{t.title}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">{t.description}</p>
+              <p className="text-muted-foreground text-sm leading-relaxed mb-4">{t.description}</p>
+              <span className="text-primary font-semibold text-sm">{t.price}</span>
             </div>
           ))}
         </div>
 
         <div className="text-center">
           <a
-            href="#contact"
+            href="#contacto"
             className="inline-flex items-center justify-center bg-primary text-primary-foreground px-8 py-4 rounded-full text-sm font-semibold tracking-wide hover:bg-gold-dark transition-all duration-300 shadow-glow"
           >
             Reservar Tratamiento Capilar

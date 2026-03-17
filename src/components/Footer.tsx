@@ -44,10 +44,10 @@ const Footer = () => {
               <a href="tel:7878261684" className="block hover:text-gold-light transition-colors">(787) 826-1684</a>
             </div>
             <div className="flex gap-3 mt-4">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-cream/60 hover:text-gold-light transition-colors" aria-label="Instagram">
+              <a href="https://www.instagram.com/pigmentariushs/" target="_blank" rel="noopener noreferrer" className="text-cream/60 hover:text-gold-light transition-colors" aria-label="Instagram">
                 <Instagram size={18} />
               </a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-cream/60 hover:text-gold-light transition-colors" aria-label="Facebook">
+              <a href="https://www.facebook.com/pigmentariuspr/" target="_blank" rel="noopener noreferrer" className="text-cream/60 hover:text-gold-light transition-colors" aria-label="Facebook">
                 <Facebook size={18} />
               </a>
             </div>
