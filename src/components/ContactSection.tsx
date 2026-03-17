@@ -16,24 +16,56 @@ const ContactSection = () => {
     e.preventDefault();
     setLoading(true);
     const form = e.currentTarget;
-    const data = new FormData(form);
+    const fd = new FormData(form);
+
+    const nombre   = fd.get("nombre")   as string;
+    const apellido = fd.get("apellido") as string;
+    const contacto = fd.get("contacto") as string;
+    const servicio = fd.get("servicio") as string;
+    const fecha    = fd.get("fecha")    as string;
+    const hora     = fd.get("hora")     as string;
+    const mensaje  = fd.get("mensaje")  as string;
+
+    // Format date nicely
+    const fechaFormatted = fecha
+      ? new Date(fecha + "T12:00:00").toLocaleDateString("es-PR", { weekday: "long", year: "numeric", month: "long", day: "numeric" })
+      : "No especificada";
+
+    // WhatsApp confirmation link pre-filled
+    const waText = encodeURIComponent(
+      `¡Hola ${nombre}! 💛 Tu cita en Pigmentarius Hair & Brow Salon ha sido CONFIRMADA ✅\n\n📅 ${fechaFormatted}\n⏰ ${hora}\n💆 Servicio: ${servicio}\n\n¡Te esperamos en Plaza del Valle Mall, Suite 1, Añasco!\n\n📞 (787) 826-1684`
+    );
+    const waLink = `https://wa.me/${contacto.replace(/\D/g,"")}?text=${waText}`;
+
+    // Send to Formspree with a beautifully structured message
+    const payload = {
+      _subject: `🗓️ Nueva Cita — ${nombre} ${apellido} — ${servicio}`,
+      _replyto: contacto.includes("@") ? contacto : "noreply@pigmentarius.com",
+      "👤 Cliente":      `${nombre} ${apellido}`,
+      "📞 Contacto":     contacto,
+      "💆 Servicio":     servicio,
+      "📅 Fecha":        fechaFormatted,
+      "⏰ Hora":         hora,
+      "💬 Mensaje":      mensaje || "Ninguno",
+      "✅ Confirmar por WhatsApp": waLink,
+      "📲 Llamar cliente": `tel:${contacto.replace(/\D/g,"")}`,
+    };
 
     try {
       const res = await fetch(FORMSPREE_URL, {
         method: "POST",
-        body: data,
-        headers: { Accept: "application/json" },
+        body: JSON.stringify(payload),
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
       });
       if (res.ok) {
         setSubmitted(true);
         form.reset();
-        setTimeout(() => setSubmitted(false), 6000);
+        setTimeout(() => setSubmitted(false), 7000);
       }
     } catch {
-      // fallback: still show success
       setSubmitted(true);
       form.reset();
-      setTimeout(() => setSubmitted(false), 6000);
+      setTimeout(() => setSubmitted(false), 7000);
     }
     setLoading(false);
   };

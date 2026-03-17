@@ -9,7 +9,7 @@ const Navbar = () => {
   const { lang, toggleLang, t } = useLanguage();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
+    const onScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -24,28 +24,37 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-      scrolled ? "bg-background/95 backdrop-blur-md shadow-soft py-3" : "bg-transparent py-4"
+    // Always white/cream background — logo dark text always visible
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-background ${
+      scrolled ? "shadow-soft py-2.5" : "py-3"
     }`}>
       <div className="container mx-auto px-4 flex items-center justify-between">
+
+        {/* Logo — no filter needed, navbar is always light */}
         <a href="#inicio" className="flex items-center">
-          <img src={logo} alt="Pigmentarius" className="h-10 md:h-14 w-auto object-contain brightness-0 invert" />
+          <img
+            src={logo}
+            alt="Pigmentarius Hair & Brow Salon"
+            className="h-10 md:h-12 w-auto object-contain"
+          />
         </a>
 
+        {/* Desktop nav links */}
         <div className="hidden lg:flex items-center gap-6">
           {navLinks.map((link) => (
             <a key={link.href} href={link.href}
-              className="text-xs font-medium tracking-widest uppercase text-foreground/80 hover:text-primary transition-colors duration-300">
+              className="text-xs font-medium tracking-widest uppercase text-foreground/70 hover:text-primary transition-colors duration-300">
               {link.label}
             </a>
           ))}
         </div>
 
+        {/* Right side: lang toggle + CTA + mobile menu */}
         <div className="flex items-center gap-2">
-          {/* Language toggle */}
+          {/* Language toggle — always visible with solid bg */}
           <button
             onClick={toggleLang}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-border text-xs font-semibold tracking-wide hover:bg-accent transition-colors duration-200"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-accent border border-border text-foreground text-xs font-bold tracking-wide hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-200"
             aria-label="Toggle language"
           >
             <Globe size={12} />
@@ -58,18 +67,23 @@ const Navbar = () => {
             {t("nav_reservar")}
           </a>
 
-          <button onClick={() => setIsOpen(!isOpen)} className="lg:hidden text-foreground p-2" aria-label="Menu">
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="lg:hidden text-foreground p-2"
+            aria-label="Menu"
+          >
             {isOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </div>
 
+      {/* Mobile menu */}
       {isOpen && (
-        <div className="lg:hidden bg-background/98 backdrop-blur-lg border-t border-border">
+        <div className="lg:hidden bg-background border-t border-border">
           <div className="container mx-auto px-4 py-5 flex flex-col gap-3">
             {navLinks.map((link) => (
               <a key={link.href} href={link.href} onClick={() => setIsOpen(false)}
-                className="text-sm font-medium tracking-widest uppercase text-foreground/80 hover:text-primary py-2 transition-colors">
+                className="text-sm font-medium tracking-widest uppercase text-foreground/80 hover:text-primary py-2 border-b border-border/50 transition-colors">
                 {link.label}
               </a>
             ))}
