@@ -12,44 +12,45 @@ const allServices = [
   {
     category: { es: "💆 Cabello", en: "💆 Hair" },
     items: [
-      { name: { es: "Corte de Cabello", en: "Haircut" }, price: "Desde $35", desc: { es: "Especialistas en todo tipo de cabello — rizado, liso, fino o grueso.", en: "Specialists in all hair types — curly, straight, fine or thick." }, photo: REAL_1 },
+      { name: { es: "Corte de Cabello", en: "Haircut" }, price: "$25", desc: { es: "Especialistas en todo tipo de cabello — rizado, liso, fino o grueso.", en: "Specialists in all hair types — curly, straight, fine or thick." }, photo: REAL_1 },
       { name: { es: "Coloración", en: "Hair Color" }, price: "Desde $80", desc: { es: "Color vibrante y duradero con productos profesionales de salón.", en: "Vibrant, long-lasting color with professional salon products." }, photo: REAL_2 },
       { name: { es: "Highlights & Balayage", en: "Highlights & Balayage" }, price: "Desde $90", desc: { es: "Mechas y balayage de aspecto natural para una dimensión hermosa.", en: "Natural-looking highlights and balayage for beautiful dimension." }, photo: REAL_1 },
-      { name: { es: "Keratina", en: "Keratin Treatment" }, price: "Desde $120", desc: { es: "Control total del frizz con resultados que duran meses.", en: "Total frizz control with results lasting months." }, photo: REAL_2 },
-      { name: { es: "Botox Capilar", en: "Hair Botox" }, price: "Desde $130", desc: { es: "Rejuvenecimiento profundo con colágeno para un cabello sedoso.", en: "Deep rejuvenation with collagen for silky hair." }, photo: REAL_1 },
-      { name: { es: "Cirugía Plástica Capilar", en: "Hair Repair Treatment" }, price: "Desde $150", desc: { es: "Tratamiento intensivo de reparación para cabello muy dañado.", en: "Intensive repair treatment for severely damaged hair." }, photo: REAL_2 },
-      { name: { es: "Blowout", en: "Blowout" }, price: "Desde $45", desc: { es: "Blowouts voluminosos y perfectos para cualquier ocasión.", en: "Voluminous, perfect blowouts for any occasion." }, photo: REAL_1 },
-      { name: { es: "Tratamiento de Hidratación", en: "Deep Hydration Treatment" }, price: "Desde $60", desc: { es: "Restaura la vitalidad del cabello seco y dañado.", en: "Restores vitality to dry and damaged hair." }, photo: REAL_2 },
+      { name: { es: "Keratina", en: "Keratin Treatment" }, price: "Desde $79", desc: { es: "Control total del frizz con resultados que duran meses. Perfecto para el clima tropical de Puerto Rico.", en: "Total frizz control with results lasting months. Perfect for Puerto Rico's tropical climate." }, photo: REAL_2 },
+      { name: { es: "Botox Capilar", en: "Hair Botox" }, price: "$90", desc: { es: "Rejuvenecimiento profundo con colágeno para un cabello sedoso y brillante.", en: "Deep rejuvenation with collagen for silky, shiny hair." }, photo: REAL_1 },
+      { name: { es: "Cirugía Plástica Capilar", en: "Hair Repair Treatment" }, price: "Desde $189", desc: { es: "Tratamiento intensivo de reparación para cabello muy dañado.", en: "Intensive repair treatment for severely damaged hair." }, photo: REAL_2 },
+      { name: { es: "Brazilian Blowout", en: "Brazilian Blowout" }, price: "Desde $99", desc: { es: "Alisado suave y duradero con brillo intenso.", en: "Smooth, long-lasting straightening with intense shine." }, photo: REAL_1 },
     ],
   },
   {
     category: { es: "✨ Cejas & Maquillaje Permanente", en: "✨ Brows & Permanent Makeup" },
     items: [
-      { name: { es: "Microblading", en: "Microblading" }, price: "Desde $150", desc: { es: "Trazos ultra finos semi-permanentes. Retoque incluido a las 4–6 semanas.", en: "Ultra-fine semi-permanent strokes. Touch-up included at 4–6 weeks." }, photo: REAL_3 },
-      { name: { es: "Ombré / Powder Brows", en: "Ombré / Powder Brows" }, price: "Desde $180", desc: { es: "Técnica de sombreado suave para un efecto natural con más densidad.", en: "Soft shading technique for a natural effect with more density." }, photo: REAL_3 },
-      { name: { es: "Diseño de Cejas", en: "Brow Design" }, price: "Desde $30", desc: { es: "Diseño y depilación experta que enmarca tu rostro.", en: "Expert design and waxing that frames your face." }, photo: REAL_3 },
-      { name: { es: "Maquillaje Permanente de Labios", en: "Permanent Lip Makeup" }, price: "Desde $200", desc: { es: "Labios perfectamente definidos sin esfuerzo cada mañana.", en: "Perfectly defined lips effortlessly every morning." }, photo: REAL_3 },
+      { name: { es: "Microblading", en: "Microblading" }, price: "$370", desc: { es: "Trazos ultra finos semi-permanentes que imitan el vello natural. Retoque incluido.", en: "Ultra-fine semi-permanent strokes that mimic natural hair. Touch-up included." }, photo: REAL_3 },
+      { name: { es: "Sombreado de Cejas (Ombré Brows)", en: "Brow Shading (Ombré Brows)" }, price: "$270", desc: { es: "Técnica de sombreado suave para cejas con más densidad y aspecto natural.", en: "Soft shading technique for fuller, more natural-looking brows." }, photo: REAL_3 },
+      { name: { es: "Diseño de Cejas", en: "Brow Design" }, price: "Desde $30", desc: { es: "Diseño y depilación experta que enmarca y realza tu rostro.", en: "Expert design and waxing that frames and enhances your face." }, photo: REAL_3 },
+      { name: { es: "Wax de Cejas", en: "Brow Wax" }, price: "$12", desc: { es: "Depilación con cera para cejas perfectamente definidas.", en: "Waxing for perfectly defined brows." }, photo: REAL_3 },
+      { name: { es: "Maquillaje Permanente de Labios", en: "Permanent Lip Makeup" }, price: "Consultar", desc: { es: "Labios perfectamente definidos sin esfuerzo cada mañana.", en: "Perfectly defined lips effortlessly every morning." }, photo: REAL_3 },
       { name: { es: "Delineado Permanente", en: "Permanent Eyeliner" }, price: "Consultar", desc: { es: "Ojos definidos y expresivos sin necesidad de maquillaje diario.", en: "Defined, expressive eyes without daily makeup." }, photo: REAL_3 },
     ],
   },
   {
     category: { es: "⚡ Depilación Láser", en: "⚡ Laser Hair Removal" },
     items: [
-      { name: { es: "Rostro Completo", en: "Full Face" }, price: "Consultar", desc: { es: "Labio, mentón, mejillas y frente.", en: "Lip, chin, cheeks and forehead." }, photo: REAL_1 },
-      { name: { es: "Axilas", en: "Underarms" }, price: "Consultar", desc: { es: "Resultados visibles desde la primera sesión.", en: "Visible results from the first session." }, photo: REAL_1 },
-      { name: { es: "Piernas Completas", en: "Full Legs" }, price: "Consultar", desc: { es: "Piel suave y sin vello para siempre.", en: "Smooth, hair-free skin permanently." }, photo: REAL_1 },
-      { name: { es: "Zona Bikini", en: "Bikini Area" }, price: "Consultar", desc: { es: "Tratamiento completo o brasileño.", en: "Full or Brazilian treatment." }, photo: REAL_1 },
-      { name: { es: "Cuerpo Completo", en: "Full Body" }, price: "Consultar", desc: { es: "El paquete completo para olvidarte de la cera y la rasuradora para siempre.", en: "The complete package to forget about waxing and razors forever." }, photo: REAL_1 },
+      { name: { es: "Rostro Completo", en: "Full Face" }, price: "$65", desc: { es: "Tratamiento completo de rostro para piel suave y sin vello.", en: "Full face treatment for smooth, hair-free skin." }, photo: REAL_1 },
+      { name: { es: "Bigote", en: "Upper Lip" }, price: "$25", desc: { es: "Resultados visibles desde la primera sesión.", en: "Visible results from the first session." }, photo: REAL_1 },
+      { name: { es: "Mentón", en: "Chin" }, price: "$25", desc: { es: "Eliminación permanente del vello en mentón.", en: "Permanent hair removal on the chin." }, photo: REAL_1 },
+      { name: { es: "Axilas", en: "Underarms" }, price: "$25", desc: { es: "Piel suave y libre de vello en axilas.", en: "Smooth, hair-free underarms." }, photo: REAL_1 },
+      { name: { es: "Piernas Completas", en: "Full Legs" }, price: "Desde $145", desc: { es: "Piernas perfectamente suaves para siempre.", en: "Perfectly smooth legs permanently." }, photo: REAL_1 },
+      { name: { es: "Zona Bikini", en: "Bikini Area" }, price: "$45", desc: { es: "Tratamiento de zona bikini clásica.", en: "Classic bikini area treatment." }, photo: REAL_1 },
+      { name: { es: "Laser Brazilian", en: "Laser Brazilian" }, price: "$65", desc: { es: "Tratamiento completo de zona brasileña.", en: "Full Brazilian area treatment." }, photo: REAL_1 },
+      { name: { es: "Cuerpo Completo", en: "Full Body" }, price: "Consultar", desc: { es: "El paquete completo — olvídate de la cera y la rasuradora para siempre.", en: "The complete package — forget waxing and razors forever." }, photo: REAL_1 },
     ],
   },
   {
     category: { es: "💅 Uñas & Más", en: "💅 Nails & More" },
     items: [
-      { name: { es: "Manicura", en: "Manicure" }, price: "Desde $25", desc: { es: "Cuidado profesional de manos y uñas.", en: "Professional hand and nail care." }, photo: REAL_2 },
-      { name: { es: "Pedicura", en: "Pedicure" }, price: "Desde $35", desc: { es: "Relajante tratamiento completo de pies.", en: "Relaxing complete foot treatment." }, photo: REAL_2 },
-      { name: { es: "Facial Rejuvenecedor", en: "Rejuvenating Facial" }, price: "Desde $45", desc: { es: "Limpieza profunda y tratamiento revitalizante para tu piel.", en: "Deep cleanse and revitalizing treatment for your skin." }, photo: REAL_3 },
-      { name: { es: "Dermaplaning", en: "Dermaplaning" }, price: "Desde $55", desc: { es: "Exfoliación profunda para piel radiante.", en: "Deep exfoliation for radiant skin." }, photo: REAL_3 },
-      { name: { es: "Depilación con Hilo / Cera", en: "Threading / Waxing" }, price: "Desde $15", desc: { es: "Técnica precisa para cejas, labio y más.", en: "Precise technique for brows, lip and more." }, photo: REAL_3 },
+      { name: { es: "Shellac / Gel", en: "Shellac / Gel" }, price: "$20", desc: { es: "Esmalte en gel de larga duración para uñas perfectas.", en: "Long-lasting gel polish for perfect nails." }, photo: REAL_2 },
+      { name: { es: "Pedicura", en: "Pedicure" }, price: "$45", desc: { es: "Relajante tratamiento completo de pies.", en: "Relaxing complete foot treatment." }, photo: REAL_2 },
+      { name: { es: "Facial Rejuvenecedor", en: "Rejuvenating Facial" }, price: "$55", desc: { es: "Limpieza profunda y tratamiento revitalizante para tu piel.", en: "Deep cleanse and revitalizing treatment for your skin." }, photo: REAL_3 },
     ],
   },
 ];
@@ -69,7 +70,7 @@ const Servicios = () => {
               {lang === "es" ? "Volver al inicio" : "Back to home"}
             </Link>
             <p className="text-primary text-xs font-semibold tracking-widest uppercase mb-3">
-              {lang === "es" ? "Pigmentarius Hair & Brow Salon" : "Pigmentarius Hair & Brow Salon"}
+              Pigmentarius Hair & Brow Salon
             </p>
             <h1 className="font-serif text-3xl md:text-5xl font-bold text-cream mb-4">
               {lang === "es" ? "Todos Nuestros " : "All Our "}

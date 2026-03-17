@@ -15,7 +15,7 @@ const ServicesSection = () => {
       photo: REAL_1,
       title: { es: "Keratina & Botox Capilar", en: "Keratin & Hair Botox" },
       desc: { es: "Transforma tu cabello con control total del frizz. Resultados sedosos que duran meses.", en: "Transform your hair with total frizz control. Silky results that last months." },
-      price: "Desde $120",
+      price: "Desde $79",
       tag: { es: "Más Solicitado", en: "Most Requested" },
     },
     {
@@ -23,7 +23,7 @@ const ServicesSection = () => {
       photo: REAL_3,
       title: { es: "Microblading", en: "Microblading" },
       desc: { es: "Cejas perfectas y naturales diseñadas a medida. Trazos ultra finos que duran 12–18 meses.", en: "Perfect, natural brows designed just for you. Ultra-fine strokes lasting 12–18 months." },
-      price: "Desde $150",
+      price: "$370",
       tag: { es: "Semi-Permanente", en: "Semi-Permanent" },
     },
     {
