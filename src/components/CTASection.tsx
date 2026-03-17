@@ -1,7 +1,7 @@
 import { Phone, Calendar, Instagram } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-const REAL_3 = "https://picheapp.com/wp-content/uploads/2025/09/import-9612.jpg";
+const REAL_3 = "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=80";
 
 const CTASection = () => {
   const { t } = useLanguage();

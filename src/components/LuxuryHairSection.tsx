@@ -1,8 +1,8 @@
 import { Droplets, Sparkles, Sun, Shield, Scissors, Wind } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-const REAL_1 = "https://picheapp.com/wp-content/uploads/2025/09/import-9610.jpg";
-const REAL_2 = "https://picheapp.com/wp-content/uploads/2025/09/import-9611.jpg";
+const REAL_1 = "https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&q=80";
+const REAL_2 = "https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=800&q=80";
 
 const treatments = [
   { icon: Droplets, title: { es: "Keratina", en: "Keratin Treatment" }, desc: { es: "Control total del frizz. Perfecto para el clima de Puerto Rico.", en: "Total frizz control. Perfect for Puerto Rico's tropical climate." }, price: "Desde $120" },

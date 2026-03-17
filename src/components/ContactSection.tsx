@@ -1,22 +1,28 @@
-import { MapPin, Phone, Clock, Instagram, Facebook, Send, MessageCircle } from "lucide-react";
+import { MapPin, Phone, Clock, Instagram, Facebook, Send } from "lucide-react";
 import { useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import emailjs from "@emailjs/browser";
 
-// Formspree endpoint — replace YOUR_FORM_ID with the ID from formspree.io after signing up
-// Sign up free at formspree.io → New Form → copy the ID (e.g. xpznkgvb)
-const FORMSPREE_URL = "https://formspree.io/f/mreyynrv";
-const WHATSAPP_NUMBER = "17878261684";
+// ─── EmailJS config ───────────────────────────────────────────────
+// 1. Go to https://emailjs.com → sign up free
+// 2. Add Service → Gmail → connect pigmentariusforms@gmail.com
+// 3. Create Email Template (use the variables below)
+// 4. Replace the three IDs below with yours
+const EMAILJS_SERVICE_ID  = "service_pigmentarius"; // from EmailJS dashboard
+const EMAILJS_TEMPLATE_ID = "template_booking";     // your template ID
+const EMAILJS_PUBLIC_KEY  = "YOUR_PUBLIC_KEY";      // from Account → General
+// ──────────────────────────────────────────────────────────────────
 
 const ContactSection = () => {
   const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading]     = useState(false);
   const { lang, t } = useLanguage();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
     const form = e.currentTarget;
-    const fd = new FormData(form);
+    const fd   = new FormData(form);
 
     const nombre   = fd.get("nombre")   as string;
     const apellido = fd.get("apellido") as string;
@@ -26,59 +32,54 @@ const ContactSection = () => {
     const hora     = fd.get("hora")     as string;
     const mensaje  = fd.get("mensaje")  as string;
 
-    // Format date nicely
     const fechaFormatted = fecha
-      ? new Date(fecha + "T12:00:00").toLocaleDateString("es-PR", { weekday: "long", year: "numeric", month: "long", day: "numeric" })
+      ? new Date(fecha + "T12:00:00").toLocaleDateString("es-PR", {
+          weekday: "long", year: "numeric", month: "long", day: "numeric",
+        })
       : "No especificada";
 
-    // WhatsApp confirmation link pre-filled
-    const waText = encodeURIComponent(
-      `¡Hola ${nombre}! 💛 Tu cita en Pigmentarius Hair & Brow Salon ha sido CONFIRMADA ✅\n\n📅 ${fechaFormatted}\n⏰ ${hora}\n💆 Servicio: ${servicio}\n\n¡Te esperamos en Plaza del Valle Mall, Suite 1, Añasco!\n\n📞 (787) 826-1684`
-    );
-    const waLink = `https://wa.me/${contacto.replace(/\D/g,"")}?text=${waText}`;
-
-    // Send to Formspree with a beautifully structured message
-    const payload = {
-      _subject: `🗓️ Nueva Cita — ${nombre} ${apellido} — ${servicio}`,
-      _replyto: contacto.includes("@") ? contacto : "noreply@pigmentarius.com",
-      "👤 Cliente":      `${nombre} ${apellido}`,
-      "📞 Contacto":     contacto,
-      "💆 Servicio":     servicio,
-      "📅 Fecha":        fechaFormatted,
-      "⏰ Hora":         hora,
-      "💬 Mensaje":      mensaje || "Ninguno",
-      "✅ Confirmar por WhatsApp": waLink,
-      "📲 Llamar cliente": `tel:${contacto.replace(/\D/g,"")}`,
+    // Template variables — match these in your EmailJS template
+    const templateParams = {
+      to_email:   "pigmentariusforms@gmail.com",
+      from_name:  `${nombre} ${apellido}`,
+      contacto,
+      servicio,
+      fecha:      fechaFormatted,
+      hora,
+      mensaje:    mensaje || "Ninguno",
+      reply_to:   contacto.includes("@") ? contacto : "pigmentariusforms@gmail.com",
     };
 
     try {
-      const res = await fetch(FORMSPREE_URL, {
-        method: "POST",
-        body: JSON.stringify(payload),
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-      });
-      if (res.ok) {
-        setSubmitted(true);
-        form.reset();
-        setTimeout(() => setSubmitted(false), 7000);
-      }
-    } catch {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        EMAILJS_PUBLIC_KEY
+      );
       setSubmitted(true);
       form.reset();
       setTimeout(() => setSubmitted(false), 7000);
+    } catch (err) {
+      console.error("EmailJS error:", err);
+      // fallback — open mail client with prefilled body
+      const body = encodeURIComponent(
+        `Nueva Cita - Pigmentarius\n\nCliente: ${nombre} ${apellido}\nContacto: ${contacto}\nServicio: ${servicio}\nFecha: ${fechaFormatted}\nHora: ${hora}\nMensaje: ${mensaje}`
+      );
+      window.location.href = `mailto:pigmentariusforms@gmail.com?subject=Nueva Cita - ${servicio}&body=${body}`;
     }
     setLoading(false);
   };
 
   const services = lang === "es"
-    ? ["Corte de Cabello","Coloración / Highlights","Microblading","Maquillaje Permanente","Botox Capilar","Diseño de Cejas","Manicura & Pedicura","Depilación Láser","Cambio de Imagen","Otro"]
-    : ["Haircut","Color / Highlights","Microblading","Permanent Makeup","Hair Botox","Brow Design","Manicure & Pedicure","Laser Hair Removal","Full Makeover","Other"];
+    ? ["Corte de Cabello","Coloración / Highlights","Keratina","Botox Capilar","Brazilian Blowout","Microblading","Sombreado de Cejas","Diseño de Cejas","Wax de Cejas","Maquillaje Permanente","Shellac / Gel","Pedicura","Facial Rejuvenecedor","Depilación Láser - Rostro","Depilación Láser - Axilas","Depilación Láser - Piernas","Depilación Láser - Bikini","Otro"]
+    : ["Haircut","Color / Highlights","Keratin","Hair Botox","Brazilian Blowout","Microblading","Brow Shading","Brow Design","Brow Wax","Permanent Makeup","Shellac / Gel","Pedicure","Rejuvenating Facial","Laser - Face","Laser - Underarms","Laser - Legs","Laser - Bikini","Other"];
 
   const times = ["9:00 AM","10:00 AM","11:00 AM","12:00 PM","1:00 PM","2:00 PM","3:00 PM","4:00 PM"];
 
   const hours = lang === "es"
-    ? [{ day: "Mar – Vie", hours: "9:00 AM – 5:00 PM" },{ day: "Sábado", hours: "9:00 AM – 5:00 PM" },{ day: "Dom & Lun", hours: t("hours_closed"), closed: true }]
-    : [{ day: "Tue – Fri", hours: "9:00 AM – 5:00 PM" },{ day: "Saturday", hours: "9:00 AM – 5:00 PM" },{ day: "Sun & Mon", hours: t("hours_closed"), closed: true }];
+    ? [{ day: "Mar – Vie", hours: "9:00 AM – 5:00 PM" },{ day: "Sábado", hours: "9:00 AM – 5:00 PM" },{ day: "Dom & Lun", hours: "Cerrado", closed: true }]
+    : [{ day: "Tue – Fri", hours: "9:00 AM – 5:00 PM" },{ day: "Saturday", hours: "9:00 AM – 5:00 PM" },{ day: "Sun & Mon", hours: "Closed", closed: true }];
 
   return (
     <section id="contacto" className="py-16 md:py-24 bg-cream-dark">
@@ -136,20 +137,9 @@ const ContactSection = () => {
                 <Facebook size={15} />Facebook
               </a>
             </div>
-
-            {/* WhatsApp quick book */}
-            <a
-              href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lang === "es" ? "¡Hola! Me gustaría reservar una cita en Pigmentarius 💛" : "Hi! I'd like to book an appointment at Pigmentarius 💛")}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#25D366] text-white px-5 h-11 rounded-full text-sm font-semibold hover:bg-[#1ebe5d] transition-colors mt-1 w-fit"
-            >
-              <MessageCircle size={16} />
-              {lang === "es" ? "Reservar por WhatsApp" : "Book via WhatsApp"}
-            </a>
           </div>
 
-          {/* Form */}
+          {/* Booking Form */}
           <div className="bg-background rounded-2xl p-6 shadow-elevated">
             <h3 className="font-serif text-xl font-semibold text-foreground mb-5">{t("contact_form_title")}</h3>
             {submitted ? (
@@ -177,7 +167,7 @@ const ContactSection = () => {
                 <div>
                   <label className="block text-xs font-semibold tracking-wider uppercase text-muted-foreground mb-1.5">{t("contact_service")}</label>
                   <select name="servicio" required className="w-full px-3 py-2.5 rounded-xl border border-border bg-cream focus:outline-none focus:border-primary text-sm transition-colors">
-                    <option value="" disabled>{t("contact_service_placeholder")}</option>
+                    <option value="">{t("contact_service_placeholder")}</option>
                     {services.map(s => <option key={s}>{s}</option>)}
                   </select>
                 </div>
@@ -202,7 +192,7 @@ const ContactSection = () => {
                   {loading ? (lang === "es" ? "Enviando..." : "Sending...") : t("contact_submit")}
                 </button>
                 <p className="text-xs text-muted-foreground text-center pt-1">
-                  {lang === "es" ? "O llámanos directamente: " : "Or call us directly: "}
+                  {lang === "es" ? "O llámanos: " : "Or call us: "}
                   <a href="tel:7878261684" className="text-primary font-semibold">(787) 826-1684</a>
                 </p>
               </form>

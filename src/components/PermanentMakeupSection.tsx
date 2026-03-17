@@ -1,6 +1,6 @@
 import { useLanguage } from "@/contexts/LanguageContext";
 
-const REAL_2 = "https://picheapp.com/wp-content/uploads/2025/09/import-9611.jpg";
+const REAL_2 = "https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=800&q=80";
 
 const services = [
   { name: { es: "Microblading", en: "Microblading" }, price: "Desde $150" },

@@ -1,7 +1,7 @@
 import { Zap, Shield, Sparkles, Target } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-const REAL_1 = "https://picheapp.com/wp-content/uploads/2025/09/import-9610.jpg";
+const REAL_1 = "https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&q=80";
 
 const LaserSection = () => {
   const { lang } = useLanguage();
