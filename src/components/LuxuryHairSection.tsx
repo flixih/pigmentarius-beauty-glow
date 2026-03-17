@@ -1,67 +1,58 @@
-import copperHair from "@/assets/copper-hair.png";
-import redCurls from "@/assets/red-curls.png";
 import { Droplets, Sparkles, Sun, Shield, Scissors, Wind } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
-const REAL_HAIR = "https://picheapp.com/wp-content/uploads/2025/09/import-9610.jpg";
+const REAL_1 = "https://picheapp.com/wp-content/uploads/2025/09/import-9610.jpg";
+const REAL_2 = "https://picheapp.com/wp-content/uploads/2025/09/import-9611.jpg";
 
 const treatments = [
-  { icon: Droplets, title: "Tratamientos de Keratina", description: "Control total del frizz con resultados que duran meses. Perfecto para el clima tropical de Puerto Rico.", price: "Desde $120" },
-  { icon: Sparkles, title: "Botox Capilar", description: "Rejuvenecimiento capilar profundo con colágeno para un cabello sedoso, brillante y sin frizz.", price: "Desde $130" },
-  { icon: Sun, title: "Coloración & Highlights", description: "Color, mechas, balayage y corrección de color con técnicas avanzadas y productos premium.", price: "Desde $80" },
-  { icon: Scissors, title: "Cortes Especializados", description: "Especialistas en cabello rizado, liso, fino y grueso. Cortes de capas, pixie y cambios de imagen.", price: "Desde $35" },
-  { icon: Shield, title: "Cirugía Plástica Capilar", description: "Tratamiento intensivo de reparación y fortalecimiento para cabello muy dañado.", price: "Desde $150" },
-  { icon: Wind, title: "Blowouts Profesionales", description: "Blowouts voluminosos y perfectos. Salte del salón con el cabello de tus sueños.", price: "Desde $45" },
+  { icon: Droplets, title: { es: "Keratina", en: "Keratin Treatment" }, desc: { es: "Control total del frizz. Perfecto para el clima de Puerto Rico.", en: "Total frizz control. Perfect for Puerto Rico's tropical climate." }, price: "Desde $120" },
+  { icon: Sparkles, title: { es: "Botox Capilar", en: "Hair Botox" }, desc: { es: "Rejuvenecimiento profundo con colágeno para cabello sedoso.", en: "Deep rejuvenation with collagen for silky, frizz-free hair." }, price: "Desde $130" },
+  { icon: Sun, title: { es: "Coloración & Highlights", en: "Color & Highlights" }, desc: { es: "Color, mechas, balayage y corrección con productos premium.", en: "Color, highlights, balayage and correction with premium products." }, price: "Desde $80" },
+  { icon: Scissors, title: { es: "Cortes Especializados", en: "Specialist Cuts" }, desc: { es: "Expertos en cabello rizado, liso, fino y grueso.", en: "Experts in curly, straight, fine and thick hair." }, price: "Desde $35" },
+  { icon: Shield, title: { es: "Cirugía Capilar", en: "Hair Repair" }, desc: { es: "Tratamiento intensivo para cabello muy dañado.", en: "Intensive repair treatment for severely damaged hair." }, price: "Desde $150" },
+  { icon: Wind, title: { es: "Blowouts", en: "Blowouts" }, desc: { es: "Blowouts voluminosos y perfectos para cualquier ocasión.", en: "Voluminous, perfect blowouts for any occasion." }, price: "Desde $45" },
 ];
 
 const LuxuryHairSection = () => {
+  const { lang } = useLanguage();
   return (
-    <section id="tratamientos" className="py-24 bg-cream-dark">
+    <section id="tratamientos" className="py-16 md:py-24 bg-cream-dark">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <p className="text-primary text-sm font-semibold tracking-widest uppercase mb-4">Cabello de Lujo</p>
-          <h2 className="font-serif text-3xl md:text-5xl font-bold text-foreground mb-4">
-            Tratamientos Capilares <span className="italic text-primary">Premium</span>
+        <div className="text-center mb-10">
+          <p className="text-primary text-xs font-semibold tracking-widest uppercase mb-3">
+            {lang === "es" ? "Cabello de Lujo" : "Luxury Hair"}
+          </p>
+          <h2 className="font-serif text-2xl md:text-4xl font-bold text-foreground mb-3">
+            {lang === "es" ? "Tratamientos Capilares" : "Hair Treatments"}{" "}
+            <span className="italic text-primary">{lang === "es" ? "Premium" : "Premium"}</span>
           </h2>
-          <p className="text-muted-foreground max-w-lg mx-auto text-lg">
-            Transforma tu cabello con nuestros tratamientos profesionales. Control del frizz, brillo intenso y suavidad incomparable.
+          <p className="text-muted-foreground max-w-md mx-auto text-sm">
+            {lang === "es" ? "Control del frizz, brillo intenso y suavidad incomparable." : "Frizz control, intense shine and unmatched softness."}
           </p>
         </div>
 
-        {/* Real photo + accent photos */}
-        <div className="grid md:grid-cols-3 gap-4 mb-16">
-          <div className="md:col-span-2 rounded-2xl overflow-hidden shadow-elevated aspect-video">
-            <img src={REAL_HAIR} alt="Transformación capilar en Pigmentarius" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="lazy" />
-          </div>
-          <div className="grid grid-rows-2 gap-4">
-            <div className="rounded-2xl overflow-hidden shadow-soft">
-              <img src={copperHair} alt="Coloración cobre" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="lazy" />
-            </div>
-            <div className="rounded-2xl overflow-hidden shadow-soft">
-              <img src={redCurls} alt="Rizos con color" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="lazy" />
-            </div>
-          </div>
+        {/* Real photos — simple 2-col on mobile */}
+        <div className="grid grid-cols-2 gap-3 mb-10 rounded-2xl overflow-hidden">
+          <img src={REAL_1} alt="Hair transformation" className="w-full aspect-square object-cover hover:scale-105 transition-transform duration-700 rounded-xl" loading="lazy" />
+          <img src={REAL_2} alt="Hair color" className="w-full aspect-square object-cover hover:scale-105 transition-transform duration-700 rounded-xl" loading="lazy" />
         </div>
 
-        {/* Treatment cards with pricing */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-10">
           {treatments.map((t) => (
-            <div key={t.title} className="bg-background rounded-2xl p-7 shadow-soft hover:shadow-elevated transition-all duration-500 hover:-translate-y-1 group">
-              <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center mb-5 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
-                <t.icon size={22} />
+            <div key={t.title.es} className="bg-background rounded-xl p-5 shadow-soft hover:shadow-elevated transition-all duration-500 group">
+              <div className="w-10 h-10 rounded-lg bg-accent flex items-center justify-center mb-3 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                <t.icon size={18} />
               </div>
-              <h3 className="font-serif text-lg font-semibold text-foreground mb-2">{t.title}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed mb-4">{t.description}</p>
-              <span className="text-primary font-semibold text-sm">{t.price}</span>
+              <h3 className="font-serif text-sm md:text-base font-semibold text-foreground mb-1">{t.title[lang]}</h3>
+              <p className="text-muted-foreground text-xs leading-relaxed mb-2 hidden md:block">{t.desc[lang]}</p>
+              <span className="text-primary font-semibold text-xs">{t.price}</span>
             </div>
           ))}
         </div>
 
         <div className="text-center">
-          <a
-            href="#contacto"
-            className="inline-flex items-center justify-center bg-primary text-primary-foreground px-8 py-4 rounded-full text-sm font-semibold tracking-wide hover:bg-gold-dark transition-all duration-300 shadow-glow"
-          >
-            Reservar Tratamiento Capilar
+          <a href="#contacto" className="inline-flex items-center justify-center bg-primary text-primary-foreground px-7 py-3.5 rounded-full text-sm font-semibold tracking-wide hover:bg-gold-dark transition-all duration-300 shadow-glow">
+            {lang === "es" ? "Reservar Tratamiento" : "Book Treatment"}
           </a>
         </div>
       </div>

@@ -1,71 +1,51 @@
-import eyebrowDesign from "@/assets/eyebrow-design.jpg";
+import { useLanguage } from "@/contexts/LanguageContext";
 
-const REAL_PMU = "https://picheapp.com/wp-content/uploads/2025/09/import-9611.jpg";
-
-const benefits = [
-  "Despierta todos los días con cejas perfectamente definidas",
-  "Pigmentos personalizados para resultados 100% naturales",
-  "Técnica segura y certificada con colores estables",
-  "Ideal para todo tipo de piel y tono de cabello",
-  "Duración de 1–3 años con mantenimiento opcional",
-];
+const REAL_2 = "https://picheapp.com/wp-content/uploads/2025/09/import-9611.jpg";
 
 const services = [
-  { name: "Microblading", price: "Desde $150" },
-  { name: "Ombré / Powder Brows", price: "Desde $180" },
-  { name: "Labios Permanentes", price: "Desde $200" },
-  { name: "Delineado Permanente", price: "Consultar" },
+  { name: { es: "Microblading", en: "Microblading" }, price: "Desde $150" },
+  { name: { es: "Ombré / Powder Brows", en: "Ombré / Powder Brows" }, price: "Desde $180" },
+  { name: { es: "Labios Permanentes", en: "Permanent Lips" }, price: "Desde $200" },
+  { name: { es: "Delineado Permanente", en: "Permanent Eyeliner" }, price: "Consultar / Inquire" },
 ];
 
 const PermanentMakeupSection = () => {
+  const { lang } = useLanguage();
   return (
-    <section id="maquillaje-permanente" className="py-24 bg-background">
+    <section id="maquillaje-permanente" className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <div className="order-2 lg:order-1 relative">
             <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-elevated">
-              <img
-                src={REAL_PMU}
-                alt="Maquillaje permanente de cejas en Pigmentarius"
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
+              <img src={REAL_2} alt="Maquillaje permanente Pigmentarius" className="w-full h-full object-cover" loading="lazy" />
             </div>
           </div>
 
           <div className="order-1 lg:order-2">
-            <p className="text-primary text-sm font-semibold tracking-widest uppercase mb-4">Belleza Duradera</p>
-            <h2 className="font-serif text-3xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
-              Maquillaje <span className="italic text-primary">Permanente</span>
+            <p className="text-primary text-xs font-semibold tracking-widest uppercase mb-3">
+              {lang === "es" ? "Belleza Duradera" : "Lasting Beauty"}
+            </p>
+            <h2 className="font-serif text-2xl md:text-4xl font-bold text-foreground mb-5 leading-tight">
+              {lang === "es" ? "Maquillaje" : "Permanent"}{" "}
+              <span className="italic text-primary">{lang === "es" ? "Permanente" : "Makeup"}</span>
             </h2>
-            <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-              Especialistas en maquillaje permanente en Puerto Rico. Despierta cada mañana con una apariencia impecable sin esfuerzo — nuestros pigmentos de alta calidad se personalizan para tu tono de piel y estilo único.
+            <p className="text-muted-foreground text-sm md:text-base leading-relaxed mb-6">
+              {lang === "es"
+                ? "Especialistas en maquillaje permanente. Despierta cada mañana con una apariencia impecable — nuestros pigmentos se personalizan para tu tono de piel único."
+                : "Permanent makeup specialists. Wake up every morning looking flawless — our pigments are customized for your unique skin tone."}
             </p>
 
-            <ul className="space-y-3 mb-8">
-              {benefits.map((b) => (
-                <li key={b} className="flex items-start gap-3">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5 flex-shrink-0" />
-                  <span className="text-foreground text-sm leading-relaxed">{b}</span>
-                </li>
-              ))}
-            </ul>
-
-            {/* Price list */}
-            <div className="bg-cream-dark rounded-xl p-5 mb-8 space-y-3">
+            <div className="bg-cream-dark rounded-xl p-4 mb-6 space-y-2.5">
               {services.map((s) => (
-                <div key={s.name} className="flex justify-between items-center py-1 border-b border-border last:border-0">
-                  <span className="font-medium text-foreground text-sm">{s.name}</span>
+                <div key={s.name.es} className="flex justify-between items-center py-1 border-b border-border last:border-0">
+                  <span className="font-medium text-foreground text-sm">{s.name[lang]}</span>
                   <span className="text-primary font-semibold text-sm">{s.price}</span>
                 </div>
               ))}
             </div>
 
-            <a
-              href="#contacto"
-              className="inline-flex items-center justify-center bg-primary text-primary-foreground px-8 py-4 rounded-full text-sm font-semibold tracking-wide hover:bg-gold-dark transition-all duration-300 shadow-glow"
-            >
-              Agenda tu Consulta
+            <a href="#contacto" className="inline-flex items-center justify-center bg-primary text-primary-foreground px-7 py-3.5 rounded-full text-sm font-semibold tracking-wide hover:bg-gold-dark transition-all duration-300 shadow-glow">
+              {lang === "es" ? "Agenda tu Consulta" : "Book Consultation"}
             </a>
           </div>
         </div>

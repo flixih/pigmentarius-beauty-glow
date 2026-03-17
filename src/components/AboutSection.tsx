@@ -1,51 +1,54 @@
-import hairStyling from "@/assets/hair-styling.jpg";
+import { useLanguage } from "@/contexts/LanguageContext";
+
+const REAL_1 = "https://picheapp.com/wp-content/uploads/2025/09/import-9610.jpg";
+const REAL_3 = "https://picheapp.com/wp-content/uploads/2025/09/import-9612.jpg";
 
 const AboutSection = () => {
+  const { t } = useLanguage();
   return (
-    <section id="nosotros" className="py-24 bg-background">
+    <section id="nosotros" className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div className="relative">
-            <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-elevated">
-              <img
-                src={hairStyling}
-                alt="Estilismo profesional en el Salón Pigmentarius"
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
-            </div>
-            <div className="absolute -bottom-6 -right-6 bg-primary text-primary-foreground rounded-2xl p-6 shadow-elevated hidden md:block">
-              <p className="font-serif text-3xl font-bold">20+</p>
-              <p className="text-sm tracking-wide">Años de Excelencia</p>
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          {/* Images — stacked on mobile, overlapping on desktop */}
+          <div className="relative h-64 md:h-80 lg:h-[500px]">
+            <img src={REAL_1} alt="Pigmentarius Salon" className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-elevated" />
+            <img src={REAL_3} alt="Pigmentarius brows" className="absolute -bottom-4 -right-4 w-2/5 h-2/5 object-cover rounded-xl shadow-elevated border-4 border-background hidden md:block" />
+            <div className="absolute -top-3 -right-3 bg-primary text-primary-foreground rounded-xl p-3 shadow-elevated hidden md:block">
+              <p className="font-serif text-2xl font-bold">20+</p>
+              <p className="text-xs tracking-wide">{t("about_stat3")}</p>
             </div>
           </div>
 
           <div>
-            <p className="text-primary text-sm font-semibold tracking-widest uppercase mb-4">Nuestra Historia</p>
-            <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-8 leading-tight">
-              Donde la Belleza se Encuentra con el{" "}
-              <span className="italic text-primary">Arte</span>
+            <p className="text-primary text-xs font-semibold tracking-widest uppercase mb-3">{t("about_label")}</p>
+            <h2 className="font-serif text-2xl md:text-4xl font-bold text-foreground mb-6 leading-tight">
+              {t("about_title1")}{" "}<span className="italic text-primary">{t("about_title2")}</span>
             </h2>
-            <div className="space-y-5 text-muted-foreground leading-relaxed">
-              <p>
-                Pigmentarius Hair & Brow Salon es el destino de belleza de confianza en el oeste de Puerto Rico, reconocido por su excepcional arte capilar, diseño perfecto de cejas y cuidado personalizado.
-              </p>
-              <p>
-                Nuestra fundadora y directora artística, <strong className="text-foreground">Windy Arroyo</strong>, es especialista en cabello rizado, coloración avanzada y microblading. Su pasión por la belleza y su dedicación al cliente crean una experiencia que nuestras clientas describen como "la Clínica Mayo del cabello."
-              </p>
-              <p>
-                Desde el primer contacto —en persona o por teléfono— te llamamos Princesa y te tratamos con el cariño y atención que mereces. Nuestro equipo trabaja como familia con profesionalismo sin igual.
-              </p>
+            <div className="space-y-4 text-muted-foreground leading-relaxed text-sm md:text-base">
+              <p>{t("about_p1")}</p>
+              <p>{t("about_p2")}</p>
+              <p>{t("about_p3")}</p>
             </div>
-            <div className="grid grid-cols-3 gap-6 mt-10 pt-10 border-t border-border">
+
+            {/* Owner */}
+            <div className="flex items-center gap-3 mt-6 pt-5 border-t border-border">
+              <div className="w-11 h-11 rounded-full bg-accent flex items-center justify-center font-serif text-xl font-bold text-primary flex-shrink-0">W</div>
+              <div>
+                <p className="font-semibold text-foreground text-sm">Windy Arroyo</p>
+                <p className="text-xs text-primary tracking-wide">{t("about_founder")}</p>
+              </div>
+            </div>
+
+            {/* Stats */}
+            <div className="grid grid-cols-3 gap-4 mt-8 pt-6 border-t border-border text-center">
               {[
-                { value: "215+", label: "Clientes Felices" },
-                { value: "4.8", label: "Estrellas" },
-                { value: "20+", label: "Años de Experiencia" },
-              ].map((stat) => (
-                <div key={stat.label} className="text-center">
-                  <p className="font-serif text-2xl md:text-3xl font-bold text-primary">{stat.value}</p>
-                  <p className="text-xs text-muted-foreground tracking-wide mt-1">{stat.label}</p>
+                { value: "211+", label: t("about_stat1") },
+                { value: "4.8", label: t("about_stat2") },
+                { value: "20+", label: t("about_stat3") },
+              ].map((s) => (
+                <div key={s.label}>
+                  <p className="font-serif text-2xl font-bold text-primary">{s.value}</p>
+                  <p className="text-xs text-muted-foreground mt-1">{s.label}</p>
                 </div>
               ))}
             </div>

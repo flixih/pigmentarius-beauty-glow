@@ -1,65 +1,66 @@
-import eyebrowCloseup from "@/assets/eyebrow-closeup.png";
+import { useLanguage } from "@/contexts/LanguageContext";
 
-const REAL_BROW = "https://picheapp.com/wp-content/uploads/2025/09/import-9612.jpg";
-
-const features = [
-  "Técnica de trazos ultra finos que imita el vello natural",
-  "Diseño personalizado según la forma de tu rostro",
-  "Resultados naturales y duraderos (12–18 meses)",
-  "Artistas certificadas con pigmentos de alta calidad",
-  "Ideal para cejas finas, escasas o poco definidas",
-  "Sesión de retoque incluida a las 4–6 semanas",
-];
+const REAL_3 = "https://picheapp.com/wp-content/uploads/2025/09/import-9612.jpg";
 
 const MicrobladingSection = () => {
+  const { lang } = useLanguage();
+  const features = lang === "es" ? [
+    "Trazos ultra finos que imitan el vello natural",
+    "Diseño personalizado según tu forma de rostro",
+    "Resultados naturales y duraderos (12–18 meses)",
+    "Artistas certificadas con pigmentos premium",
+    "Retoque incluido a las 4–6 semanas",
+  ] : [
+    "Ultra-fine strokes that mimic natural hair",
+    "Custom design based on your face shape",
+    "Natural, long-lasting results (12–18 months)",
+    "Certified artists with premium pigments",
+    "Touch-up included at 4–6 weeks",
+  ];
+
   return (
-    <section id="microblading" className="py-24 bg-cream-dark">
+    <section id="microblading" className="py-16 md:py-24 bg-cream-dark">
       <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <div>
-            <p className="text-primary text-sm font-semibold tracking-widest uppercase mb-4">Arte en Cejas</p>
-            <h2 className="font-serif text-3xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
-              Microblading <span className="italic text-primary">Profesional</span>
+            <p className="text-primary text-xs font-semibold tracking-widest uppercase mb-3">
+              {lang === "es" ? "Arte en Cejas" : "Brow Artistry"}
+            </p>
+            <h2 className="font-serif text-2xl md:text-4xl font-bold text-foreground mb-5 leading-tight">
+              Microblading <span className="italic text-primary">{lang === "es" ? "Profesional" : "Professional"}</span>
             </h2>
-            <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-              Cejas perfectas diseñadas a medida para realzar tu belleza natural. Nuestras artistas certificadas crean trazos ultra finos que imitan el vello real — resultados que hablan por sí solos.
+            <p className="text-muted-foreground text-sm md:text-base leading-relaxed mb-5">
+              {lang === "es"
+                ? "Cejas perfectas diseñadas a medida. Nuestras artistas certificadas crean trazos ultra finos que imitan el vello real."
+                : "Perfect brows designed just for you. Our certified artists create ultra-fine strokes that mimic real hair."}
             </p>
 
-            {/* Pricing badge */}
-            <div className="inline-flex items-center gap-3 bg-background rounded-xl px-5 py-3 shadow-soft mb-8 border border-border">
-              <span className="text-muted-foreground text-sm">Desde</span>
+            <div className="inline-flex items-center gap-3 bg-background rounded-xl px-4 py-2.5 shadow-soft mb-6 border border-border">
+              <span className="text-muted-foreground text-xs">{lang === "es" ? "Desde" : "From"}</span>
               <span className="font-serif text-2xl font-bold text-primary">$150</span>
-              <span className="text-muted-foreground text-xs">· Retoque incluido</span>
+              <span className="text-muted-foreground text-xs">· {lang === "es" ? "Retoque incluido" : "Touch-up included"}</span>
             </div>
 
-            <ul className="space-y-3 mb-10">
+            <ul className="space-y-2.5 mb-8">
               {features.map((f) => (
-                <li key={f} className="flex items-start gap-3">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5 flex-shrink-0" />
-                  <span className="text-foreground text-sm leading-relaxed">{f}</span>
+                <li key={f} className="flex items-start gap-2.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                  <span className="text-foreground text-sm">{f}</span>
                 </li>
               ))}
             </ul>
-            <a
-              href="#contacto"
-              className="inline-flex items-center justify-center bg-primary text-primary-foreground px-8 py-4 rounded-full text-sm font-semibold tracking-wide hover:bg-gold-dark transition-all duration-300 shadow-glow"
-            >
-              Reservar Cita de Microblading
+            <a href="#contacto" className="inline-flex items-center justify-center bg-primary text-primary-foreground px-7 py-3.5 rounded-full text-sm font-semibold tracking-wide hover:bg-gold-dark transition-all duration-300 shadow-glow">
+              {lang === "es" ? "Reservar Microblading" : "Book Microblading"}
             </a>
           </div>
 
-          <div className="relative">
+          <div className="relative order-first lg:order-last">
             <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-elevated">
-              <img
-                src={REAL_BROW}
-                alt="Resultado de microblading profesional en Pigmentarius"
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
+              <img src={REAL_3} alt="Microblading en Pigmentarius" className="w-full h-full object-cover" loading="lazy" />
             </div>
-            <div className="absolute -bottom-5 -left-5 bg-primary text-primary-foreground rounded-2xl px-5 py-4 shadow-elevated hidden md:block">
+            <div className="absolute -bottom-4 -left-4 bg-primary text-primary-foreground rounded-xl px-4 py-3 shadow-elevated hidden md:block">
               <p className="font-serif text-2xl font-bold">211+</p>
-              <p className="text-xs tracking-wide opacity-80">Clientes Felices</p>
+              <p className="text-xs tracking-wide opacity-80">{lang === "es" ? "Clientas Felices" : "Happy Clients"}</p>
             </div>
           </div>
         </div>
