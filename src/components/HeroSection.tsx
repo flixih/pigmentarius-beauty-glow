@@ -113,25 +113,23 @@ const HeroSection = () => {
           <span className="text-white/30 text-[10px] md:text-xs tracking-[0.3em] md:tracking-[0.4em] uppercase">Añasco, Puerto Rico</span>
         </div>
 
+        {/* Fade mask at top so overflow text fades out */}
+        <div className="absolute top-0 left-0 right-0 h-32 pointer-events-none z-20 md:hidden"
+          style={{ background: "linear-gradient(to bottom, #050505 0%, transparent 100%)" }} />
+
         <div ref={headlineRef} style={{ transform: `translateY(${scrollY * -0.18}px)`, transition: "transform 0.05s linear" }}>
-          <div className="overflow-visible">
-            <h1 className="font-serif font-bold leading-none text-white"
-              style={{ fontSize: "clamp(3.5rem, 18vw, 9rem)", letterSpacing: "-0.04em", lineHeight: 0.88 }}>
-              <ScrambleText text={lang === "es" ? "Cejas" : "Beautiful"} delay={300} trigger={lang === "es"} />
-            </h1>
-          </div>
-          <div className="overflow-visible pb-2">
-            <h1 className="font-serif font-bold leading-none"
-              style={{ fontSize: "clamp(3.5rem, 18vw, 9rem)", letterSpacing: "-0.04em", lineHeight: 0.88, WebkitTextStroke: "1px hsl(330 85% 65% / 0.5)", color: "transparent" }}>
-              <ScrambleText text={lang === "es" ? "Bellas y" : "& Brows"} delay={500} trigger={lang === "es"} />
-            </h1>
-          </div>
-          <div className="overflow-visible">
-            <h1 className="font-serif font-bold leading-none text-white"
-              style={{ fontSize: "clamp(3.5rem, 18vw, 9rem)", letterSpacing: "-0.04em", lineHeight: 0.88 }}>
-              <ScrambleText text={lang === "es" ? "Perfectas" : "Perfected"} delay={700} trigger={lang === "es"} />
-            </h1>
-          </div>
+          <h1 className="font-serif font-bold leading-none text-white block"
+            style={{ fontSize: "clamp(3.8rem, 20vw, 9rem)", letterSpacing: "-0.04em", lineHeight: 0.85 }}>
+            <ScrambleText text={lang === "es" ? "Cejas" : "Beautiful"} delay={300} trigger={lang === "es"} />
+          </h1>
+          <h1 className="font-serif font-bold leading-none block"
+            style={{ fontSize: "clamp(3.8rem, 20vw, 9rem)", letterSpacing: "-0.04em", lineHeight: 0.85, WebkitTextStroke: "1px hsl(330 85% 65% / 0.5)", color: "transparent" }}>
+            <ScrambleText text={lang === "es" ? "Bellas y" : "& Brows"} delay={500} trigger={lang === "es"} />
+          </h1>
+          <h1 className="font-serif font-bold leading-none text-white block"
+            style={{ fontSize: "clamp(3.8rem, 20vw, 9rem)", letterSpacing: "-0.04em", lineHeight: 0.85 }}>
+            <ScrambleText text={lang === "es" ? "Perfectas" : "Perfected"} delay={700} trigger={lang === "es"} />
+          </h1>
         </div>
 
         {/* Bottom row */}
@@ -163,10 +161,6 @@ const HeroSection = () => {
           </div>
         </div>
 
-        {/* Mobile carousel */}
-        <div className="md:hidden mt-6">
-          <MobileCarousel ownerPhoto={ownerPhoto} />
-        </div>
       </div>
 
       {/* Scroll indicator */}
