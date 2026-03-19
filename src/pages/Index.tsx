@@ -50,10 +50,10 @@ const Index = () => {
         <Navbar />
         <main className="relative z-10">
           <HeroSection />
-          <div data-reveal><ReviewsSection /></div>
-          <FounderSection />
           <div data-reveal><ServicesSection /></div>
           <DragGallery />
+          <div data-reveal><ReviewsSection /></div>
+          <FounderSection />
           <div data-reveal><ShopSection /></div>
           <div data-reveal><ContactSection /></div>
         </main>
