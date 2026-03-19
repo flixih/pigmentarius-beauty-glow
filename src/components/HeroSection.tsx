@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import MagneticButton from "./MagneticButton";
+import ownerPhoto from "@/assets/owner-wildaliz.png";
 import ScrambleText from "./ScrambleText";
 
 const PHOTOS = [
@@ -13,21 +13,29 @@ const PHOTOS = [
 
 export const CursorGlow = () => null;
 
-const MobileCarousel = () => {
+const MobileCarousel = ({ ownerPhoto }: { ownerPhoto: string }) => {
+  const allPhotos = [ownerPhoto, ...PHOTOS.slice(0, 3)];
   const [active, setActive] = useState(0);
   useEffect(() => {
-    const t = setInterval(() => setActive(p => (p + 1) % PHOTOS.length), 2800);
+    const t = setInterval(() => setActive(p => (p + 1) % allPhotos.length), 2800);
     return () => clearInterval(t);
   }, []);
   return (
     <div className="relative w-full rounded overflow-hidden mt-10" style={{ aspectRatio: "16/9" }}>
-      {PHOTOS.map((src, i) => (
+      {allPhotos.map((src, i) => (
         <img key={i} src={src} alt="" draggable={false}
-          className="absolute inset-0 w-full h-full object-cover transition-all duration-700"
+          className="absolute inset-0 w-full h-full object-cover object-top transition-all duration-700"
           style={{ opacity: i === active ? 1 : 0, transform: i === active ? "scale(1)" : "scale(1.04)" }} />
       ))}
+      {/* Name overlay on first slide */}
+      {active === 0 && (
+        <div className="absolute bottom-0 left-0 right-0 p-4" style={{ background: "linear-gradient(to top, rgba(5,5,5,0.8) 0%, transparent 60%)" }}>
+          <p className="text-white font-semibold text-sm">Wildaliz Arroyo</p>
+          <p className="text-white/50 text-xs">Fundadora & Dueña · Pigmentarius</p>
+        </div>
+      )}
       <div className="absolute bottom-3 right-4 flex gap-1.5">
-        {PHOTOS.map((_, i) => (
+        {allPhotos.map((_, i) => (
           <div key={i} className="h-1 rounded-full transition-all duration-300 cursor-pointer"
             style={{ width: i === active ? "20px" : "6px", background: i === active ? "white" : "rgba(255,255,255,0.3)" }}
             onClick={() => setActive(i)} />
@@ -159,16 +167,34 @@ const HeroSection = () => {
 
         {/* Mobile carousel */}
         <div className="md:hidden">
-          <MobileCarousel />
+          <MobileCarousel ownerPhoto={ownerPhoto} />
         </div>
 
-        {/* Desktop floating images */}
-        <div className="hidden md:grid grid-cols-2 gap-4 mt-12 max-w-lg ml-auto">
-          {PHOTOS.slice(0, 2).map((src, i) => (
-            <div key={i} className="overflow-hidden rounded animate-float" style={{ animationDelay: `${i * 1.2}s`, aspectRatio: "3/4" }}>
-              <img src={src} alt="" className="w-full h-full object-cover opacity-75 hover:opacity-100 transition-opacity duration-500" draggable={false} />
+        {/* Desktop: owner card + one hair photo */}
+        <div className="hidden md:flex gap-5 mt-12 max-w-lg ml-auto items-end">
+          {/* Owner photo card */}
+          <div className="flex-1 animate-float" style={{ animationDelay: "0s" }}>
+            <div className="relative overflow-hidden rounded-2xl border border-white/10" style={{ aspectRatio: "3/4" }}>
+              <img src={ownerPhoto} alt="Wildaliz Arroyo" className="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity duration-500" draggable={false} />
+              <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(5,5,5,0.85) 0%, transparent 55%)" }} />
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <p className="text-white font-semibold text-sm leading-tight">Wildaliz Arroyo</p>
+                <p className="text-white/50 text-xs mt-0.5 tracking-wide">
+                  {lang === "es" ? "Fundadora & Dueña" : "Founder & Owner"}
+                </p>
+                <div className="flex items-center gap-1.5 mt-2">
+                  <div className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "hsl(330 85% 60%)" }} />
+                  <span className="text-white/30 text-[10px] tracking-widest uppercase">Pigmentarius</span>
+                </div>
+              </div>
             </div>
-          ))}
+          </div>
+          {/* Hair photo */}
+          <div className="flex-1 animate-float" style={{ animationDelay: "1.2s" }}>
+            <div className="overflow-hidden rounded-2xl border border-white/10" style={{ aspectRatio: "3/4" }}>
+              <img src={PHOTOS[0]} alt="" className="w-full h-full object-cover opacity-75 hover:opacity-100 transition-opacity duration-500" draggable={false} />
+            </div>
+          </div>
         </div>
       </div>
 
