@@ -1,5 +1,6 @@
 import { Star, ArrowRight, Phone } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useRef, useEffect } from "react";
 
 const REAL_1 = "https://images.pexels.com/photos/1319460/pexels-photo-1319460.jpeg?auto=compress&cs=tinysrgb&w=900";
 const REAL_2 = "https://images.pexels.com/photos/5069397/pexels-photo-5069397.jpeg?auto=compress&cs=tinysrgb&w=900";
@@ -85,3 +86,20 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
+// Cursor glow component
+export const CursorGlow = () => {
+  const dotRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const move = (e: MouseEvent) => {
+      if (!dotRef.current) return;
+      dotRef.current.style.transform = `translate(${e.clientX - 200}px, ${e.clientY - 200}px)`;
+    };
+    window.addEventListener("mousemove", move);
+    return () => window.removeEventListener("mousemove", move);
+  }, []);
+  return (
+    <div ref={dotRef} className="fixed top-0 left-0 w-[400px] h-[400px] rounded-full pointer-events-none z-0 transition-transform duration-300 ease-out"
+      style={{ background: "radial-gradient(circle, hsl(330 85% 60% / 0.06) 0%, transparent 70%)" }} />
+  );
+};
