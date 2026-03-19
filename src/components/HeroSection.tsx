@@ -151,13 +151,13 @@ const HeroSection = () => {
             {t("hero_desc")}
           </p>
           <div className="flex items-center gap-6">
-            <MagneticButton href="#contacto"
+            <a href="#contacto"
               className="inline-flex items-center gap-3 text-white text-sm font-semibold tracking-wide group link-underline">
               {t("hero_cta")}
               <span className="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center group-hover:border-white/70 transition-colors">
                 <ArrowRight size={14} />
               </span>
-            </MagneticButton>
+            </a>
             <div className="text-white/20 text-xs tracking-[0.3em] uppercase hidden md:flex flex-col gap-1">
               <span>4.8★ Google</span>
               <span>211+ Reviews</span>
