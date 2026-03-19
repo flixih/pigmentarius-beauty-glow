@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import w01 from "@/assets/windy-01.png";
 import w02 from "@/assets/windy-02.png";
@@ -11,6 +11,11 @@ const photos = [w01, w02, w03, w04, w05];
 const FounderSection = () => {
   const { lang } = useLanguage();
   const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const t = setInterval(() => setActive(p => (p + 1) % photos.length), 3000);
+    return () => clearInterval(t);
+  }, []);
 
   const content = {
     es: {
