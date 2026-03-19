@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Globe, Sun, Moon } from "lucide-react";
-import logo from "@/assets/logo-real.png";
+import logo from "@/assets/logo-real.webp";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useTheme } from "@/contexts/ThemeContext";
 

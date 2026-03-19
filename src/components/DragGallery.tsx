@@ -3,15 +3,15 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { palette } from "@/lib/theme";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-import g01 from "@/assets/gallery-01.png";
-import g02 from "@/assets/gallery-02.png";
-import g03 from "@/assets/gallery-03.png";
-import g04 from "@/assets/gallery-04.png";
-import g05 from "@/assets/gallery-05.png";
-import g06 from "@/assets/gallery-06.png";
-import g07 from "@/assets/gallery-07.png";
-import g08 from "@/assets/gallery-08.png";
-import g09 from "@/assets/gallery-09.png";
+import g01 from "@/assets/gallery-01.webp";
+import g02 from "@/assets/gallery-02.webp";
+import g03 from "@/assets/gallery-03.webp";
+import g04 from "@/assets/gallery-04.webp";
+import g05 from "@/assets/gallery-05.webp";
+import g06 from "@/assets/gallery-06.webp";
+import g07 from "@/assets/gallery-07.webp";
+import g08 from "@/assets/gallery-08.webp";
+import g09 from "@/assets/gallery-09.webp";
 
 const photos = [
   { src: g01, label: "01" },

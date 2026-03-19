@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useTheme } from "@/contexts/ThemeContext";
 import { palette } from "@/lib/theme";
-import ownerPhoto from "@/assets/owner-wildaliz-cropped.png";
+import ownerPhoto from "@/assets/owner-wildaliz-cropped.webp";
 import ScrambleText from "./ScrambleText";
 
 const PHOTOS = [

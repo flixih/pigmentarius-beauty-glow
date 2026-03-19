@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { palette } from "@/lib/theme";
 import { useLanguage } from "@/contexts/LanguageContext";
-import w01 from "@/assets/windy-01.png";
-import w02 from "@/assets/windy-02.png";
-import w03 from "@/assets/windy-03.png";
-import w04 from "@/assets/windy-04.png";
-import w05 from "@/assets/windy-05.png";
+import w01 from "@/assets/windy-01.webp";
+import w02 from "@/assets/windy-02.webp";
+import w03 from "@/assets/windy-03.webp";
+import w04 from "@/assets/windy-04.webp";
+import w05 from "@/assets/windy-05.webp";
 
 const photos = [w01, w02, w03, w04, w05];
 
