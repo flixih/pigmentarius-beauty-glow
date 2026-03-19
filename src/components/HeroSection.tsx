@@ -113,23 +113,22 @@ const HeroSection = () => {
           <span className="text-white/30 text-[10px] md:text-xs tracking-[0.3em] md:tracking-[0.4em] uppercase">Añasco, Puerto Rico</span>
         </div>
 
-        {/* Headline */}
         <div ref={headlineRef} style={{ transform: `translateY(${scrollY * -0.18}px)`, transition: "transform 0.05s linear" }}>
-          <div className="overflow-visible mb-0.5 md:mb-1">
+          <div className="overflow-visible">
             <h1 className="font-serif font-bold leading-none text-white"
-              style={{ fontSize: "clamp(3.2rem, 16vw, 8rem)", letterSpacing: "-0.03em", lineHeight: 0.9 }}>
+              style={{ fontSize: "clamp(3.5rem, 18vw, 9rem)", letterSpacing: "-0.04em", lineHeight: 0.88 }}>
               <ScrambleText text={lang === "es" ? "Cejas" : "Beautiful"} delay={300} trigger={lang === "es"} />
             </h1>
           </div>
-          <div className="overflow-visible mb-0.5 md:mb-1 pb-2 md:pb-3">
+          <div className="overflow-visible pb-2">
             <h1 className="font-serif font-bold leading-none"
-              style={{ fontSize: "clamp(3.2rem, 16vw, 8rem)", letterSpacing: "-0.03em", lineHeight: 0.9, WebkitTextStroke: "1.5px rgba(255,255,255,0.55)", color: "transparent" }}>
+              style={{ fontSize: "clamp(3.5rem, 18vw, 9rem)", letterSpacing: "-0.04em", lineHeight: 0.88, WebkitTextStroke: "1px hsl(330 85% 65% / 0.5)", color: "transparent" }}>
               <ScrambleText text={lang === "es" ? "Bellas y" : "& Brows"} delay={500} trigger={lang === "es"} />
             </h1>
           </div>
           <div className="overflow-visible">
             <h1 className="font-serif font-bold leading-none text-white"
-              style={{ fontSize: "clamp(3.2rem, 16vw, 8rem)", letterSpacing: "-0.03em", lineHeight: 0.9 }}>
+              style={{ fontSize: "clamp(3.5rem, 18vw, 9rem)", letterSpacing: "-0.04em", lineHeight: 0.88 }}>
               <ScrambleText text={lang === "es" ? "Perfectas" : "Perfected"} delay={700} trigger={lang === "es"} />
             </h1>
           </div>
