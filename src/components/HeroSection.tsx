@@ -91,17 +91,14 @@ const HeroSection = () => {
   const headline = lang === "es" ? "Cabello y Cejas Perfectas" : "Perfect Hair & Brows";
 
   return (
-    <section id="inicio" className="relative min-h-screen flex flex-col justify-center px-6 md:px-16 pt-24 pb-16 overflow-hidden" style={{ background: "#050505" }}>
+    <section id="inicio" className="relative min-h-screen flex flex-col justify-center px-6 md:px-16 pt-20 md:pt-24 pb-10 md:pb-16 overflow-hidden" style={{ background: "#050505" }}>
 
       {/* Very faint pink mouse glow — desktop only */}
       <div className="fixed pointer-events-none z-0 hidden md:block"
         style={{
-          width: "500px",
-          height: "500px",
-          borderRadius: "50%",
+          width: "500px", height: "500px", borderRadius: "50%",
           background: "radial-gradient(circle, hsl(330 85% 60% / 0.07) 0%, transparent 65%)",
           transform: `translate(${glowPos.x - 250}px, ${glowPos.y - 250}px)`,
-          transition: "none",
         }} />
 
       {/* Grain */}
@@ -111,42 +108,43 @@ const HeroSection = () => {
       <div className={`relative z-10 max-w-5xl transition-opacity duration-700 ${visible ? "opacity-100" : "opacity-0"}`}>
 
         {/* Location tag */}
-        <div className="flex items-center gap-4 mb-10 md:mb-16">
-          <div className="w-6 h-px bg-white/30" />
-          <span className="text-white/30 text-xs tracking-[0.4em] uppercase">Añasco, Puerto Rico</span>
+        <div className="flex items-center gap-3 mb-6 md:mb-16">
+          <div className="w-5 md:w-6 h-px bg-white/30" />
+          <span className="text-white/30 text-[10px] md:text-xs tracking-[0.3em] md:tracking-[0.4em] uppercase">Añasco, Puerto Rico</span>
         </div>
 
-        {/* Headline — parallax on scroll */}
-        <div
-          ref={headlineRef}
-          style={{ transform: `translateY(${scrollY * -0.18}px)`, transition: "transform 0.05s linear" }}
-        >
-          <div className="overflow-visible mb-1">
+        {/* Headline */}
+        <div ref={headlineRef} style={{ transform: `translateY(${scrollY * -0.18}px)`, transition: "transform 0.05s linear" }}>
+          <div className="overflow-visible mb-0.5 md:mb-1">
             <h1 className="font-serif font-bold leading-none text-white"
-              style={{ fontSize: "clamp(2.4rem, 10vw, 8rem)", letterSpacing: "-0.03em", lineHeight: 0.95 }}>
+              style={{ fontSize: "clamp(3.2rem, 16vw, 8rem)", letterSpacing: "-0.03em", lineHeight: 0.9 }}>
               <ScrambleText text={lang === "es" ? "Cejas" : "Beautiful"} delay={300} trigger={lang === "es"} />
             </h1>
           </div>
-          <div className="overflow-visible mb-1 pb-3">
+          <div className="overflow-visible mb-0.5 md:mb-1 pb-2 md:pb-3">
             <h1 className="font-serif font-bold leading-none"
-              style={{ fontSize: "clamp(2.4rem, 10vw, 8rem)", letterSpacing: "-0.03em", lineHeight: 0.95, WebkitTextStroke: "1.5px rgba(34,197,94,0.75)", color: "transparent" }}>
+              style={{ fontSize: "clamp(3.2rem, 16vw, 8rem)", letterSpacing: "-0.03em", lineHeight: 0.9, WebkitTextStroke: "1.5px rgba(255,255,255,0.55)", color: "transparent" }}>
               <ScrambleText text={lang === "es" ? "Bellas y" : "& Brows"} delay={500} trigger={lang === "es"} />
             </h1>
           </div>
           <div className="overflow-visible">
             <h1 className="font-serif font-bold leading-none text-white"
-              style={{ fontSize: "clamp(2.4rem, 10vw, 8rem)", letterSpacing: "-0.03em", lineHeight: 0.95 }}>
+              style={{ fontSize: "clamp(3.2rem, 16vw, 8rem)", letterSpacing: "-0.03em", lineHeight: 0.9 }}>
               <ScrambleText text={lang === "es" ? "Perfectas" : "Perfected"} delay={700} trigger={lang === "es"} />
             </h1>
           </div>
         </div>
 
         {/* Bottom row */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mt-12 md:mt-16 pt-8 border-t border-white/8">
-          <p className="text-white/40 text-sm md:text-base leading-relaxed max-w-sm">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-5 md:gap-8 mt-8 md:mt-16 pt-6 md:pt-8 border-t border-white/8">
+          <p className="text-white/40 text-sm leading-relaxed max-w-sm hidden md:block">
             {t("hero_desc")}
           </p>
-          <div className="flex items-center gap-6">
+          {/* Mobile: short tagline */}
+          <p className="text-white/40 text-xs leading-relaxed md:hidden">
+            {lang === "es" ? "Salón de belleza en Añasco, Puerto Rico" : "Beauty salon in Añasco, Puerto Rico"}
+          </p>
+          <div className="flex items-center gap-5">
             <a href="#contacto"
               className="inline-flex items-center gap-3 text-white text-sm font-semibold tracking-wide group link-underline">
               {t("hero_cta")}
@@ -158,14 +156,18 @@ const HeroSection = () => {
               <span>4.8★ Google</span>
               <span>211+ Reviews</span>
             </div>
+            {/* Mobile stats inline */}
+            <div className="text-white/20 text-[10px] tracking-widest uppercase flex md:hidden gap-3">
+              <span>4.8★</span>
+              <span>211+</span>
+            </div>
           </div>
         </div>
 
         {/* Mobile carousel */}
-        <div className="md:hidden">
+        <div className="md:hidden mt-6">
           <MobileCarousel ownerPhoto={ownerPhoto} />
         </div>
-
       </div>
 
       {/* Scroll indicator */}
