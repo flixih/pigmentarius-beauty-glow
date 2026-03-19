@@ -1,17 +1,13 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import MarqueeStrip from "@/components/MarqueeStrip";
-import AboutSection from "@/components/AboutSection";
 import ServicesSection from "@/components/ServicesSection";
 import LuxuryHairSection from "@/components/LuxuryHairSection";
 import MicrobladingSection from "@/components/MicrobladingSection";
 import PermanentMakeupSection from "@/components/PermanentMakeupSection";
 import LaserSection from "@/components/LaserSection";
-import WhyChooseUs from "@/components/WhyChooseUs";
 import DragGallery from "@/components/DragGallery";
 import ReviewsSection from "@/components/ReviewsSection";
 import ShopSection from "@/components/ShopSection";
-import CTASection from "@/components/CTASection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import FloatingBookButton from "@/components/FloatingBookButton";
@@ -57,18 +53,14 @@ const Index = () => {
         <Navbar />
         <main className="relative z-10">
           <HeroSection />
-          <MarqueeStrip />
-          <div data-reveal><AboutSection /></div>
           <div data-reveal><ServicesSection /></div>
           <div data-reveal><LuxuryHairSection /></div>
           <div data-reveal><MicrobladingSection /></div>
           <div data-reveal><PermanentMakeupSection /></div>
           <div data-reveal><LaserSection /></div>
-          <div data-reveal><WhyChooseUs /></div>
           <DragGallery />
           <div data-reveal><ReviewsSection /></div>
           <div data-reveal><ShopSection /></div>
-          <div data-reveal><CTASection /></div>
           <div data-reveal><ContactSection /></div>
         </main>
         <Footer />
@@ -77,5 +69,7 @@ const Index = () => {
     </div>
   );
 };
+
+export default Index;
 
 export default Index;
