@@ -16,9 +16,8 @@ import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import FloatingBookButton from "@/components/FloatingBookButton";
 import AnimatedBackground from "@/components/AnimatedBackground";
-import FloatingNotifications from "@/components/FloatingNotifications";
 import { CursorGlow } from "@/components/HeroSection";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 
 // Scroll-reveal: watches elements and fades them in
 const useScrollReveal = () => {
@@ -50,7 +49,6 @@ const Index = () => {
     <div style={{ background: "#0a0a0a" }}>
       <AnimatedBackground />
       <CursorGlow />
-      <FloatingNotifications />
       <Navbar />
       <main className="relative z-10">
         <HeroSection />
