@@ -73,7 +73,7 @@ const HeroSection = () => {
         </div>
         <div className="overflow-hidden mb-2">
           <h1 className="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-[10rem] font-bold leading-none"
-            style={{ letterSpacing: "-0.03em", lineHeight: 0.9, WebkitTextStroke: "1.5px rgba(255,255,255,0.55)", color: "transparent" }}>
+            style={{ letterSpacing: "-0.03em", lineHeight: 0.9, WebkitTextStroke: "2px rgba(255,255,255,0.75)", color: "transparent", paintOrder: "stroke fill" }}>
             <ScrambleText text={lang === "es" ? "& Cejas" : "& Brows"} delay={500} trigger={lang === "es"} />
           </h1>
         </div>
