@@ -88,7 +88,7 @@ const HeroSection = () => {
     };
   }, [mouse.x, mouse.y]);
 
-  const headline = lang === "es" ? "Tu transformación empieza aquí" : "Your transformation starts here";
+  const headline = lang === "es" ? "Cabello y Cejas Perfectas" : "Perfect Hair & Brows";
 
   return (
     <section id="inicio" className="relative min-h-screen flex flex-col justify-center px-6 md:px-16 pt-24 pb-16 overflow-hidden" style={{ background: "#050505" }}>
