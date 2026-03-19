@@ -113,10 +113,6 @@ const HeroSection = () => {
           <span className="text-white/30 text-[10px] md:text-xs tracking-[0.3em] md:tracking-[0.4em] uppercase">Añasco, Puerto Rico</span>
         </div>
 
-        {/* Fade mask at top so overflow text fades out */}
-        <div className="absolute top-0 left-0 right-0 h-32 pointer-events-none z-20 md:hidden"
-          style={{ background: "linear-gradient(to bottom, #050505 0%, transparent 100%)" }} />
-
         <div ref={headlineRef} style={{ transform: `translateY(${scrollY * -0.18}px)`, transition: "transform 0.05s linear" }}>
           <h1 className="font-serif font-bold leading-none text-white block"
             style={{ fontSize: "clamp(3.8rem, 20vw, 9rem)", letterSpacing: "-0.04em", lineHeight: 0.85 }}>
