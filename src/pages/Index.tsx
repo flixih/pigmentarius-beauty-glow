@@ -53,13 +53,13 @@ const Index = () => {
         <Navbar />
         <main className="relative z-10">
           <HeroSection />
+          <div data-reveal><ReviewsSection /></div>
           <div data-reveal><ServicesSection /></div>
           <div data-reveal><LuxuryHairSection /></div>
           <div data-reveal><MicrobladingSection /></div>
           <div data-reveal><PermanentMakeupSection /></div>
           <div data-reveal><LaserSection /></div>
           <DragGallery />
-          <div data-reveal><ReviewsSection /></div>
           <div data-reveal><ShopSection /></div>
           <div data-reveal><ContactSection /></div>
         </main>
