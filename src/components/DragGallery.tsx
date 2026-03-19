@@ -2,11 +2,17 @@ import { useRef, useState, useEffect } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const photos = [
+  // Keratin: sleek straight shiny hair result ✓
   { src: "https://images.pexels.com/photos/1319460/pexels-photo-1319460.jpeg?auto=compress&cs=tinysrgb&w=700",  label: { es: "Keratina",        en: "Keratin"      } },
-  { src: "https://images.pexels.com/photos/5069397/pexels-photo-5069397.jpeg?auto=compress&cs=tinysrgb&w=700",  label: { es: "Microblading",    en: "Microblading" } },
-  { src: "https://images.pexels.com/photos/3765147/pexels-photo-3765147.jpeg?auto=compress&cs=tinysrgb&w=700",  label: { es: "Diseño de Cejas", en: "Brow Design"  } },
+  // Microblading: artist applying pigment to eyebrow ✓
+  { src: "https://images.pexels.com/photos/7755208/pexels-photo-7755208.jpeg?auto=compress&cs=tinysrgb&w=700",  label: { es: "Microblading",    en: "Microblading" } },
+  // Brow Design: perfect eyebrows close-up ✓
+  { src: "https://images.pexels.com/photos/6663356/pexels-photo-6663356.jpeg?auto=compress&cs=tinysrgb&w=700",  label: { es: "Diseño de Cejas", en: "Brow Design"  } },
+  // Haircut: scissors cutting hair ✓
   { src: "https://images.pexels.com/photos/3065209/pexels-photo-3065209.jpeg?auto=compress&cs=tinysrgb&w=700",  label: { es: "Corte",           en: "Haircut"      } },
-  { src: "https://images.pexels.com/photos/5069612/pexels-photo-5069612.jpeg?auto=compress&cs=tinysrgb&w=700",  label: { es: "Láser",           en: "Laser"        } },
+  // Laser: laser device on skin ✓
+  { src: "https://images.pexels.com/photos/7659565/pexels-photo-7659565.jpeg?auto=compress&cs=tinysrgb&w=700",  label: { es: "Láser",           en: "Laser"        } },
+  // Gel nails: nails being painted with gel ✓
   { src: "https://images.pexels.com/photos/1604869/pexels-photo-1604869.jpeg?auto=compress&cs=tinysrgb&w=700",  label: { es: "Uñas Gel",        en: "Gel Nails"    } },
 ];
 

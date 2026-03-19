@@ -73,14 +73,14 @@ const HeroSection = () => {
         </div>
         <div className="overflow-hidden mb-2">
           <h1 className="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-[10rem] font-bold leading-none"
-            style={{ letterSpacing: "-0.03em", lineHeight: 0.9, WebkitTextStroke: "1px rgba(255,255,255,0.2)", color: "transparent" }}>
+            style={{ letterSpacing: "-0.03em", lineHeight: 0.9, WebkitTextStroke: "1.5px rgba(255,255,255,0.55)", color: "transparent" }}>
             <ScrambleText text={lang === "es" ? "& Cejas" : "& Brows"} delay={500} trigger={lang === "es"} />
           </h1>
         </div>
         <div className="overflow-hidden">
           <h1 className="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-[10rem] font-bold leading-none text-white"
             style={{ letterSpacing: "-0.03em", lineHeight: 0.9 }}>
-            <ScrambleText text={lang === "es" ? "Perfectos" : "Perfected"} delay={700} trigger={lang === "es"} />
+            <ScrambleText text={lang === "es" ? "Perfectas" : "Perfected"} delay={700} trigger={lang === "es"} />
           </h1>
         </div>
 

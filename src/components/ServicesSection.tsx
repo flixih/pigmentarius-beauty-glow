@@ -4,10 +4,14 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import FloatingUICard from "./FloatingUICard";
 
 const IMG = {
+  // Keratin: woman with glossy sleek straight hair after treatment ✓
   keratina:     "https://images.pexels.com/photos/1319460/pexels-photo-1319460.jpeg?auto=compress&cs=tinysrgb&w=600",
-  microblading: "https://images.pexels.com/photos/5069397/pexels-photo-5069397.jpeg?auto=compress&cs=tinysrgb&w=600",
-  cejas:        "https://images.pexels.com/photos/3765147/pexels-photo-3765147.jpeg?auto=compress&cs=tinysrgb&w=600",
-  laser:        "https://images.pexels.com/photos/5069612/pexels-photo-5069612.jpeg?auto=compress&cs=tinysrgb&w=600",
+  // Microblading: artist drawing/tattooing eyebrow strokes close up ✓
+  microblading: "https://images.pexels.com/photos/7755208/pexels-photo-7755208.jpeg?auto=compress&cs=tinysrgb&w=600",
+  // Brow Design: perfect shaped eyebrows close-up result ✓
+  cejas:        "https://images.pexels.com/photos/6663356/pexels-photo-6663356.jpeg?auto=compress&cs=tinysrgb&w=600",
+  // Laser: laser device being applied to skin on leg/arm ✓
+  laser:        "https://images.pexels.com/photos/7659565/pexels-photo-7659565.jpeg?auto=compress&cs=tinysrgb&w=600",
 };
 
 const ServicesSection = () => {
@@ -59,7 +63,7 @@ const ServicesSection = () => {
               {t("services_title2")}
             </span>
           </h2>
-          <p className="text-white/30 text-sm">{lang === "es" ? "Pasa el mouse por cada servicio para ver más detalles" : "Hover over each service to see details"}</p>
+          <p className="text-white/30 text-sm hidden md:block">{lang === "es" ? "Pasa el cursor por cada servicio para ver más detalles" : "Hover over each service to see details"}</p>
         </div>
 
         <div className="grid grid-cols-2 gap-4 md:gap-6 max-w-4xl mx-auto">
