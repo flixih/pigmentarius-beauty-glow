@@ -27,7 +27,7 @@ const photos = [
 
 const DragGallery = () => {
   const { theme } = useTheme();
-  const p = palette(theme);
+  const pal = palette(theme);
   const { lang } = useLanguage();
   const trackRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -77,14 +77,14 @@ const DragGallery = () => {
   };
 
   return (
-    <section id="galeria" className="py-20 md:py-32 overflow-hidden" style={{ background: p.sectionBg, transition: "background 0.4s ease" }}>
+    <section id="galeria" className="py-20 md:py-32 overflow-hidden" style={{ background: pal.sectionBg, transition: "background 0.4s ease" }}>
       <div className="container mx-auto px-6 md:px-12 mb-10">
         <div className="flex items-end justify-between">
           <div>
-            <p className="text-xs tracking-[0.4em] uppercase mb-4" style={{ color: p.textMuted }}>{lang === "es" ? "Nuestro Trabajo" : "Our Work"}</p>
+            <p className="text-xs tracking-[0.4em] uppercase mb-4" style={{ color: pal.textMuted }}>{lang === "es" ? "Nuestro Trabajo" : "Our Work"}</p>
             <ScrambleHeading lang={lang} p={p} />
           </div>
-          <div className="hidden md:flex items-center gap-2 text-xs tracking-widest uppercase select-none" style={{ color: p.textMuted }}>
+          <div className="hidden md:flex items-center gap-2 text-xs tracking-widest uppercase select-none" style={{ color: pal.textMuted }}>
             <span>←</span>
             <span data-cursor="DRAG">{lang === "es" ? "Arrastra" : "Drag"}</span>
             <span>→</span>
@@ -110,7 +110,7 @@ const DragGallery = () => {
         onTouchEnd={onUp}
         data-cursor="DRAG"
       >
-        {photos.map((p, i) => (
+        {photos.map((photo, i) => (
           <div
             key={i}
             className="flex-shrink-0 relative overflow-hidden group"
@@ -125,8 +125,8 @@ const DragGallery = () => {
             onMouseLeave={() => setActiveIdx(null)}
           >
             <img
-              src={p.src}
-              alt={p.label}
+              src={photo.src}
+              alt={photo.label}
               className="w-full h-full object-cover"
               style={{
                 transform: isDragging ? "scale(1.05)" : "scale(1)",
@@ -138,7 +138,7 @@ const DragGallery = () => {
             <div className="absolute inset-0 flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
               style={{ background: "linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%)" }}>
               <div>
-                <p className="text-white/50 text-sm font-semibold tracking-widest">{p.label}</p>
+                <p className="text-sm font-semibold tracking-widest" style={{ color: "rgba(255,255,255,0.8)" }}>{photo.label}</p>
               </div>
             </div>
           </div>
@@ -155,7 +155,7 @@ const DragGallery = () => {
 const ScrambleHeading = ({ lang, p }: { lang: "es" | "en"; p: any }) => {
   const text = lang === "es" ? "Galería" : "Gallery";
   return (
-    <h2 className="font-serif text-5xl md:text-7xl font-bold" style={{ letterSpacing: "-0.02em", color: p.textPrimary }}>
+    <h2 className="font-serif text-5xl md:text-7xl font-bold" style={{ letterSpacing: "-0.02em", color: pal.textPrimary }}>
       {text}
     </h2>
   );
