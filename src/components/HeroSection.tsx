@@ -116,33 +116,29 @@ const HeroSection = () => {
           <span className="text-white/30 text-xs tracking-[0.4em] uppercase">Añasco, Puerto Rico</span>
         </div>
 
-        {/* Headline — parallax on scroll + mouse tilt */}
+        {/* Headline — parallax on scroll */}
         <div
           ref={headlineRef}
-          style={{
-            transform: `translateY(${scrollY * -0.18}px)`,
-            transition: "transform 0.05s linear",
-          }}
+          style={{ transform: `translateY(${scrollY * -0.18}px)`, transition: "transform 0.05s linear" }}
         >
-          {/* Pink glow bloom behind text — barely visible */}
-          <div className="absolute pointer-events-none hidden md:block"
-            style={{
-              width: "700px",
-              height: "300px",
-              left: "-50px",
-              top: "-30px",
-              background: "radial-gradient(ellipse, hsl(330 85% 55% / 0.06) 0%, transparent 70%)",
-              filter: "blur(40px)",
-            }} />
-
-          <h1 className="font-serif font-bold text-white relative"
-            style={{
-              fontSize: "clamp(2.8rem, 8vw, 7rem)",
-              letterSpacing: "-0.03em",
-              lineHeight: 1.05,
-            }}>
-            <ScrambleText text={headline} delay={300} trigger={lang === "es"} />
-          </h1>
+          <div className="overflow-visible mb-1">
+            <h1 className="font-serif font-bold leading-none text-white"
+              style={{ fontSize: "clamp(3rem, 9vw, 8rem)", letterSpacing: "-0.03em", lineHeight: 0.92 }}>
+              <ScrambleText text={lang === "es" ? "Cejas" : "Beautiful"} delay={300} trigger={lang === "es"} />
+            </h1>
+          </div>
+          <div className="overflow-visible mb-1 pb-3">
+            <h1 className="font-serif font-bold leading-none"
+              style={{ fontSize: "clamp(3rem, 9vw, 8rem)", letterSpacing: "-0.03em", lineHeight: 0.92, WebkitTextStroke: "1.5px rgba(255,255,255,0.55)", color: "transparent" }}>
+              <ScrambleText text={lang === "es" ? "Bellas y" : "& Brows"} delay={500} trigger={lang === "es"} />
+            </h1>
+          </div>
+          <div className="overflow-visible">
+            <h1 className="font-serif font-bold leading-none text-white"
+              style={{ fontSize: "clamp(3rem, 9vw, 8rem)", letterSpacing: "-0.03em", lineHeight: 0.92 }}>
+              <ScrambleText text={lang === "es" ? "Perfectas" : "Perfected"} delay={700} trigger={lang === "es"} />
+            </h1>
+          </div>
         </div>
 
         {/* Bottom row */}
