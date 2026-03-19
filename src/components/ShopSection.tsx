@@ -52,12 +52,12 @@ const ShopSection = () => {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 mb-10">
           {products.map((p) => (
-            <div key={p.name.es} className="group rounded-2xl p-6 border border-white/8 hover:border-white/15 transition-all duration-500 hover:-translate-y-1" style={{ background: "rgba(255,255,255,0.03)" }}>
-              <div className="text-3xl mb-4">{p.emoji}</div>
-              <h3 className="font-serif text-base font-semibold text-white mb-2">{p.name[lang]}</h3>
-              <p className="text-white/40 text-sm leading-relaxed">{p.desc[lang]}</p>
+            <div key={p.name.es} className="group rounded-2xl p-4 md:p-6 border border-white/8 hover:border-white/15 transition-all duration-500 hover:-translate-y-1" style={{ background: "rgba(255,255,255,0.03)" }}>
+              <div className="text-2xl md:text-3xl mb-3 md:mb-4">{p.emoji}</div>
+              <h3 className="font-serif text-xs md:text-base font-semibold text-white mb-1 md:mb-2 leading-tight">{p.name[lang]}</h3>
+              <p className="text-white/40 text-xs leading-relaxed hidden md:block">{p.desc[lang]}</p>
             </div>
           ))}
 

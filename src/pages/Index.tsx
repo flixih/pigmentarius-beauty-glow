@@ -1,10 +1,6 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
-import LuxuryHairSection from "@/components/LuxuryHairSection";
-import MicrobladingSection from "@/components/MicrobladingSection";
-import PermanentMakeupSection from "@/components/PermanentMakeupSection";
-import LaserSection from "@/components/LaserSection";
 import DragGallery from "@/components/DragGallery";
 import ReviewsSection from "@/components/ReviewsSection";
 import ShopSection from "@/components/ShopSection";
@@ -55,10 +51,6 @@ const Index = () => {
           <HeroSection />
           <div data-reveal><ReviewsSection /></div>
           <div data-reveal><ServicesSection /></div>
-          <div data-reveal><LuxuryHairSection /></div>
-          <div data-reveal><MicrobladingSection /></div>
-          <div data-reveal><PermanentMakeupSection /></div>
-          <div data-reveal><LaserSection /></div>
           <DragGallery />
           <div data-reveal><ShopSection /></div>
           <div data-reveal><ContactSection /></div>

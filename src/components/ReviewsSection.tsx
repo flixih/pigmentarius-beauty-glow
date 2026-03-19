@@ -34,17 +34,17 @@ const ReviewsSection = () => {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
           {reviews.map((review, i) => (
             <div key={i} className="rounded-2xl p-6 border border-white/8 hover:border-white/15 transition-all duration-500 flex flex-col group" style={{ background: "rgba(255,255,255,0.03)" }}>
-              <Quote size={22} className="mb-4 flex-shrink-0" style={{ color: "hsl(330 85% 60% / 0.4)" }} />
-              <p className="text-white/60 leading-relaxed mb-5 italic text-sm flex-1">"{review.text[lang]}"</p>
-              <div className="flex items-center justify-between pt-4 border-t border-white/8">
+              <Quote size={16} className="mb-2 md:mb-4 flex-shrink-0" style={{ color: "hsl(330 85% 60% / 0.4)" }} />
+              <p className="text-white/60 leading-relaxed mb-3 md:mb-5 italic text-xs md:text-sm flex-1">"{review.text[lang]}"</p>
+              <div className="flex items-center justify-between pt-3 border-t border-white/8">
                 <div>
-                  <p className="font-semibold text-white text-sm">{review.name}</p>
-                  <p className="text-white/30 text-xs mt-0.5">{t("reviews_verified")}</p>
+                  <p className="font-semibold text-white text-xs md:text-sm">{review.name}</p>
+                  <p className="text-white/30 text-[10px] mt-0.5 hidden md:block">{t("reviews_verified")}</p>
                 </div>
-                <div className="flex">{[...Array(5)].map((_, j) => <Star key={j} size={10} className="fill-[hsl(330_85%_60%)] text-[hsl(330_85%_60%)]" />)}</div>
+                <div className="flex">{[...Array(5)].map((_, j) => <Star key={j} size={8} className="fill-[hsl(330_85%_60%)] text-[hsl(330_85%_60%)]" />)}</div>
               </div>
             </div>
           ))}
