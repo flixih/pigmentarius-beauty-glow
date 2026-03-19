@@ -83,8 +83,8 @@ const ServicesSection = () => {
               <div className="group rounded-2xl overflow-hidden border border-white/8 hover:border-white/16 transition-all duration-300 flex flex-col cursor-pointer" style={{ background: p.cardBg }}>
                 <div className="overflow-hidden aspect-[16/10] relative">
                   <img src={s.photo} alt={s.title[lang]} className="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" loading="lazy" />
-                  <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(10,10,10,0.8) 0%, transparent 60%)" }} />
-                  <span className="absolute top-3 left-3 text-xs px-2 py-0.5 rounded-full font-semibold border border-white/20" style={{ background: "rgba(255,255,255,0.1)", color: "hsl(330 85% 75%)", backdropFilter: "blur(8px)" }}>
+                  <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%)" }} />
+                  <span className="absolute top-3 left-3 text-xs px-2 py-0.5 rounded-full font-semibold border border-white/20" style={{ background: "var(--border)", color: "hsl(330 85% 75%)", backdropFilter: "blur(8px)" }}>
                     {s.tag[lang]}
                   </span>
                 </div>

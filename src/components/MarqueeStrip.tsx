@@ -9,7 +9,7 @@ const MarqueeStrip = () => {
   const doubled = [...items, ...items];
 
   return (
-    <div className="overflow-hidden border-y border-white/5 py-4" style={{ background: "#050505" }}>
+    <div className="overflow-hidden border-y border-white/5 py-4" style={{ background: "var(--bg)" }}>
       {/* Row 1 — left */}
       <div className="flex gap-8 animate-marquee w-max mb-3">
         {doubled.map((item, i) => (

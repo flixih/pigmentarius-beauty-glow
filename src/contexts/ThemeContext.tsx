@@ -1,26 +1,23 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 
 type Theme = "dark" | "light";
-
-interface ThemeContextType {
-  theme: Theme;
-  toggleTheme: () => void;
-  // Helper: returns bg color based on theme
-  bg: (dark: string, light: string) => string;
-  tx: (dark: string, light: string) => string;
-}
-
+interface ThemeContextType { theme: Theme; toggleTheme: () => void; }
 const ThemeContext = createContext<ThemeContextType | null>(null);
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const [theme, setTheme] = useState<Theme>("dark");
 
-  const toggleTheme = () => setTheme(t => t === "dark" ? "light" : "dark");
-  const bg = (dark: string, light: string) => theme === "dark" ? dark : light;
-  const tx = (dark: string, light: string) => theme === "dark" ? dark : light;
+  useEffect(() => {
+    if (theme === "light") {
+      document.documentElement.classList.add("light-mode");
+    } else {
+      document.documentElement.classList.remove("light-mode");
+    }
+  }, [theme]);
 
+  const toggleTheme = () => setTheme(t => t === "dark" ? "light" : "dark");
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme, bg, tx }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   );

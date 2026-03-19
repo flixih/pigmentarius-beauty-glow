@@ -30,7 +30,7 @@ const MobileCarousel = ({ ownerPhoto: op, p }: { ownerPhoto: string; p: ReturnTy
           style={{ opacity: i === active ? 1 : 0, transform: i === active ? "scale(1)" : "scale(1.04)" }} />
       ))}
       {active === 0 && (
-        <div className="absolute bottom-0 left-0 right-0 p-4" style={{ background: "linear-gradient(to top, rgba(5,5,5,0.8) 0%, transparent 60%)" }}>
+        <div className="absolute bottom-0 left-0 right-0 p-4" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%)" }}>
           <p className="text-white font-semibold text-sm">Windy Arroyo</p>
           <p className="text-white/50 text-xs">{lang === "es" ? "Fundadora & Dueña · Pigmentarius" : "Founder & Owner · Pigmentarius"}</p>
         </div>
@@ -38,7 +38,7 @@ const MobileCarousel = ({ ownerPhoto: op, p }: { ownerPhoto: string; p: ReturnTy
       <div className="absolute bottom-3 right-4 flex gap-1.5">
         {allPhotos.map((_, i) => (
           <div key={i} className="h-1 rounded-full transition-all duration-300 cursor-pointer"
-            style={{ width: i === active ? "20px" : "6px", background: i === active ? "white" : "rgba(255,255,255,0.3)" }}
+            style={{ width: i === active ? "20px" : "6px", background: i === active ? "var(--t1)" : "var(--t3)" }}
             onClick={() => setActive(i)} />
         ))}
       </div>

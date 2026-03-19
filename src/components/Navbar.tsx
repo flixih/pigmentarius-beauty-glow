@@ -25,7 +25,7 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 px-6 md:px-16 flex items-center justify-between h-16 md:h-20 transition-all duration-500"
-      style={{ background: scrolled ? "rgba(5,5,5,0.9)" : "transparent", backdropFilter: scrolled ? "blur(20px)" : "none", borderBottom: scrolled ? "1px solid rgba(255,255,255,0.05)" : "none" }}>
+      style={{ background: scrolled ? "var(--nav-bg)" : "transparent", backdropFilter: scrolled ? "blur(20px)" : "none", borderBottom: scrolled ? "1px solid rgba(255,255,255,0.05)" : "none" }}>
 
       <a href="#inicio" className="flex items-center">
         <img src={logo} alt="Pigmentarius" className="h-7 md:h-9 w-auto brightness-0 invert opacity-90" />

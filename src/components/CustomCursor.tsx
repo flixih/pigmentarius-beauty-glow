@@ -63,7 +63,7 @@ const CustomCursor = () => {
     <>
       {/* Small dot cursor */}
       <div ref={cursorRef} className="fixed top-0 left-0 w-3 h-3 rounded-full pointer-events-none z-[9999] mix-blend-difference"
-        style={{ background: "white", transition: "transform 0.05s linear" }} />
+        style={{ background: "var(--t1)", transition: "transform 0.05s linear" }} />
 
       {/* Large follower ring */}
       <div ref={followerRef}

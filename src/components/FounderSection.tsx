@@ -73,7 +73,7 @@ const FounderSection = () => {
                   style={{ opacity: i === active ? 1 : 0, transform: i === active ? "scale(1)" : "scale(1.03)" }} />
               ))}
               {/* Subtle overlay */}
-              <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(7,7,7,0.5) 0%, transparent 50%)" }} />
+              <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 50%)" }} />
             </div>
 
             {/* Thumbnail strip */}
@@ -81,7 +81,7 @@ const FounderSection = () => {
               {photos.map((src, i) => (
                 <button key={i} onClick={() => setActive(i)}
                   className="flex-1 rounded-lg overflow-hidden border transition-all duration-300"
-                  style={{ aspectRatio: "1/1", borderColor: i === active ? "hsl(330 85% 60%)" : "rgba(255,255,255,0.08)" }}>
+                  style={{ aspectRatio: "1/1", borderColor: i === active ? "hsl(330 85% 60%)" : "var(--border)" }}>
                   <img src={src} alt="" className="w-full h-full object-cover object-top transition-opacity duration-300"
                     style={{ opacity: i === active ? 1 : 0.4 }} />
                 </button>
