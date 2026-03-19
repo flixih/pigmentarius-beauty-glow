@@ -123,19 +123,19 @@ const HeroSection = () => {
         >
           <div className="overflow-visible mb-1">
             <h1 className="font-serif font-bold leading-none text-white"
-              style={{ fontSize: "clamp(3rem, 9vw, 8rem)", letterSpacing: "-0.03em", lineHeight: 0.92 }}>
+              style={{ fontSize: "clamp(2.4rem, 10vw, 8rem)", letterSpacing: "-0.03em", lineHeight: 0.95 }}>
               <ScrambleText text={lang === "es" ? "Cejas" : "Beautiful"} delay={300} trigger={lang === "es"} />
             </h1>
           </div>
           <div className="overflow-visible mb-1 pb-3">
             <h1 className="font-serif font-bold leading-none"
-              style={{ fontSize: "clamp(3rem, 9vw, 8rem)", letterSpacing: "-0.03em", lineHeight: 0.92, WebkitTextStroke: "1.5px rgba(255,255,255,0.55)", color: "transparent" }}>
+              style={{ fontSize: "clamp(2.4rem, 10vw, 8rem)", letterSpacing: "-0.03em", lineHeight: 0.95, WebkitTextStroke: "1.5px rgba(34,197,94,0.75)", color: "transparent" }}>
               <ScrambleText text={lang === "es" ? "Bellas y" : "& Brows"} delay={500} trigger={lang === "es"} />
             </h1>
           </div>
           <div className="overflow-visible">
             <h1 className="font-serif font-bold leading-none text-white"
-              style={{ fontSize: "clamp(3rem, 9vw, 8rem)", letterSpacing: "-0.03em", lineHeight: 0.92 }}>
+              style={{ fontSize: "clamp(2.4rem, 10vw, 8rem)", letterSpacing: "-0.03em", lineHeight: 0.95 }}>
               <ScrambleText text={lang === "es" ? "Perfectas" : "Perfected"} delay={700} trigger={lang === "es"} />
             </h1>
           </div>
