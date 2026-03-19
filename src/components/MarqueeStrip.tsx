@@ -1,8 +1,11 @@
 import { useLanguage } from "@/contexts/LanguageContext";
 
-const items = ["Keratina", "Microblading", "Coloración", "Maquillaje Permanente", "Botox Capilar", "Diseño de Cejas", "Depilación Láser", "Sombreado de Cejas", "Brazilian Blowout", "Shellac & Gel"];
+const itemsEs = ["Keratina", "Microblading", "Coloración", "Maquillaje Permanente", "Botox Capilar", "Diseño de Cejas", "Depilación Láser", "Sombreado de Cejas", "Brazilian Blowout", "Shellac & Gel"];
+const itemsEn = ["Keratin", "Microblading", "Hair Color", "Permanent Makeup", "Hair Botox", "Brow Design", "Laser Hair Removal", "Brow Shading", "Brazilian Blowout", "Shellac & Gel"];
 
 const MarqueeStrip = () => {
+  const { lang } = useLanguage();
+  const items = lang === "es" ? itemsEs : itemsEn;
   const doubled = [...items, ...items];
   return (
     <div className="overflow-hidden py-5 border-y border-white/6" style={{ background: "rgba(255,255,255,0.02)" }}>
