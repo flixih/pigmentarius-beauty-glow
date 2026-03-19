@@ -35,12 +35,6 @@ const MicrobladingSection = () => {
                 : "Perfect brows designed just for you. Our certified artists create ultra-fine strokes that mimic real hair."}
             </p>
 
-            <div className="inline-flex items-center gap-3 bg-[#0a0a0a] rounded-xl px-4 py-2.5 shadow-soft mb-6 border border-border">
-              <span className="text-muted-foreground text-xs">{lang === "es" ? "Desde" : "From"}</span>
-              <span className="font-serif text-2xl font-bold text-primary">$150</span>
-              <span className="text-muted-foreground text-xs">· {lang === "es" ? "Retoque incluido" : "Touch-up included"}</span>
-            </div>
-
             <ul className="space-y-2.5 mb-8">
               {features.map((f) => (
                 <li key={f} className="flex items-start gap-2.5">

@@ -134,3 +134,51 @@ html { scroll-behavior: smooth; }
 .animate-marquee    { animation: marquee 30s linear infinite; }
 .animate-float      { animation: float 6s ease-in-out infinite; }
 .animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+
+/* ── Mobile-specific additions ── */
+
+/* Tap highlight removal for cleaner mobile feel */
+* { -webkit-tap-highlight-color: transparent; }
+
+/* Touch-active states */
+a:active, button:active { opacity: 0.75; }
+
+/* Smooth scroll on mobile */
+html { scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
+
+/* Mobile glow pulse (same animation but triggered by CSS) */
+@keyframes mobile-pulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.05); }
+}
+
+/* Staggered card reveal on mobile */
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+.mobile-card-reveal {
+  animation: slide-up 0.5s ease-out forwards;
+}
+
+/* Mobile carousel dot transition */
+@keyframes dot-expand {
+  from { width: 6px; }
+  to   { width: 16px; }
+}
+
+/* Pink shimmer sweep across cards on mobile */
+@keyframes shimmer-sweep {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(200%);  }
+}
+
+.shimmer-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.04) 50%, transparent 100%);
+  animation: shimmer-sweep 3s ease-in-out infinite;
+  pointer-events: none;
+}

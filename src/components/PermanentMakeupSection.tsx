@@ -3,10 +3,10 @@ import { useLanguage } from "@/contexts/LanguageContext";
 const REAL_2 = "https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=800&q=80";
 
 const services = [
-  { name: { es: "Microblading", en: "Microblading" }, price: "Desde $150" },
-  { name: { es: "Ombré / Powder Brows", en: "Ombré / Powder Brows" }, price: "Desde $180" },
-  { name: { es: "Labios Permanentes", en: "Permanent Lips" }, price: "Desde $200" },
-  { name: { es: "Delineado Permanente", en: "Permanent Eyeliner" }, price: "Consultar / Inquire" },
+  { name: { es: "Microblading", en: "Microblading" } },
+  { name: { es: "Ombré / Powder Brows", en: "Ombré / Powder Brows" } },
+  { name: { es: "Labios Permanentes", en: "Permanent Lips" } },
+  { name: { es: "Delineado Permanente", en: "Permanent Eyeliner" } },
 ];
 
 const PermanentMakeupSection = () => {
@@ -39,7 +39,6 @@ const PermanentMakeupSection = () => {
               {services.map((s) => (
                 <div key={s.name.es} className="flex justify-between items-center py-1 border-b border-border last:border-0">
                   <span className="font-medium text-foreground text-sm">{s.name[lang]}</span>
-                  <span className="text-primary font-semibold text-sm">{s.price}</span>
                 </div>
               ))}
             </div>

@@ -34,7 +34,7 @@ const FALLBACK = {
 };
 
 const ServiceCard = ({ photo, fallback, name, price, desc }: {
-  photo: string; fallback: string; name: string; price: string; desc: string;
+  photo: string; fallback: string; name: string; desc: string;
 }) => (
   <div className="group bg-background border border-border rounded-2xl overflow-hidden hover:shadow-elevated transition-all duration-300 hover:-translate-y-0.5">
     <div className="aspect-video overflow-hidden relative" style={{ backgroundColor: fallback }}>
@@ -64,48 +64,48 @@ const Servicios = () => {
       category: { es: "💆 Cabello", en: "💆 Hair" },
       fallback: FALLBACK.hair,
       items: [
-        { photo: IMG.haircut,    name: { es: "Corte de Cabello",          en: "Haircut"                  }, price: "",        desc: { es: "Especialistas en rizado, liso, fino o grueso.",               en: "Specialists in curly, straight, fine or thick hair."       } },
-        { photo: IMG.color,      name: { es: "Coloración",                en: "Hair Color"               }, price: "",  desc: { es: "Color vibrante con productos profesionales.",                  en: "Vibrant color with professional products."                } },
-        { photo: IMG.highlights, name: { es: "Highlights & Balayage",     en: "Highlights & Balayage"    }, price: "",  desc: { es: "Mechas y balayage de aspecto natural.",                        en: "Natural-looking highlights and balayage."                  } },
-        { photo: IMG.keratina,   name: { es: "Keratina",                  en: "Keratin Treatment"        }, price: "",  desc: { es: "Control total del frizz. Perfecto para el clima de PR.",       en: "Total frizz control. Perfect for PR's tropical climate."   } },
-        { photo: IMG.botox,      name: { es: "Botox Capilar",             en: "Hair Botox"               }, price: "",        desc: { es: "Rejuvenecimiento profundo con colágeno.",                       en: "Deep rejuvenation with collagen for silky hair."           } },
-        { photo: IMG.repair,     name: { es: "Cirugía Plástica Capilar",  en: "Hair Repair Treatment"    }, price: "", desc: { es: "Tratamiento intensivo para cabello muy dañado.",               en: "Intensive repair treatment for severely damaged hair."     } },
-        { photo: IMG.blowout,    name: { es: "Brazilian Blowout",         en: "Brazilian Blowout"        }, price: "",  desc: { es: "Alisado suave y duradero con brillo intenso.",                 en: "Smooth, long-lasting straightening with intense shine."    } },
+        { photo: IMG.haircut,    name: { es: "Corte de Cabello",          en: "Haircut"                  }, desc: { es: "Especialistas en rizado, liso, fino o grueso.",               en: "Specialists in curly, straight, fine or thick hair."       } },
+        { photo: IMG.color,      name: { es: "Coloración",                en: "Hair Color"               }, desc: { es: "Color vibrante con productos profesionales.",                  en: "Vibrant color with professional products."                } },
+        { photo: IMG.highlights, name: { es: "Highlights & Balayage",     en: "Highlights & Balayage"    }, desc: { es: "Mechas y balayage de aspecto natural.",                        en: "Natural-looking highlights and balayage."                  } },
+        { photo: IMG.keratina,   name: { es: "Keratina",                  en: "Keratin Treatment"        }, desc: { es: "Control total del frizz. Perfecto para el clima de PR.",       en: "Total frizz control. Perfect for PR's tropical climate."   } },
+        { photo: IMG.botox,      name: { es: "Botox Capilar",             en: "Hair Botox"               }, desc: { es: "Rejuvenecimiento profundo con colágeno.",                       en: "Deep rejuvenation with collagen for silky hair."           } },
+        { photo: IMG.repair,     name: { es: "Cirugía Plástica Capilar",  en: "Hair Repair Treatment"    }, desc: { es: "Tratamiento intensivo para cabello muy dañado.",               en: "Intensive repair treatment for severely damaged hair."     } },
+        { photo: IMG.blowout,    name: { es: "Brazilian Blowout",         en: "Brazilian Blowout"        }, desc: { es: "Alisado suave y duradero con brillo intenso.",                 en: "Smooth, long-lasting straightening with intense shine."    } },
       ],
     },
     {
       category: { es: "✨ Cejas & Maquillaje Permanente", en: "✨ Brows & Permanent Makeup" },
       fallback: FALLBACK.brows,
       items: [
-        { photo: IMG.microblading, name: { es: "Microblading",                  en: "Microblading"           }, price: "",       desc: { es: "Trazos ultra finos semi-permanentes. Retoque incluido.",     en: "Ultra-fine semi-permanent strokes. Touch-up included."    } },
-        { photo: IMG.ombre,        name: { es: "Sombreado de Cejas (Ombré)",    en: "Brow Shading (Ombré)"   }, price: "",       desc: { es: "Sombreado suave para cejas con más densidad.",              en: "Soft shading for fuller, more natural-looking brows."     } },
-        { photo: IMG.cejas,        name: { es: "Diseño de Cejas",               en: "Brow Design"            }, price: "",  desc: { es: "Diseño experto que enmarca y realza tu rostro.",            en: "Expert design that frames and enhances your face."        } },
-        { photo: IMG.wax,          name: { es: "Wax de Cejas",                  en: "Brow Wax"               }, price: "",        desc: { es: "Depilación con cera para cejas perfectamente definidas.",   en: "Waxing for perfectly defined brows."                      } },
-        { photo: IMG.pmu_labios,   name: { es: "Maquillaje Permanente Labios",  en: "Permanent Lip Makeup"   }, price: "",  desc: { es: "Labios perfectamente definidos cada mañana.",              en: "Perfectly defined lips effortlessly every morning."       } },
-        { photo: IMG.delineado,    name: { es: "Delineado Permanente",          en: "Permanent Eyeliner"     }, price: "",  desc: { es: "Ojos definidos sin maquillaje diario.",                    en: "Defined, expressive eyes without daily makeup."           } },
+        { photo: IMG.microblading, name: { es: "Microblading",                  en: "Microblading"           }, desc: { es: "Trazos ultra finos semi-permanentes. Retoque incluido.",     en: "Ultra-fine semi-permanent strokes. Touch-up included."    } },
+        { photo: IMG.ombre,        name: { es: "Sombreado de Cejas (Ombré)",    en: "Brow Shading (Ombré)"   }, desc: { es: "Sombreado suave para cejas con más densidad.",              en: "Soft shading for fuller, more natural-looking brows."     } },
+        { photo: IMG.cejas,        name: { es: "Diseño de Cejas",               en: "Brow Design"            }, desc: { es: "Diseño experto que enmarca y realza tu rostro.",            en: "Expert design that frames and enhances your face."        } },
+        { photo: IMG.wax,          name: { es: "Wax de Cejas",                  en: "Brow Wax"               }, desc: { es: "Depilación con cera para cejas perfectamente definidas.",   en: "Waxing for perfectly defined brows."                      } },
+        { photo: IMG.pmu_labios,   name: { es: "Maquillaje Permanente Labios",  en: "Permanent Lip Makeup"   }, desc: { es: "Labios perfectamente definidos cada mañana.",              en: "Perfectly defined lips effortlessly every morning."       } },
+        { photo: IMG.delineado,    name: { es: "Delineado Permanente",          en: "Permanent Eyeliner"     }, desc: { es: "Ojos definidos sin maquillaje diario.",                    en: "Defined, expressive eyes without daily makeup."           } },
       ],
     },
     {
       category: { es: "⚡ Depilación Láser", en: "⚡ Laser Hair Removal" },
       fallback: FALLBACK.laser,
       items: [
-        { photo: IMG.laser_face, name: { es: "Rostro Completo",    en: "Full Face"      }, price: "",        desc: { es: "Tratamiento completo de rostro.",          en: "Full face laser treatment."              } },
-        { photo: IMG.laser_face, name: { es: "Bigote",             en: "Upper Lip"      }, price: "",        desc: { es: "Resultados desde la primera sesión.",      en: "Visible results from the first session." } },
-        { photo: IMG.laser_face, name: { es: "Mentón",             en: "Chin"           }, price: "",        desc: { es: "Eliminación permanente del vello.",        en: "Permanent hair removal on the chin."     } },
-        { photo: IMG.laser,      name: { es: "Axilas",             en: "Underarms"      }, price: "",        desc: { es: "Piel suave y libre de vello.",             en: "Smooth, hair-free underarms."            } },
-        { photo: IMG.laser_legs, name: { es: "Piernas Completas",  en: "Full Legs"      }, price: "", desc: { es: "Piernas perfectamente suaves para siempre.", en: "Perfectly smooth legs permanently."    } },
-        { photo: IMG.laser,      name: { es: "Zona Bikini",        en: "Bikini Area"    }, price: "",        desc: { es: "Tratamiento de zona bikini clásica.",      en: "Classic bikini area treatment."          } },
-        { photo: IMG.laser,      name: { es: "Laser Brazilian",    en: "Laser Brazilian"}, price: "",        desc: { es: "Tratamiento completo zona brasileña.",     en: "Full Brazilian area treatment."          } },
-        { photo: IMG.laser,      name: { es: "Cuerpo Completo",    en: "Full Body"      }, price: "",  desc: { es: "Olvídate de la cera y la rasuradora.",     en: "Forget waxing and razors forever."       } },
+        { photo: IMG.laser_face, name: { es: "Rostro Completo",    en: "Full Face"      }, desc: { es: "Tratamiento completo de rostro.",          en: "Full face laser treatment."              } },
+        { photo: IMG.laser_face, name: { es: "Bigote",             en: "Upper Lip"      }, desc: { es: "Resultados desde la primera sesión.",      en: "Visible results from the first session." } },
+        { photo: IMG.laser_face, name: { es: "Mentón",             en: "Chin"           }, desc: { es: "Eliminación permanente del vello.",        en: "Permanent hair removal on the chin."     } },
+        { photo: IMG.laser,      name: { es: "Axilas",             en: "Underarms"      }, desc: { es: "Piel suave y libre de vello.",             en: "Smooth, hair-free underarms."            } },
+        { photo: IMG.laser_legs, name: { es: "Piernas Completas",  en: "Full Legs"      }, desc: { es: "Piernas perfectamente suaves para siempre.", en: "Perfectly smooth legs permanently."    } },
+        { photo: IMG.laser,      name: { es: "Zona Bikini",        en: "Bikini Area"    }, desc: { es: "Tratamiento de zona bikini clásica.",      en: "Classic bikini area treatment."          } },
+        { photo: IMG.laser,      name: { es: "Laser Brazilian",    en: "Laser Brazilian"}, desc: { es: "Tratamiento completo zona brasileña.",     en: "Full Brazilian area treatment."          } },
+        { photo: IMG.laser,      name: { es: "Cuerpo Completo",    en: "Full Body"      }, desc: { es: "Olvídate de la cera y la rasuradora.",     en: "Forget waxing and razors forever."       } },
       ],
     },
     {
       category: { es: "💅 Uñas & Más", en: "💅 Nails & More" },
       fallback: FALLBACK.nails,
       items: [
-        { photo: IMG.nails,    name: { es: "Shellac / Gel",         en: "Shellac / Gel"       }, price: "", desc: { es: "Esmalte en gel de larga duración.",              en: "Long-lasting gel polish."               } },
-        { photo: IMG.pedicure, name: { es: "Pedicura",              en: "Pedicure"            }, price: "", desc: { es: "Relajante tratamiento completo de pies.",        en: "Relaxing complete foot treatment."      } },
-        { photo: IMG.facial,   name: { es: "Facial Rejuvenecedor",  en: "Rejuvenating Facial" }, price: "", desc: { es: "Limpieza profunda y tratamiento revitalizante.", en: "Deep cleanse and revitalizing facial."  } },
+        { photo: IMG.nails,    name: { es: "Shellac / Gel",         en: "Shellac / Gel"       }, desc: { es: "Esmalte en gel de larga duración.",              en: "Long-lasting gel polish."               } },
+        { photo: IMG.pedicure, name: { es: "Pedicura",              en: "Pedicure"            }, desc: { es: "Relajante tratamiento completo de pies.",        en: "Relaxing complete foot treatment."      } },
+        { photo: IMG.facial,   name: { es: "Facial Rejuvenecedor",  en: "Rejuvenating Facial" }, desc: { es: "Limpieza profunda y tratamiento revitalizante.", en: "Deep cleanse and revitalizing facial."  } },
       ],
     },
   ];

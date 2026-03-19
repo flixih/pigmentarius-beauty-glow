@@ -5,12 +5,12 @@ const REAL_1 = "https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&
 const REAL_2 = "https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=800&q=80";
 
 const treatments = [
-  { icon: Droplets, title: { es: "Keratina", en: "Keratin Treatment" }, desc: { es: "Control total del frizz. Perfecto para el clima de Puerto Rico.", en: "Total frizz control. Perfect for Puerto Rico's tropical climate." }, price: "Desde $120" },
-  { icon: Sparkles, title: { es: "Botox Capilar", en: "Hair Botox" }, desc: { es: "Rejuvenecimiento profundo con colágeno para cabello sedoso.", en: "Deep rejuvenation with collagen for silky, frizz-free hair." }, price: "Desde $130" },
-  { icon: Sun, title: { es: "Coloración & Highlights", en: "Color & Highlights" }, desc: { es: "Color, mechas, balayage y corrección con productos premium.", en: "Color, highlights, balayage and correction with premium products." }, price: "Desde $80" },
-  { icon: Scissors, title: { es: "Cortes Especializados", en: "Specialist Cuts" }, desc: { es: "Expertos en cabello rizado, liso, fino y grueso.", en: "Experts in curly, straight, fine and thick hair." }, price: "Desde $35" },
-  { icon: Shield, title: { es: "Cirugía Capilar", en: "Hair Repair" }, desc: { es: "Tratamiento intensivo para cabello muy dañado.", en: "Intensive repair treatment for severely damaged hair." }, price: "Desde $150" },
-  { icon: Wind, title: { es: "Blowouts", en: "Blowouts" }, desc: { es: "Blowouts voluminosos y perfectos para cualquier ocasión.", en: "Voluminous, perfect blowouts for any occasion." }, price: "Desde $45" },
+  { icon: Droplets, title: { es: "Keratina", en: "Keratin Treatment" }, desc: { es: "Control total del frizz. Perfecto para el clima de Puerto Rico.", en: "Total frizz control. Perfect for Puerto Rico's tropical climate." } },
+  { icon: Sparkles, title: { es: "Botox Capilar", en: "Hair Botox" }, desc: { es: "Rejuvenecimiento profundo con colágeno para cabello sedoso.", en: "Deep rejuvenation with collagen for silky, frizz-free hair." } },
+  { icon: Sun, title: { es: "Coloración & Highlights", en: "Color & Highlights" }, desc: { es: "Color, mechas, balayage y corrección con productos premium.", en: "Color, highlights, balayage and correction with premium products." } },
+  { icon: Scissors, title: { es: "Cortes Especializados", en: "Specialist Cuts" }, desc: { es: "Expertos en cabello rizado, liso, fino y grueso.", en: "Experts in curly, straight, fine and thick hair." } },
+  { icon: Shield, title: { es: "Cirugía Capilar", en: "Hair Repair" }, desc: { es: "Tratamiento intensivo para cabello muy dañado.", en: "Intensive repair treatment for severely damaged hair." } },
+  { icon: Wind, title: { es: "Blowouts", en: "Blowouts" }, desc: { es: "Blowouts voluminosos y perfectos para cualquier ocasión.", en: "Voluminous, perfect blowouts for any occasion." } },
 ];
 
 const LuxuryHairSection = () => {
@@ -45,7 +45,6 @@ const LuxuryHairSection = () => {
               </div>
               <h3 className="font-serif text-sm md:text-base font-semibold text-foreground mb-1">{t.title[lang]}</h3>
               <p className="text-muted-foreground text-xs leading-relaxed mb-2 hidden md:block">{t.desc[lang]}</p>
-              <span className="text-primary font-semibold text-xs">{t.price}</span>
             </div>
           ))}
         </div>
