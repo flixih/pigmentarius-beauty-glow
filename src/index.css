@@ -195,3 +195,117 @@ html.light-mode .loader-bg { background: var(--bg) !important; color: var(--t1) 
 
 /* Muted text */
 .text-muted-foreground { color: var(--t3) !important; }
+
+/* ════════════════════════════════════════
+   NUCLEAR LIGHT MODE — overrides everything
+   ════════════════════════════════════════ */
+
+html.light-mode,
+html.light-mode body {
+  background: #faf8f5 !important;
+  color: #111111 !important;
+}
+
+/* Every element in light mode inherits black text */
+html.light-mode *:not([class*="text-primary"]):not([style*="gradient"]):not(img):not(canvas):not(svg):not(path) {
+  color: inherit;
+}
+
+/* All tailwind text-white → black */
+html.light-mode .text-white,
+html.light-mode [class*="text-white"] {
+  color: #111111 !important;
+}
+html.light-mode .text-white\/10 { color: rgba(0,0,0,0.1) !important; }
+html.light-mode .text-white\/15 { color: rgba(0,0,0,0.15) !important; }
+html.light-mode .text-white\/20 { color: rgba(0,0,0,0.2) !important; }
+html.light-mode .text-white\/25 { color: rgba(0,0,0,0.25) !important; }
+html.light-mode .text-white\/30 { color: rgba(0,0,0,0.3) !important; }
+html.light-mode .text-white\/40 { color: rgba(0,0,0,0.45) !important; }
+html.light-mode .text-white\/50 { color: rgba(0,0,0,0.55) !important; }
+html.light-mode .text-white\/60 { color: rgba(0,0,0,0.6) !important; }
+html.light-mode .text-white\/70 { color: rgba(0,0,0,0.7) !important; }
+html.light-mode .text-white\/80 { color: rgba(0,0,0,0.8) !important; }
+
+/* All dark backgrounds → light */
+html.light-mode section,
+html.light-mode footer,
+html.light-mode main > div {
+  background-color: transparent !important;
+}
+
+/* Force all inline dark bg styles */
+html.light-mode [style*="background: \"#050505\""],
+html.light-mode [style*='background: "#050505"'],
+html.light-mode [style*="background: #050505"] { background: #faf8f5 !important; }
+
+html.light-mode [style*="background: \"#070707\""],
+html.light-mode [style*='background: "#070707"'],
+html.light-mode [style*="background: #070707"] { background: #f0ebe4 !important; }
+
+html.light-mode [style*="background: \"#0a0a0a\""],
+html.light-mode [style*='background: "#0a0a0a"'],
+html.light-mode [style*="background: #0a0a0a"] { background: #faf8f5 !important; }
+
+html.light-mode [style*='background: "#000"'],
+html.light-mode [style*="background: \"#000\""],
+html.light-mode [style*="background: #000"] { background: #f0ebe4 !important; }
+
+/* Cards */
+html.light-mode [style*="rgba(255,255,255,0.03)"],
+html.light-mode [style*="rgba(255,255,255,0.04)"],
+html.light-mode [style*="rgba(255,255,255,0.05)"] { background: rgba(0,0,0,0.03) !important; }
+
+/* Borders */
+html.light-mode .border-white\/5,
+html.light-mode .border-white\/6,
+html.light-mode .border-white\/8  { border-color: rgba(0,0,0,0.08) !important; }
+html.light-mode .border-white\/10 { border-color: rgba(0,0,0,0.10) !important; }
+html.light-mode .border-white\/15,
+html.light-mode .border-white\/16 { border-color: rgba(0,0,0,0.12) !important; }
+html.light-mode .border-white\/20 { border-color: rgba(0,0,0,0.15) !important; }
+
+/* Navbar scrolled */
+html.light-mode nav[style*="rgba(5,5,5"] { background: rgba(250,248,245,0.95) !important; }
+
+/* Section bg classes */
+html.light-mode .bg-\[\#0a0a0a\] { background-color: #faf8f5 !important; }
+html.light-mode .bg-\[\#070707\] { background-color: #f0ebe4 !important; }
+html.light-mode .bg-\[\#050505\] { background-color: #faf8f5 !important; }
+
+/* Inputs */
+html.light-mode input,
+html.light-mode select,
+html.light-mode textarea {
+  background: #ffffff !important;
+  color: #111111 !important;
+  border-color: rgba(0,0,0,0.15) !important;
+}
+html.light-mode input::placeholder,
+html.light-mode textarea::placeholder { color: rgba(0,0,0,0.35) !important; }
+
+/* Canvas */
+html.light-mode canvas { opacity: 0.03 !important; }
+
+/* Stroke text (& Cejas line) */
+html.light-mode [style*="-webkit-text-stroke"] {
+  -webkit-text-stroke-color: rgba(0,0,0,0.4) !important;
+}
+
+/* Footer */
+html.light-mode footer { background: #e8e3dc !important; border-color: rgba(0,0,0,0.08) !important; }
+
+/* Muted foreground text */
+html.light-mode .text-muted-foreground { color: rgba(0,0,0,0.5) !important; }
+html.light-mode .text-foreground { color: #111111 !important; }
+
+/* Bg-white/5 etc */
+html.light-mode .bg-white\/5  { background: rgba(0,0,0,0.04) !important; }
+html.light-mode .bg-white\/10 { background: rgba(0,0,0,0.06) !important; }
+
+/* Hover states */
+html.light-mode .hover\:bg-white\/5:hover  { background: rgba(0,0,0,0.04) !important; }
+html.light-mode .hover\:text-white:hover { color: #000000 !important; }
+
+/* Mix blend difference cursor — hide in light */
+html.light-mode div[style*="mix-blend-difference"] { display: none !important; }

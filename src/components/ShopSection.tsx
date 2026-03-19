@@ -37,7 +37,7 @@ const ShopSection = () => {
   ];
 
   return (
-    <section id="tienda" className="py-16 md:py-24 bg-[#0a0a0a]">
+    <section id="tienda" className="py-16 md:py-24" style={{ background: p.pageBg, transition: "background 0.4s ease" }}>
       <div className="container mx-auto px-4">
         <div className="text-center mb-14">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-white/50 text-xs font-medium tracking-widest uppercase mb-6">

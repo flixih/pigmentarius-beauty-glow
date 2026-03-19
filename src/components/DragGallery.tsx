@@ -77,14 +77,14 @@ const DragGallery = () => {
   };
 
   return (
-    <section id="galeria" className="py-20 md:py-32 overflow-hidden" style={{ background: "#000" }}>
+    <section id="galeria" className="py-20 md:py-32 overflow-hidden" style={{ background: p.sectionBg, transition: "background 0.4s ease" }}>
       <div className="container mx-auto px-6 md:px-12 mb-10">
         <div className="flex items-end justify-between">
           <div>
-            <p className="text-white/30 text-xs tracking-[0.4em] uppercase mb-4">{lang === "es" ? "Nuestro Trabajo" : "Our Work"}</p>
-            <ScrambleHeading lang={lang} />
+            <p className="text-xs tracking-[0.4em] uppercase mb-4" style={{ color: p.textMuted }}>{lang === "es" ? "Nuestro Trabajo" : "Our Work"}</p>
+            <ScrambleHeading lang={lang} p={p} />
           </div>
-          <div className="hidden md:flex items-center gap-2 text-white/30 text-xs tracking-widest uppercase select-none">
+          <div className="hidden md:flex items-center gap-2 text-xs tracking-widest uppercase select-none" style={{ color: p.textMuted }}>
             <span>←</span>
             <span data-cursor="DRAG">{lang === "es" ? "Arrastra" : "Drag"}</span>
             <span>→</span>
@@ -152,10 +152,10 @@ const DragGallery = () => {
   );
 };
 
-const ScrambleHeading = ({ lang }: { lang: "es" | "en" }) => {
+const ScrambleHeading = ({ lang, p }: { lang: "es" | "en"; p: any }) => {
   const text = lang === "es" ? "Galería" : "Gallery";
   return (
-    <h2 className="font-serif text-5xl md:text-7xl font-bold text-white" style={{ letterSpacing: "-0.02em" }}>
+    <h2 className="font-serif text-5xl md:text-7xl font-bold" style={{ letterSpacing: "-0.02em", color: p.textPrimary }}>
       {text}
     </h2>
   );

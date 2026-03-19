@@ -8,10 +8,17 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const [theme, setTheme] = useState<Theme>("dark");
 
   useEffect(() => {
+    const html = document.documentElement;
     if (theme === "light") {
-      document.documentElement.classList.add("light-mode");
+      html.classList.add("light-mode");
+      html.style.background = "#faf8f5";
+      document.body.style.background = "#faf8f5";
+      document.body.style.color = "#111111";
     } else {
-      document.documentElement.classList.remove("light-mode");
+      html.classList.remove("light-mode");
+      html.style.background = "#050505";
+      document.body.style.background = "#050505";
+      document.body.style.color = "#ffffff";
     }
   }, [theme]);
 
