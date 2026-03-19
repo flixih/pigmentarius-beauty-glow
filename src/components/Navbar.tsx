@@ -28,7 +28,7 @@ const Navbar = () => {
       style={{ background: scrolled ? "rgba(5,5,5,0.9)" : "transparent", backdropFilter: scrolled ? "blur(20px)" : "none", borderBottom: scrolled ? "1px solid rgba(255,255,255,0.05)" : "none" }}>
 
       <a href="#inicio" className="flex items-center">
-        <img src={logo} alt="Pigmentarius" className="h-7 md:h-9 w-auto opacity-90" style={{ filter: theme === "dark" ? "brightness(0) invert(1)" : "brightness(0)" }} />
+        <img src={logo} alt="Pigmentarius" className={`h-7 md:h-9 w-auto opacity-90 ${theme === "dark" ? "brightness-0 invert" : "brightness-0"}`} />
       </a>
 
       {/* Desktop: minimal links */}
