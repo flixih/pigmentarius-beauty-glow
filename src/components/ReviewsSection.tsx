@@ -27,6 +27,11 @@ const ReviewsSection = () => {
               {t("reviews_title2")}
             </span>
           </h2>
+          <div className="flex items-center justify-center gap-2 mt-4">
+            <div className="flex">{[...Array(5)].map((_, i) => <Star key={i} size={15} className="fill-[hsl(330_85%_60%)] text-[hsl(330_85%_60%)]" />)}</div>
+            <span className="text-white font-semibold text-sm">4.8</span>
+            <span className="text-white/30 text-xs">· 211+ {t("reviews_count")}</span>
+          </div>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
