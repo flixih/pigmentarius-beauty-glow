@@ -89,7 +89,7 @@ const Servicios = () => {
   ];
 
   return (
-    <div style={{ background: "#050505", minHeight: "100vh" }} className="servicios-page">
+    <div className="servicios-page" style={{ minHeight: "100vh" }}>
       <Navbar />
       <main className="pt-20 relative z-10">
 
