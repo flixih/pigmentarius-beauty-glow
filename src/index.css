@@ -158,3 +158,91 @@
 .animate-pulse-glow    { animation: pulse-glow 4s ease-in-out infinite; }
 .animate-line-reveal   { animation: line-reveal 0.8s cubic-bezier(0.16,1,0.3,1) forwards; }
 .animate-slide-up      { animation: slide-up 0.5s ease-out forwards; }
+
+/* ═══════════════════════════════
+   LIGHT MODE — CSS only, no JS
+   ═══════════════════════════════ */
+html.light-mode { background: #f5f0eb !important; }
+html.light-mode body { background: #f5f0eb !important; color: #111 !important; }
+
+/* All sections/footer go light */
+html.light-mode section,
+html.light-mode footer,
+html.light-mode nav { background: #f5f0eb !important; }
+
+html.light-mode .bg-\[\#050505\],
+html.light-mode .bg-\[\#070707\],
+html.light-mode .bg-\[\#0a0a0a\] { background-color: #f5f0eb !important; }
+
+/* Every element inherits black text */
+html.light-mode .text-white      { color: #111111 !important; }
+html.light-mode .text-white\/80  { color: rgba(0,0,0,0.80) !important; }
+html.light-mode .text-white\/70  { color: rgba(0,0,0,0.70) !important; }
+html.light-mode .text-white\/60  { color: rgba(0,0,0,0.60) !important; }
+html.light-mode .text-white\/50  { color: rgba(0,0,0,0.55) !important; }
+html.light-mode .text-white\/40  { color: rgba(0,0,0,0.45) !important; }
+html.light-mode .text-white\/30  { color: rgba(0,0,0,0.35) !important; }
+html.light-mode .text-white\/20  { color: rgba(0,0,0,0.22) !important; }
+html.light-mode .text-white\/15  { color: rgba(0,0,0,0.18) !important; }
+html.light-mode .text-white\/10  { color: rgba(0,0,0,0.12) !important; }
+html.light-mode .text-foreground { color: #111111 !important; }
+html.light-mode .text-muted-foreground { color: rgba(0,0,0,0.5) !important; }
+
+/* Borders */
+html.light-mode .border-white\/8  { border-color: rgba(0,0,0,0.08) !important; }
+html.light-mode .border-white\/10 { border-color: rgba(0,0,0,0.10) !important; }
+html.light-mode .border-white\/15 { border-color: rgba(0,0,0,0.13) !important; }
+html.light-mode .border-white\/16 { border-color: rgba(0,0,0,0.14) !important; }
+html.light-mode .border-white\/20 { border-color: rgba(0,0,0,0.16) !important; }
+html.light-mode .border-white\/30 { border-color: rgba(0,0,0,0.20) !important; }
+
+/* Cards */
+html.light-mode .bg-white\/5  { background: rgba(0,0,0,0.04) !important; }
+html.light-mode .bg-white\/10 { background: rgba(0,0,0,0.06) !important; }
+
+/* Inline style backgrounds — covers all the style={{ background: "#050505" }} etc */
+html.light-mode [style*="#050505"] { background: #f5f0eb !important; }
+html.light-mode [style*="#070707"] { background: #ece6df !important; }
+html.light-mode [style*="#0a0a0a"] { background: #f5f0eb !important; }
+html.light-mode [style*='"#000"']  { background: #ece6df !important; }
+html.light-mode [style*="rgba(255,255,255,0.03)"] { background: rgba(0,0,0,0.03) !important; }
+html.light-mode [style*="rgba(255,255,255,0.04)"] { background: rgba(0,0,0,0.04) !important; }
+html.light-mode [style*="rgba(255,255,255,0.05)"] { background: rgba(0,0,0,0.05) !important; }
+
+/* Inline text color overrides */
+html.light-mode [style*="color: \"white\""]       { color: #111111 !important; }
+html.light-mode [style*="color: white"]           { color: #111111 !important; }
+html.light-mode [style*="color: \"rgba(255,255,255"] { color: #111111 !important; }
+
+/* Stroke text (& Cejas) */
+html.light-mode [style*="-webkit-text-stroke"] {
+  -webkit-text-stroke-color: rgba(0,0,0,0.45) !important;
+}
+
+/* Inputs */
+html.light-mode input,
+html.light-mode select,
+html.light-mode textarea {
+  background: #ffffff !important;
+  color: #111111 !important;
+  border-color: rgba(0,0,0,0.15) !important;
+}
+html.light-mode input::placeholder,
+html.light-mode textarea::placeholder { color: rgba(0,0,0,0.35) !important; }
+
+/* Navbar scrolled glass */
+html.light-mode nav[style*="rgba(5,5,5"] { background: rgba(245,240,235,0.95) !important; }
+
+/* Footer */
+html.light-mode footer { background: #e8e2da !important; }
+
+/* Canvas (animated bg) — nearly invisible */
+html.light-mode canvas { opacity: 0.04 !important; }
+
+/* Hover states */
+html.light-mode .hover\:bg-\[#070707\]:hover { background: #ece6df !important; }
+html.light-mode .hover\:text-white:hover { color: #000000 !important; }
+html.light-mode .hover\:bg-white:hover { background: #111111 !important; color: #ffffff !important; }
+
+/* Custom cursor dot — black in light mode */
+html.light-mode [style*="mix-blend-difference"] { mix-blend-mode: normal !important; background: #111 !important; }
