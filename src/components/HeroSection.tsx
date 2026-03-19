@@ -11,10 +11,8 @@ const PHOTOS = [
   "https://images.pexels.com/photos/3765147/pexels-photo-3765147.jpeg?auto=compress&cs=tinysrgb&w=900",
 ];
 
-// Cursor glow (desktop)
-export const CursorGlow = () => null; // replaced by CustomCursor
+export const CursorGlow = () => null;
 
-// Mobile carousel
 const MobileCarousel = () => {
   const [active, setActive] = useState(0);
   useEffect(() => {
@@ -42,54 +40,108 @@ const MobileCarousel = () => {
 const HeroSection = () => {
   const { t, lang } = useLanguage();
   const [visible, setVisible] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+  const [mouse, setMouse] = useState({ x: 0, y: 0 });
+  const [glowPos, setGlowPos] = useState({ x: 0, y: 0 });
+  const headlineRef = useRef<HTMLDivElement>(null);
+  const glowRef = useRef({ x: 0, y: 0 });
+  const rafRef = useRef(0);
 
   useEffect(() => {
     const t = setTimeout(() => setVisible(true), 200);
     return () => clearTimeout(t);
   }, []);
 
+  // Parallax on scroll
+  useEffect(() => {
+    const onScroll = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Mouse glow — very faint pink that follows cursor with lag
+  useEffect(() => {
+    const onMove = (e: MouseEvent) => {
+      setMouse({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener("mousemove", onMove);
+
+    const animate = () => {
+      glowRef.current.x += (mouse.x - glowRef.current.x) * 0.06;
+      glowRef.current.y += (mouse.y - glowRef.current.y) * 0.06;
+      setGlowPos({ x: glowRef.current.x, y: glowRef.current.y });
+      rafRef.current = requestAnimationFrame(animate);
+    };
+    rafRef.current = requestAnimationFrame(animate);
+
+    return () => {
+      window.removeEventListener("mousemove", onMove);
+      cancelAnimationFrame(rafRef.current);
+    };
+  }, [mouse.x, mouse.y]);
+
+  const headline = lang === "es" ? "Tu transformación empieza aquí" : "Your transformation starts here";
+
   return (
     <section id="inicio" className="relative min-h-screen flex flex-col justify-center px-6 md:px-16 pt-24 pb-16 overflow-hidden" style={{ background: "#050505" }}>
 
-      {/* Subtle grain texture */}
+      {/* Very faint pink mouse glow — desktop only */}
+      <div className="fixed pointer-events-none z-0 hidden md:block"
+        style={{
+          width: "500px",
+          height: "500px",
+          borderRadius: "50%",
+          background: "radial-gradient(circle, hsl(330 85% 60% / 0.07) 0%, transparent 65%)",
+          transform: `translate(${glowPos.x - 250}px, ${glowPos.y - 250}px)`,
+          transition: "none",
+        }} />
+
+      {/* Grain */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.03]"
         style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")", backgroundSize: "200px" }} />
 
-      {/* Content grid */}
       <div className={`relative z-10 max-w-5xl transition-opacity duration-700 ${visible ? "opacity-100" : "opacity-0"}`}>
 
-        {/* Location tag — Unseen style */}
+        {/* Location tag */}
         <div className="flex items-center gap-4 mb-10 md:mb-16">
           <div className="w-6 h-px bg-white/30" />
           <span className="text-white/30 text-xs tracking-[0.4em] uppercase">Añasco, Puerto Rico</span>
         </div>
 
-        {/* Giant headline */}
-        <div className="overflow-hidden mb-2">
-          <h1 className="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-[10rem] font-bold leading-none text-white"
-            style={{ letterSpacing: "-0.03em", lineHeight: 0.9 }}>
-            <ScrambleText text={lang === "es" ? "Cabello" : "Beautiful"} delay={300} trigger={lang === "es"} />
-          </h1>
-        </div>
-        <div className="mb-2 pb-4">
-          <h1 className="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-[10rem] font-bold leading-none"
-            style={{ letterSpacing: "-0.03em", lineHeight: 0.9, WebkitTextStroke: "1.5px rgba(255,255,255,0.55)", color: "transparent", paintOrder: "stroke fill" }}>
-            <ScrambleText text={lang === "es" ? "& Cejas" : "& Brows"} delay={500} trigger={lang === "es"} />
-          </h1>
-        </div>
-        <div className="overflow-hidden">
-          <h1 className="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-[10rem] font-bold leading-none text-white"
-            style={{ letterSpacing: "-0.03em", lineHeight: 0.9 }}>
-            <ScrambleText text={lang === "es" ? "Perfectas" : "Perfected"} delay={700} trigger={lang === "es"} />
+        {/* Headline — parallax on scroll + mouse tilt */}
+        <div
+          ref={headlineRef}
+          style={{
+            transform: `translateY(${scrollY * -0.18}px)`,
+            transition: "transform 0.05s linear",
+          }}
+        >
+          {/* Pink glow bloom behind text — barely visible */}
+          <div className="absolute pointer-events-none hidden md:block"
+            style={{
+              width: "700px",
+              height: "300px",
+              left: "-50px",
+              top: "-30px",
+              background: "radial-gradient(ellipse, hsl(330 85% 55% / 0.06) 0%, transparent 70%)",
+              filter: "blur(40px)",
+            }} />
+
+          <h1 className="font-serif font-bold text-white relative"
+            style={{
+              fontSize: "clamp(2.8rem, 8vw, 7rem)",
+              letterSpacing: "-0.03em",
+              lineHeight: 1.05,
+            }}>
+            <ScrambleText text={headline} delay={300} trigger={lang === "es"} />
           </h1>
         </div>
 
-        {/* Bottom row — description + CTA */}
+        {/* Bottom row */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mt-12 md:mt-16 pt-8 border-t border-white/8">
           <p className="text-white/40 text-sm md:text-base leading-relaxed max-w-sm">
             {t("hero_desc")}
           </p>
-
           <div className="flex items-center gap-6">
             <MagneticButton href="#contacto"
               className="inline-flex items-center gap-3 text-white text-sm font-semibold tracking-wide group link-underline">
@@ -98,7 +150,6 @@ const HeroSection = () => {
                 <ArrowRight size={14} />
               </span>
             </MagneticButton>
-
             <div className="text-white/20 text-xs tracking-[0.3em] uppercase hidden md:flex flex-col gap-1">
               <span>4.8★ Google</span>
               <span>211+ Reviews</span>
@@ -111,11 +162,11 @@ const HeroSection = () => {
           <MobileCarousel />
         </div>
 
-        {/* Desktop: floating image pair */}
+        {/* Desktop floating images */}
         <div className="hidden md:grid grid-cols-2 gap-4 mt-12 max-w-lg ml-auto">
           {PHOTOS.slice(0, 2).map((src, i) => (
             <div key={i} className="overflow-hidden rounded animate-float" style={{ animationDelay: `${i * 1.2}s`, aspectRatio: "3/4" }}>
-              <img src={src} alt="" className="w-full h-full object-cover opacity-75 hover:opacity-100 transition-opacity duration-500 hover:scale-105 transition-transform" draggable={false} />
+              <img src={src} alt="" className="w-full h-full object-cover opacity-75 hover:opacity-100 transition-opacity duration-500" draggable={false} />
             </div>
           ))}
         </div>
