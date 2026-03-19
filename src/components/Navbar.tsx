@@ -1,14 +1,12 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Globe, Sun, Moon } from "lucide-react";
-import logo from "@/assets/logo-real.webp";
+import { Menu, X, Globe } from "lucide-react";
+import logo from "@/assets/logo-real.png";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { useTheme } from "@/contexts/ThemeContext";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { lang, toggleLang, t } = useLanguage();
-  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 40);
@@ -25,7 +23,7 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 px-6 md:px-16 flex items-center justify-between h-16 md:h-20 transition-all duration-500"
-      style={{ background: scrolled ? "var(--nav-bg)" : "transparent", backdropFilter: scrolled ? "blur(20px)" : "none", borderBottom: scrolled ? "1px solid rgba(255,255,255,0.05)" : "none" }}>
+      style={{ background: scrolled ? "rgba(5,5,5,0.9)" : "transparent", backdropFilter: scrolled ? "blur(20px)" : "none", borderBottom: scrolled ? "1px solid rgba(255,255,255,0.05)" : "none" }}>
 
       <a href="#inicio" className="flex items-center">
         <img src={logo} alt="Pigmentarius" className="h-7 md:h-9 w-auto brightness-0 invert opacity-90" />
@@ -41,15 +39,10 @@ const Navbar = () => {
         ))}
       </div>
 
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-3">
         <button onClick={toggleLang}
           className="flex items-center gap-1.5 text-white/40 hover:text-white text-xs tracking-widest transition-colors border border-white/10 hover:border-white/30 px-3 py-1.5 rounded-full">
           <Globe size={11} />{lang === "es" ? "EN" : "ES"}
-        </button>
-        <button onClick={toggleTheme}
-          className="flex items-center justify-center w-8 h-8 rounded-full border border-white/10 hover:border-white/30 text-white/40 hover:text-white transition-all duration-200"
-          aria-label="Toggle theme">
-          {theme === "dark" ? <Sun size={13} /> : <Moon size={13} />}
         </button>
         <a href="#contacto"
           className="hidden md:inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-white border border-white/20 px-5 py-2.5 rounded-full hover:bg-white hover:text-black transition-all duration-300">

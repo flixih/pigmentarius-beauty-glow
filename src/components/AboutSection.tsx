@@ -6,7 +6,7 @@ const REAL_2 = "https://images.pexels.com/photos/3065209/pexels-photo-3065209.jp
 const AboutSection = () => {
   const { t } = useLanguage();
   return (
-    <section id="nosotros" className="py-20 md:py-32 relative" style={{ background: "var(--bg3)" }}>
+    <section id="nosotros" className="py-20 md:py-32 relative" style={{ background: "#0a0a0a" }}>
       <div className="absolute top-0 right-0 w-80 h-80 rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, hsl(40 80% 60% / 0.07) 0%, transparent 70%)" }} />
 
       <div className="container mx-auto px-4">
@@ -46,7 +46,7 @@ const AboutSection = () => {
 
             {/* Owner */}
             <div className="flex items-center gap-3 mt-8 pt-6 border-t border-white/8">
-              <div className="w-10 h-10 rounded-full flex items-center justify-center font-serif text-lg font-bold border border-white/15" style={{ background: "var(--card)", color: "hsl(330 85% 65%)" }}>W</div>
+              <div className="w-10 h-10 rounded-full flex items-center justify-center font-serif text-lg font-bold border border-white/15" style={{ background: "rgba(255,255,255,0.05)", color: "hsl(330 85% 65%)" }}>W</div>
               <div>
                 <p className="text-white font-semibold text-sm">Windy Arroyo</p>
                 <p className="text-xs tracking-wide" style={{ color: "hsl(330 85% 60%)" }}>{t("about_founder")}</p>

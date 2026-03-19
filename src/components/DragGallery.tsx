@@ -1,17 +1,15 @@
 import { useRef, useState, useEffect } from "react";
-import { useTheme } from "@/contexts/ThemeContext";
-import { palette } from "@/lib/theme";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-import g01 from "@/assets/gallery-01.webp";
-import g02 from "@/assets/gallery-02.webp";
-import g03 from "@/assets/gallery-03.webp";
-import g04 from "@/assets/gallery-04.webp";
-import g05 from "@/assets/gallery-05.webp";
-import g06 from "@/assets/gallery-06.webp";
-import g07 from "@/assets/gallery-07.webp";
-import g08 from "@/assets/gallery-08.webp";
-import g09 from "@/assets/gallery-09.webp";
+import g01 from "@/assets/gallery-01.png";
+import g02 from "@/assets/gallery-02.png";
+import g03 from "@/assets/gallery-03.png";
+import g04 from "@/assets/gallery-04.png";
+import g05 from "@/assets/gallery-05.png";
+import g06 from "@/assets/gallery-06.png";
+import g07 from "@/assets/gallery-07.png";
+import g08 from "@/assets/gallery-08.png";
+import g09 from "@/assets/gallery-09.png";
 
 const photos = [
   { src: g01, label: "01" },
@@ -26,8 +24,6 @@ const photos = [
 ];
 
 const DragGallery = () => {
-  const { theme } = useTheme();
-  const pal = palette(theme);
   const { lang } = useLanguage();
   const trackRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -77,14 +73,14 @@ const DragGallery = () => {
   };
 
   return (
-    <section id="galeria" className="py-20 md:py-32 overflow-hidden" style={{ background: pal.sectionBg, transition: "background 0.4s ease" }}>
+    <section id="galeria" className="py-20 md:py-32 overflow-hidden" style={{ background: "#000" }}>
       <div className="container mx-auto px-6 md:px-12 mb-10">
         <div className="flex items-end justify-between">
           <div>
-            <p className="text-xs tracking-[0.4em] uppercase mb-4" style={{ color: pal.textMuted }}>{lang === "es" ? "Nuestro Trabajo" : "Our Work"}</p>
-            <ScrambleHeading lang={lang} p={p} />
+            <p className="text-white/30 text-xs tracking-[0.4em] uppercase mb-4">{lang === "es" ? "Nuestro Trabajo" : "Our Work"}</p>
+            <ScrambleHeading lang={lang} />
           </div>
-          <div className="hidden md:flex items-center gap-2 text-xs tracking-widest uppercase select-none" style={{ color: pal.textMuted }}>
+          <div className="hidden md:flex items-center gap-2 text-white/30 text-xs tracking-widest uppercase select-none">
             <span>←</span>
             <span data-cursor="DRAG">{lang === "es" ? "Arrastra" : "Drag"}</span>
             <span>→</span>
@@ -110,7 +106,7 @@ const DragGallery = () => {
         onTouchEnd={onUp}
         data-cursor="DRAG"
       >
-        {photos.map((photo, i) => (
+        {photos.map((p, i) => (
           <div
             key={i}
             className="flex-shrink-0 relative overflow-hidden group"
@@ -125,8 +121,8 @@ const DragGallery = () => {
             onMouseLeave={() => setActiveIdx(null)}
           >
             <img
-              src={photo.src}
-              alt={photo.label}
+              src={p.src}
+              alt={p.label}
               className="w-full h-full object-cover"
               style={{
                 transform: isDragging ? "scale(1.05)" : "scale(1)",
@@ -138,7 +134,7 @@ const DragGallery = () => {
             <div className="absolute inset-0 flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
               style={{ background: "linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%)" }}>
               <div>
-                <p className="text-sm font-semibold tracking-widest" style={{ color: "rgba(255,255,255,0.8)" }}>{photo.label}</p>
+                <p className="text-white/50 text-sm font-semibold tracking-widest">{p.label}</p>
               </div>
             </div>
           </div>
@@ -152,10 +148,10 @@ const DragGallery = () => {
   );
 };
 
-const ScrambleHeading = ({ lang, p }: { lang: "es" | "en"; p: any }) => {
+const ScrambleHeading = ({ lang }: { lang: "es" | "en" }) => {
   const text = lang === "es" ? "Galería" : "Gallery";
   return (
-    <h2 className="font-serif text-5xl md:text-7xl font-bold" style={{ letterSpacing: "-0.02em", color: pal.textPrimary }}>
+    <h2 className="font-serif text-5xl md:text-7xl font-bold text-white" style={{ letterSpacing: "-0.02em" }}>
       {text}
     </h2>
   );

@@ -12,7 +12,7 @@ const photos = [
 const GallerySection = () => {
   const { lang, t } = useLanguage();
   return (
-    <section id="galeria" className="py-20 md:py-32 relative" style={{ background: "var(--bg2)" }}>
+    <section id="galeria" className="py-20 md:py-32 relative" style={{ background: "#070707" }}>
       <div className="container mx-auto px-4">
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-12 gap-4">
           <div>
@@ -36,7 +36,7 @@ const GallerySection = () => {
           {photos.map((p, i) => (
             <div key={i} className={`group relative overflow-hidden rounded-xl border border-white/5 hover:border-white/15 transition-all duration-500 ${p.span}`}>
               <img src={p.src} alt={p.label[lang]} className="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" loading="lazy" />
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-4" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 50%)" }}>
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-4" style={{ background: "linear-gradient(to top, rgba(10,10,10,0.8) 0%, transparent 50%)" }}>
                 <span className="text-white font-semibold text-sm">{p.label[lang]}</span>
               </div>
             </div>

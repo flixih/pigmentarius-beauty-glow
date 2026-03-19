@@ -2,7 +2,7 @@ import { ArrowLeft, ShoppingCart, Star, Check } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import ledMask from "@/assets/led-mask.jpg";
-import logo from "@/assets/logo.webp";
+import logo from "@/assets/logo.png";
 
 const products = [
   {

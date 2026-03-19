@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom";
 import { ArrowLeft, Phone } from "lucide-react";
-import { useTheme } from "@/contexts/ThemeContext";
-import { palette } from "@/lib/theme";
 import { useLanguage } from "@/contexts/LanguageContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -29,7 +27,7 @@ const IMG = {
 };
 
 const ServiceCard = ({ photo, name, desc }: { photo: string; name: string; desc: string }) => (
-  <div className="group rounded-2xl overflow-hidden border border-white/8 hover:border-white/20 transition-all duration-300 hover:-translate-y-0.5" style={{ background: p.cardBg }}>
+  <div className="group rounded-2xl overflow-hidden border border-white/8 hover:border-white/20 transition-all duration-300 hover:-translate-y-0.5" style={{ background: "rgba(255,255,255,0.03)" }}>
     <div className="aspect-video overflow-hidden">
       <img src={photo} alt={name} className="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" loading="lazy" />
     </div>
@@ -41,8 +39,6 @@ const ServiceCard = ({ photo, name, desc }: { photo: string; name: string; desc:
 );
 
 const Servicios = () => {
-  const { theme } = useTheme();
-  const p = palette(theme);
   const { lang } = useLanguage();
 
   const allServices = [
@@ -93,7 +89,7 @@ const Servicios = () => {
   ];
 
   return (
-    <div style={{ background: p.pageBg, minHeight: "100vh" }}>
+    <div style={{ background: "#050505", minHeight: "100vh" }}>
       <Navbar />
       <main className="pt-20 relative z-10">
 

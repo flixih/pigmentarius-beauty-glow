@@ -8,9 +8,10 @@ import ShopSection from "@/components/ShopSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import FloatingBookButton from "@/components/FloatingBookButton";
-import { useEffect } from "react";
-import { useTheme } from "@/contexts/ThemeContext";
-import { palette } from "@/lib/theme";
+import AnimatedBackground from "@/components/AnimatedBackground";
+import CustomCursor from "@/components/CustomCursor";
+import PageLoader from "@/components/PageLoader";
+import { useEffect, useState } from "react";
 
 const useScrollReveal = () => {
   useEffect(() => {
@@ -36,27 +37,31 @@ const useScrollReveal = () => {
 };
 
 const Index = () => {
-  const { theme } = useTheme();
-  const p = palette(theme);
+  const [loaded, setLoaded] = useState(false);
   useScrollReveal();
 
   return (
-    <div style={{ background: p.pageBg, minHeight: "100vh", transition: "background 0.4s ease, color 0.4s ease", color: p.textPrimary }}>
-      <Navbar />
-      <main className="relative z-10">
-        <HeroSection />
-        <div data-reveal><ReviewsSection /></div>
-        <FounderSection />
-        <div data-reveal><ServicesSection /></div>
-        <DragGallery />
-        <div data-reveal><ShopSection /></div>
-        <div data-reveal><ContactSection /></div>
-      </main>
-      <Footer />
-      <FloatingBookButton />
+    <div style={{ background: "#050505" }}>
+      <PageLoader onComplete={() => setLoaded(true)} />
+      <CustomCursor />
+      <AnimatedBackground />
+
+      <div style={{ opacity: loaded ? 1 : 0, transition: "opacity 0.5s ease" }}>
+        <Navbar />
+        <main className="relative z-10">
+          <HeroSection />
+          <div data-reveal><ReviewsSection /></div>
+          <FounderSection />
+          <div data-reveal><ServicesSection /></div>
+          <DragGallery />
+          <div data-reveal><ShopSection /></div>
+          <div data-reveal><ContactSection /></div>
+        </main>
+        <Footer />
+        <FloatingBookButton />
+      </div>
     </div>
   );
 };
 
 export default Index;
-

@@ -4,7 +4,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 const CTASection = () => {
   const { t } = useLanguage();
   return (
-    <section className="py-20 md:py-32 relative overflow-hidden" style={{ background: "var(--bg2)" }}>
+    <section className="py-20 md:py-32 relative overflow-hidden" style={{ background: "#070707" }}>
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full" style={{ background: "radial-gradient(circle, hsl(330 85% 60% / 0.12) 0%, transparent 70%)" }} />
       </div>

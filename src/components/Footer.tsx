@@ -1,11 +1,7 @@
 import { Instagram, Facebook, Heart } from "lucide-react";
-import { useTheme } from "@/contexts/ThemeContext";
-import { palette } from "@/lib/theme";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const Footer = () => {
-  const { theme } = useTheme();
-  const p = palette(theme);
   const { lang, t } = useLanguage();
   const links = [
     { label: t("nav_inicio"), href: "#inicio" },
@@ -16,7 +12,7 @@ const Footer = () => {
     { label: t("nav_contacto"), href: "#contacto" },
   ];
   return (
-    <footer className="border-t border-white/8 py-12" style={{ background: p.sectionBg }}>
+    <footer className="border-t border-white/8 py-12" style={{ background: "#070707" }}>
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-10">
           <div className="col-span-2 md:col-span-1">

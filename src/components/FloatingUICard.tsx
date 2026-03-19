@@ -72,7 +72,7 @@ const FloatingUICard = ({ title, subtitle, tags = [], progress, items = [], chil
           {tags.length > 0 && (
             <div className="flex gap-1 mt-2 flex-wrap">
               {tags.map(tag => (
-                <span key={tag} className="text-[9px] px-1.5 py-0.5 rounded-full border border-white/15 text-white/60" style={{ background: "var(--input-bg)" }}>
+                <span key={tag} className="text-[9px] px-1.5 py-0.5 rounded-full border border-white/15 text-white/60" style={{ background: "rgba(255,255,255,0.07)" }}>
                   {tag}
                 </span>
               ))}
@@ -96,9 +96,9 @@ const FloatingUICard = ({ title, subtitle, tags = [], progress, items = [], chil
         {items.length > 0 && (
           <div className="p-2 space-y-1">
             {items.map((item, i) => (
-              <div key={item} className="flex items-center gap-2 px-1 py-1 rounded-lg" style={{ background: i === 0 ? "var(--card)" : "transparent" }}>
+              <div key={item} className="flex items-center gap-2 px-1 py-1 rounded-lg" style={{ background: i === 0 ? "rgba(255,255,255,0.05)" : "transparent" }}>
                 <div className="w-3 h-3 rounded flex items-center justify-center flex-shrink-0 border border-white/20" style={{ background: i === 0 ? "hsl(330 85% 55%)" : "transparent" }}>
-                  {i === 0 && <svg width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3L3 5L7 1" stroke="var(--t1)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>}
+                  {i === 0 && <svg width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3L3 5L7 1" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>}
                 </div>
                 <span className={`text-[10px] ${i === 0 ? "text-white/70 line-through" : "text-white/40"}`}>{item}</span>
               </div>

@@ -1,6 +1,4 @@
 import { Star, Quote } from "lucide-react";
-import { useTheme } from "@/contexts/ThemeContext";
-import { palette } from "@/lib/theme";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const reviews = [
@@ -13,11 +11,9 @@ const reviews = [
 ];
 
 const ReviewsSection = () => {
-  const { theme } = useTheme();
-  const p = palette(theme);
   const { lang, t } = useLanguage();
   return (
-    <section id="resenas" className="py-20 md:py-32 relative" style={{ background: p.pageBg }}>
+    <section id="resenas" className="py-20 md:py-32 relative" style={{ background: "#0a0a0a" }}>
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-96 h-48 pointer-events-none" style={{ background: "radial-gradient(ellipse, hsl(330 85% 60% / 0.08) 0%, transparent 70%)" }} />
 
       <div className="container mx-auto px-4">
@@ -40,7 +36,7 @@ const ReviewsSection = () => {
 
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
           {reviews.map((review, i) => (
-            <div key={i} className="rounded-2xl p-6 border border-white/8 hover:border-white/15 transition-all duration-500 flex flex-col group" style={{ background: p.cardBg }}>
+            <div key={i} className="rounded-2xl p-6 border border-white/8 hover:border-white/15 transition-all duration-500 flex flex-col group" style={{ background: "rgba(255,255,255,0.03)" }}>
               <Quote size={16} className="mb-2 md:mb-4 flex-shrink-0" style={{ color: "hsl(330 85% 60% / 0.4)" }} />
               <p className="text-white/60 leading-relaxed mb-3 md:mb-5 italic text-xs md:text-sm flex-1">"{review.text[lang]}"</p>
               <div className="flex items-center justify-between pt-3 border-t border-white/8">

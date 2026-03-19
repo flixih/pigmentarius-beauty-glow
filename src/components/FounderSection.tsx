@@ -1,18 +1,14 @@
 import { useState, useEffect } from "react";
-import { useTheme } from "@/contexts/ThemeContext";
-import { palette } from "@/lib/theme";
 import { useLanguage } from "@/contexts/LanguageContext";
-import w01 from "@/assets/windy-01.webp";
-import w02 from "@/assets/windy-02.webp";
-import w03 from "@/assets/windy-03.webp";
-import w04 from "@/assets/windy-04.webp";
-import w05 from "@/assets/windy-05.webp";
+import w01 from "@/assets/windy-01.png";
+import w02 from "@/assets/windy-02.png";
+import w03 from "@/assets/windy-03.png";
+import w04 from "@/assets/windy-04.png";
+import w05 from "@/assets/windy-05.png";
 
 const photos = [w01, w02, w03, w04, w05];
 
 const FounderSection = () => {
-  const { theme } = useTheme();
-  const p = palette(theme);
   const { lang } = useLanguage();
   const [active, setActive] = useState(0);
 
@@ -49,7 +45,7 @@ const FounderSection = () => {
   const c = content[lang];
 
   return (
-    <section id="nosotros" className="py-20 md:py-32 relative overflow-hidden" style={{ background: p.sectionBg }}>
+    <section id="nosotros" className="py-20 md:py-32 relative overflow-hidden" style={{ background: "#070707" }}>
       {/* Glow */}
       <div className="absolute top-1/2 right-0 w-96 h-96 -translate-y-1/2 pointer-events-none"
         style={{ background: "radial-gradient(circle, hsl(330 85% 60% / 0.07) 0%, transparent 70%)" }} />
@@ -73,7 +69,7 @@ const FounderSection = () => {
                   style={{ opacity: i === active ? 1 : 0, transform: i === active ? "scale(1)" : "scale(1.03)" }} />
               ))}
               {/* Subtle overlay */}
-              <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 50%)" }} />
+              <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(7,7,7,0.5) 0%, transparent 50%)" }} />
             </div>
 
             {/* Thumbnail strip */}
@@ -81,7 +77,7 @@ const FounderSection = () => {
               {photos.map((src, i) => (
                 <button key={i} onClick={() => setActive(i)}
                   className="flex-1 rounded-lg overflow-hidden border transition-all duration-300"
-                  style={{ aspectRatio: "1/1", borderColor: i === active ? "hsl(330 85% 60%)" : "var(--border)" }}>
+                  style={{ aspectRatio: "1/1", borderColor: i === active ? "hsl(330 85% 60%)" : "rgba(255,255,255,0.08)" }}>
                   <img src={src} alt="" className="w-full h-full object-cover object-top transition-opacity duration-300"
                     style={{ opacity: i === active ? 1 : 0.4 }} />
                 </button>
