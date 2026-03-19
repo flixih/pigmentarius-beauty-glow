@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import ownerPhoto from "@/assets/owner-wildaliz.png";
+import ownerPhoto from "@/assets/owner-wildaliz-cropped.png";
 import ScrambleText from "./ScrambleText";
 
 const PHOTOS = [
@@ -30,7 +30,7 @@ const MobileCarousel = ({ ownerPhoto }: { ownerPhoto: string }) => {
       {/* Name overlay on first slide */}
       {active === 0 && (
         <div className="absolute bottom-0 left-0 right-0 p-4" style={{ background: "linear-gradient(to top, rgba(5,5,5,0.8) 0%, transparent 60%)" }}>
-          <p className="text-white font-semibold text-sm">Wildaliz Arroyo</p>
+          <p className="text-white font-semibold text-sm">Windy Arroyo</p>
           <p className="text-white/50 text-xs">Fundadora & Dueña · Pigmentarius</p>
         </div>
       )}
@@ -170,21 +170,35 @@ const HeroSection = () => {
           <MobileCarousel ownerPhoto={ownerPhoto} />
         </div>
 
-        {/* Desktop: owner card + one hair photo */}
+        {/* Desktop: owner card + hair photo */}
         <div className="hidden md:flex gap-5 mt-12 max-w-lg ml-auto items-end">
-          {/* Owner photo card */}
+          {/* Owner card — proper founder card */}
           <div className="flex-1 animate-float" style={{ animationDelay: "0s" }}>
-            <div className="relative overflow-hidden rounded-2xl border border-white/10" style={{ aspectRatio: "3/4" }}>
-              <img src={ownerPhoto} alt="Wildaliz Arroyo" className="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity duration-500" draggable={false} />
-              <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(5,5,5,0.85) 0%, transparent 55%)" }} />
-              <div className="absolute bottom-0 left-0 right-0 p-4">
-                <p className="text-white font-semibold text-sm leading-tight">Wildaliz Arroyo</p>
-                <p className="text-white/50 text-xs mt-0.5 tracking-wide">
+            <div className="relative rounded-2xl border border-white/10 overflow-hidden" style={{ background: "rgba(255,255,255,0.04)", aspectRatio: "3/4" }}>
+              {/* Portrait fills card */}
+              <img
+                src={ownerPhoto}
+                alt="Windy Arroyo"
+                className="w-full h-full object-cover object-top"
+                style={{ transform: "scale(1.05)" }}
+                draggable={false}
+              />
+              {/* Gradient overlay at bottom */}
+              <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(5,5,5,0.92) 0%, rgba(5,5,5,0.3) 45%, transparent 70%)" }} />
+              {/* Info */}
+              <div className="absolute bottom-0 left-0 right-0 p-5">
+                <p className="text-white font-bold text-base leading-tight">Windy Arroyo</p>
+                <p className="text-white/50 text-xs mt-1 tracking-wide">
                   {lang === "es" ? "Fundadora & Dueña" : "Founder & Owner"}
                 </p>
-                <div className="flex items-center gap-1.5 mt-2">
-                  <div className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "hsl(330 85% 60%)" }} />
-                  <span className="text-white/30 text-[10px] tracking-widest uppercase">Pigmentarius</span>
+                <p className="text-white/30 text-[10px] mt-1 leading-relaxed">
+                  {lang === "es"
+                    ? "Salón de belleza en Añasco, Puerto Rico"
+                    : "Beauty salon in Añasco, Puerto Rico"}
+                </p>
+                <div className="flex items-center gap-1.5 mt-3 pt-3 border-t border-white/10">
+                  <div className="w-1.5 h-1.5 rounded-full animate-pulse flex-shrink-0" style={{ background: "hsl(330 85% 60%)" }} />
+                  <span className="text-white/30 text-[10px] tracking-[0.2em] uppercase">Pigmentarius</span>
                 </div>
               </div>
             </div>
