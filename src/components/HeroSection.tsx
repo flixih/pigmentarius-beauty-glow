@@ -1,32 +1,20 @@
-import { Star, ArrowRight, Phone } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { useRef, useEffect, useState } from "react";
+import MagneticButton from "./MagneticButton";
+import ScrambleText from "./ScrambleText";
 
 const PHOTOS = [
-  "https://images.pexels.com/photos/1319460/pexels-photo-1319460.jpeg?auto=compress&cs=tinysrgb&w=800",
-  "https://images.pexels.com/photos/5069397/pexels-photo-5069397.jpeg?auto=compress&cs=tinysrgb&w=800",
-  "https://images.pexels.com/photos/3065209/pexels-photo-3065209.jpeg?auto=compress&cs=tinysrgb&w=800",
-  "https://images.pexels.com/photos/3765147/pexels-photo-3765147.jpeg?auto=compress&cs=tinysrgb&w=800",
+  "https://images.pexels.com/photos/1319460/pexels-photo-1319460.jpeg?auto=compress&cs=tinysrgb&w=900",
+  "https://images.pexels.com/photos/5069397/pexels-photo-5069397.jpeg?auto=compress&cs=tinysrgb&w=900",
+  "https://images.pexels.com/photos/3065209/pexels-photo-3065209.jpeg?auto=compress&cs=tinysrgb&w=900",
+  "https://images.pexels.com/photos/3765147/pexels-photo-3765147.jpeg?auto=compress&cs=tinysrgb&w=900",
 ];
 
-// Cursor glow (desktop only)
-export const CursorGlow = () => {
-  const dotRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const move = (e: MouseEvent) => {
-      if (!dotRef.current) return;
-      dotRef.current.style.transform = `translate(${e.clientX - 200}px, ${e.clientY - 200}px)`;
-    };
-    window.addEventListener("mousemove", move);
-    return () => window.removeEventListener("mousemove", move);
-  }, []);
-  return (
-    <div ref={dotRef} className="fixed top-0 left-0 w-[400px] h-[400px] rounded-full pointer-events-none z-0 transition-transform duration-300 ease-out hidden md:block"
-      style={{ background: "radial-gradient(circle, hsl(330 85% 60% / 0.06) 0%, transparent 70%)" }} />
-  );
-};
+// Cursor glow (desktop)
+export const CursorGlow = () => null; // replaced by CustomCursor
 
-// Mobile: auto-rotating photo carousel
+// Mobile carousel
 const MobileCarousel = () => {
   const [active, setActive] = useState(0);
   useEffect(() => {
@@ -34,17 +22,17 @@ const MobileCarousel = () => {
     return () => clearInterval(t);
   }, []);
   return (
-    <div className="relative w-full h-56 rounded-2xl overflow-hidden border border-white/10 mt-8">
+    <div className="relative w-full rounded overflow-hidden mt-10" style={{ aspectRatio: "16/9" }}>
       {PHOTOS.map((src, i) => (
-        <img key={i} src={src} alt="" className="absolute inset-0 w-full h-full object-cover transition-all duration-700"
-          style={{ opacity: i === active ? 1 : 0, transform: i === active ? "scale(1)" : "scale(1.05)" }} />
+        <img key={i} src={src} alt="" draggable={false}
+          className="absolute inset-0 w-full h-full object-cover transition-all duration-700"
+          style={{ opacity: i === active ? 1 : 0, transform: i === active ? "scale(1)" : "scale(1.04)" }} />
       ))}
-      <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(10,10,10,0.7) 0%, transparent 60%)" }} />
-      {/* Dots */}
-      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+      <div className="absolute bottom-3 right-4 flex gap-1.5">
         {PHOTOS.map((_, i) => (
-          <div key={i} className="rounded-full transition-all duration-300" onClick={() => setActive(i)}
-            style={{ width: i === active ? "16px" : "6px", height: "6px", background: i === active ? "hsl(330 85% 65%)" : "rgba(255,255,255,0.3)" }} />
+          <div key={i} className="h-1 rounded-full transition-all duration-300 cursor-pointer"
+            style={{ width: i === active ? "20px" : "6px", background: i === active ? "white" : "rgba(255,255,255,0.3)" }}
+            onClick={() => setActive(i)} />
         ))}
       </div>
     </div>
@@ -52,87 +40,95 @@ const MobileCarousel = () => {
 };
 
 const HeroSection = () => {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
+  const [visible, setVisible] = useState(false);
 
-  const gradientText = {
-    background: "linear-gradient(135deg, hsl(330 85% 70%) 0%, hsl(40 80% 65%) 100%)",
-    WebkitBackgroundClip: "text",
-    WebkitTextFillColor: "transparent",
-    backgroundClip: "text",
-  };
+  useEffect(() => {
+    const t = setTimeout(() => setVisible(true), 200);
+    return () => clearTimeout(t);
+  }, []);
 
   return (
-    <section id="inicio" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-4 pt-20 pb-12">
+    <section id="inicio" className="relative min-h-screen flex flex-col justify-center px-6 md:px-16 pt-24 pb-16 overflow-hidden" style={{ background: "#050505" }}>
 
-      {/* Glow orbs — visible on both mobile & desktop */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-64 md:w-96 h-64 md:h-96 rounded-full animate-pulse-glow"
-          style={{ background: "radial-gradient(circle, hsl(330 85% 60% / 0.14) 0%, transparent 70%)" }} />
-        <div className="absolute top-1/3 right-1/4 w-48 md:w-80 h-48 md:h-80 rounded-full animate-pulse-glow"
-          style={{ background: "radial-gradient(circle, hsl(40 80% 60% / 0.09) 0%, transparent 70%)", animationDelay: "1.5s" }} />
-      </div>
+      {/* Subtle grain texture */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.03]"
+        style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")", backgroundSize: "200px" }} />
 
-      <div className="relative z-10 text-center max-w-4xl mx-auto w-full">
-        {/* Rating badge */}
-        <div className="inline-flex items-center gap-2 px-3 md:px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm mb-6 md:mb-8 animate-fade-in-up">
-          {[...Array(5)].map((_, i) => <Star key={i} size={11} className="fill-[hsl(330_85%_60%)] text-[hsl(330_85%_60%)]" />)}
-          <span className="text-white/70 text-xs font-medium tracking-wider">4.8 · 211+ {t("hero_stat2")}</span>
+      {/* Content grid */}
+      <div className={`relative z-10 max-w-5xl transition-opacity duration-700 ${visible ? "opacity-100" : "opacity-0"}`}>
+
+        {/* Location tag — Unseen style */}
+        <div className="flex items-center gap-4 mb-10 md:mb-16">
+          <div className="w-6 h-px bg-white/30" />
+          <span className="text-white/30 text-xs tracking-[0.4em] uppercase">Añasco, Puerto Rico</span>
         </div>
 
-        {/* Headline */}
-        <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05] mb-5 animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
-          <span className="text-white">{t("hero_title1")}</span>
-          <br />
-          <span style={gradientText}>{t("hero_title2")}</span>
-          <br />
-          <span className="text-white/70 text-xl sm:text-2xl md:text-4xl lg:text-5xl font-normal italic">{t("hero_title3")}</span>
-        </h1>
-
-        <p className="text-white/50 text-sm md:text-lg max-w-xl mx-auto mb-8 leading-relaxed animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
-          {t("hero_desc")}
-        </p>
-
-        {/* CTAs */}
-        <div className="flex flex-col sm:flex-row gap-3 justify-center animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
-          <a href="#contacto"
-            className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold text-white transition-all duration-300 group active:scale-95"
-            style={{ background: "linear-gradient(135deg, hsl(330 85% 55%) 0%, hsl(330 85% 45%) 100%)", boxShadow: "0 0 30px hsl(330 85% 60% / 0.4)" }}>
-            {t("hero_cta")} <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
-          </a>
-          <a href="tel:7878261684"
-            className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold text-white/70 border border-white/10 hover:border-white/20 hover:bg-white/5 transition-all duration-300 active:scale-95">
-            <Phone size={14} />(787) 826-1684
-          </a>
+        {/* Giant headline */}
+        <div className="overflow-hidden mb-2">
+          <h1 className="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-[10rem] font-bold leading-none text-white"
+            style={{ letterSpacing: "-0.03em", lineHeight: 0.9 }}>
+            <ScrambleText text={lang === "es" ? "Cabello" : "Beautiful"} delay={300} trigger={lang === "es"} />
+          </h1>
+        </div>
+        <div className="overflow-hidden mb-2">
+          <h1 className="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-[10rem] font-bold leading-none"
+            style={{ letterSpacing: "-0.03em", lineHeight: 0.9, WebkitTextStroke: "1px rgba(255,255,255,0.2)", color: "transparent" }}>
+            <ScrambleText text={lang === "es" ? "& Cejas" : "& Brows"} delay={500} trigger={lang === "es"} />
+          </h1>
+        </div>
+        <div className="overflow-hidden">
+          <h1 className="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-[10rem] font-bold leading-none text-white"
+            style={{ letterSpacing: "-0.03em", lineHeight: 0.9 }}>
+            <ScrambleText text={lang === "es" ? "Perfectos" : "Perfected"} delay={700} trigger={lang === "es"} />
+          </h1>
         </div>
 
-        {/* Stats row */}
-        <div className="flex justify-center gap-8 md:gap-10 mt-10 md:mt-16 pt-8 border-t border-white/8 animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
-          {[
-            { value: "4.8★", label: t("hero_stat1") },
-            { value: "211+", label: t("hero_stat2") },
-            { value: "20+",  label: t("hero_stat3") },
-          ].map((s) => (
-            <div key={s.label} className="text-center">
-              <p className="font-serif text-xl md:text-3xl font-bold" style={gradientText}>{s.value}</p>
-              <p className="text-white/40 text-[10px] md:text-xs tracking-widest uppercase mt-1">{s.label}</p>
+        {/* Bottom row — description + CTA */}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mt-12 md:mt-16 pt-8 border-t border-white/8">
+          <p className="text-white/40 text-sm md:text-base leading-relaxed max-w-sm">
+            {t("hero_desc")}
+          </p>
+
+          <div className="flex items-center gap-6">
+            <MagneticButton href="#contacto"
+              className="inline-flex items-center gap-3 text-white text-sm font-semibold tracking-wide group link-underline">
+              {t("hero_cta")}
+              <span className="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center group-hover:border-white/70 transition-colors">
+                <ArrowRight size={14} />
+              </span>
+            </MagneticButton>
+
+            <div className="text-white/20 text-xs tracking-[0.3em] uppercase hidden md:flex flex-col gap-1">
+              <span>4.8★ Google</span>
+              <span>211+ Reviews</span>
             </div>
-          ))}
+          </div>
         </div>
 
-        {/* Mobile: auto-rotating carousel of real photos */}
-        <div className="md:hidden animate-fade-in-up" style={{ animationDelay: "0.5s" }}>
+        {/* Mobile carousel */}
+        <div className="md:hidden">
           <MobileCarousel />
         </div>
 
-        {/* Desktop: floating image cards */}
-        <div className="hidden md:flex gap-4 justify-center mt-12 animate-fade-in-up" style={{ animationDelay: "0.5s" }}>
-          {PHOTOS.slice(0,3).map((src, i) => (
-            <div key={i} className="flex-1 max-w-xs rounded-2xl overflow-hidden border border-white/8 shadow-2xl animate-float"
-              style={{ animationDelay: `${i * 0.8}s`, aspectRatio: "4/3" }}>
-              <img src={src} alt="Pigmentarius" className="w-full h-full object-cover opacity-80" loading="eager" />
+        {/* Desktop: floating image pair */}
+        <div className="hidden md:grid grid-cols-2 gap-4 mt-12 max-w-lg ml-auto">
+          {PHOTOS.slice(0, 2).map((src, i) => (
+            <div key={i} className="overflow-hidden rounded animate-float" style={{ animationDelay: `${i * 1.2}s`, aspectRatio: "3/4" }}>
+              <img src={src} alt="" className="w-full h-full object-cover opacity-75 hover:opacity-100 transition-opacity duration-500 hover:scale-105 transition-transform" draggable={false} />
             </div>
           ))}
         </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-6 md:left-16 flex items-center gap-3 text-white/20">
+        <div className="w-px h-12 bg-white/15 relative overflow-hidden">
+          <div className="absolute top-0 w-full bg-white/60 animate-[line-reveal_2s_ease-in-out_infinite]" style={{ height: "40%" }} />
+        </div>
+        <span className="text-xs tracking-[0.3em] uppercase" style={{ writingMode: "vertical-lr" }}>
+          {lang === "es" ? "Desplaza" : "Scroll"}
+        </span>
       </div>
     </section>
   );

@@ -3,12 +3,12 @@ import HeroSection from "@/components/HeroSection";
 import MarqueeStrip from "@/components/MarqueeStrip";
 import AboutSection from "@/components/AboutSection";
 import ServicesSection from "@/components/ServicesSection";
-import LaserSection from "@/components/LaserSection";
+import LuxuryHairSection from "@/components/LuxuryHairSection";
 import MicrobladingSection from "@/components/MicrobladingSection";
 import PermanentMakeupSection from "@/components/PermanentMakeupSection";
-import LuxuryHairSection from "@/components/LuxuryHairSection";
+import LaserSection from "@/components/LaserSection";
 import WhyChooseUs from "@/components/WhyChooseUs";
-import GallerySection from "@/components/GallerySection";
+import DragGallery from "@/components/DragGallery";
 import ReviewsSection from "@/components/ReviewsSection";
 import ShopSection from "@/components/ShopSection";
 import CTASection from "@/components/CTASection";
@@ -16,10 +16,10 @@ import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import FloatingBookButton from "@/components/FloatingBookButton";
 import AnimatedBackground from "@/components/AnimatedBackground";
-import { CursorGlow } from "@/components/HeroSection";
-import { useEffect } from "react";
+import CustomCursor from "@/components/CustomCursor";
+import PageLoader from "@/components/PageLoader";
+import { useEffect, useState } from "react";
 
-// Scroll-reveal: watches elements and fades them in
 const useScrollReveal = () => {
   useEffect(() => {
     const els = document.querySelectorAll("[data-reveal]");
@@ -31,12 +31,12 @@ const useScrollReveal = () => {
           obs.unobserve(e.target);
         }
       }),
-      { threshold: 0.1, rootMargin: "0px 0px -60px 0px" }
+      { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
     );
     els.forEach(el => {
       (el as HTMLElement).style.opacity = "0";
-      (el as HTMLElement).style.transform = "translateY(32px)";
-      (el as HTMLElement).style.transition = "opacity 0.7s ease, transform 0.7s ease";
+      (el as HTMLElement).style.transform = "translateY(40px)";
+      (el as HTMLElement).style.transition = "opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1)";
       obs.observe(el);
     });
     return () => obs.disconnect();
@@ -44,30 +44,36 @@ const useScrollReveal = () => {
 };
 
 const Index = () => {
+  const [loaded, setLoaded] = useState(false);
   useScrollReveal();
+
   return (
-    <div style={{ background: "#0a0a0a" }}>
+    <div style={{ background: "#050505" }}>
+      <PageLoader onComplete={() => setLoaded(true)} />
+      <CustomCursor />
       <AnimatedBackground />
-      <CursorGlow />
-      <Navbar />
-      <main className="relative z-10">
-        <HeroSection />
-        <MarqueeStrip />
-        <div data-reveal><AboutSection /></div>
-        <div data-reveal><ServicesSection /></div>
-        <div data-reveal><LuxuryHairSection /></div>
-        <div data-reveal><MicrobladingSection /></div>
-        <div data-reveal><PermanentMakeupSection /></div>
-        <div data-reveal><LaserSection /></div>
-        <div data-reveal><WhyChooseUs /></div>
-        <div data-reveal><GallerySection /></div>
-        <div data-reveal><ReviewsSection /></div>
-        <div data-reveal><ShopSection /></div>
-        <div data-reveal><CTASection /></div>
-        <div data-reveal><ContactSection /></div>
-      </main>
-      <Footer />
-      <FloatingBookButton />
+
+      <div style={{ opacity: loaded ? 1 : 0, transition: "opacity 0.5s ease" }}>
+        <Navbar />
+        <main className="relative z-10">
+          <HeroSection />
+          <MarqueeStrip />
+          <div data-reveal><AboutSection /></div>
+          <div data-reveal><ServicesSection /></div>
+          <div data-reveal><LuxuryHairSection /></div>
+          <div data-reveal><MicrobladingSection /></div>
+          <div data-reveal><PermanentMakeupSection /></div>
+          <div data-reveal><LaserSection /></div>
+          <div data-reveal><WhyChooseUs /></div>
+          <DragGallery />
+          <div data-reveal><ReviewsSection /></div>
+          <div data-reveal><ShopSection /></div>
+          <div data-reveal><CTASection /></div>
+          <div data-reveal><ContactSection /></div>
+        </main>
+        <Footer />
+        <FloatingBookButton />
+      </div>
     </div>
   );
 };

@@ -1,19 +1,29 @@
 import { useLanguage } from "@/contexts/LanguageContext";
 
-const itemsEs = ["Keratina", "Microblading", "Coloración", "Maquillaje Permanente", "Botox Capilar", "Diseño de Cejas", "Depilación Láser", "Sombreado de Cejas", "Brazilian Blowout", "Shellac & Gel"];
-const itemsEn = ["Keratin", "Microblading", "Hair Color", "Permanent Makeup", "Hair Botox", "Brow Design", "Laser Hair Removal", "Brow Shading", "Brazilian Blowout", "Shellac & Gel"];
+const itemsEs = ["Cabello", "Cejas", "Keratina", "Microblading", "Láser", "Maquillaje Permanente", "Botox Capilar", "Shellac & Gel"];
+const itemsEn = ["Hair",    "Brows", "Keratin",  "Microblading", "Laser", "Permanent Makeup",     "Hair Botox",    "Shellac & Gel"];
 
 const MarqueeStrip = () => {
   const { lang } = useLanguage();
   const items = lang === "es" ? itemsEs : itemsEn;
   const doubled = [...items, ...items];
+
   return (
-    <div className="overflow-hidden py-5 border-y border-white/6" style={{ background: "rgba(255,255,255,0.02)" }}>
-      <div className="flex gap-12 animate-marquee w-max">
+    <div className="overflow-hidden border-y border-white/5 py-4" style={{ background: "#050505" }}>
+      {/* Row 1 — left */}
+      <div className="flex gap-8 animate-marquee w-max mb-3">
         {doubled.map((item, i) => (
-          <span key={i} className="text-white/30 text-xs font-semibold tracking-[0.3em] uppercase whitespace-nowrap flex items-center gap-5">
-            {item}
-            <span style={{ color: "hsl(330 85% 60%)", opacity: 0.6 }}>✦</span>
+          <span key={i} className="text-white/15 text-xs font-medium tracking-[0.35em] uppercase whitespace-nowrap flex items-center gap-6">
+            {item} <span className="text-white/10">◇</span>
+          </span>
+        ))}
+      </div>
+      {/* Row 2 — right (stroke text) */}
+      <div className="flex gap-8 animate-marquee-rev w-max" style={{ animationDelay: "-15s" }}>
+        {doubled.map((item, i) => (
+          <span key={i} className="text-xs font-bold tracking-[0.35em] uppercase whitespace-nowrap flex items-center gap-6"
+            style={{ WebkitTextStroke: "1px rgba(255,255,255,0.1)", color: "transparent" }}>
+            {item} <span style={{ WebkitTextStroke: "1px rgba(255,255,255,0.06)" }}>◇</span>
           </span>
         ))}
       </div>
