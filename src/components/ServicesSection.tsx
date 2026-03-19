@@ -1,7 +1,6 @@
 import { Droplets, PenTool, Eye, Zap, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
-import FloatingUICard from "./FloatingUICard";
 
 const IMG = {
   // Keratin: woman with glossy sleek straight hair after treatment ✓
@@ -68,15 +67,7 @@ const ServicesSection = () => {
 
         <div className="grid grid-cols-2 gap-4 md:gap-6 max-w-4xl mx-auto">
           {services.map((s) => (
-            <FloatingUICard
-              key={s.title.es}
-              title={s.preview.title}
-              subtitle={s.preview.subtitle}
-              tags={s.preview.tags}
-              progress={s.preview.progress}
-              items={s.preview.items}
-            >
-              <div className="group rounded-2xl overflow-hidden border border-white/8 hover:border-white/16 transition-all duration-300 flex flex-col cursor-pointer" style={{ background: "rgba(255,255,255,0.03)" }}>
+              <div key={s.title.es} className="group rounded-2xl overflow-hidden border border-white/8 hover:border-white/16 transition-all duration-300 flex flex-col cursor-pointer" style={{ background: "rgba(255,255,255,0.03)" }}>
                 <div className="overflow-hidden aspect-[16/10] relative">
                   <img src={s.photo} alt={s.title[lang]} className="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" loading="lazy" />
                   <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(10,10,10,0.8) 0%, transparent 60%)" }} />
@@ -86,18 +77,17 @@ const ServicesSection = () => {
                 </div>
                 <div className="p-4 md:p-5 flex flex-col flex-1">
                   <div className="flex items-center gap-2 mb-2">
-                    <div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 border border-white/10 transition-all duration-300 group-hover:border-[hsl(330_85%_60%/0.4)]" style={{ background: "rgba(255,255,255,0.05)", color: "hsl(330 85% 65%)" }}>
+                    <div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 border border-white/10" style={{ background: "rgba(255,255,255,0.05)", color: "hsl(330 85% 65%)" }}>
                       <s.icon size={14} />
                     </div>
                     <h3 className="text-white font-semibold text-xs md:text-sm leading-tight">{s.title[lang]}</h3>
                   </div>
                   <p className="text-white/40 text-xs leading-relaxed hidden md:block mb-3">{s.desc[lang]}</p>
-                  <a href="#contacto" className="mt-auto inline-flex items-center gap-1 text-xs font-semibold transition-colors group/link" style={{ color: "hsl(330 85% 65%)" }}>
-                    {t("services_more")} <ArrowRight size={12} className="group-hover/link:translate-x-0.5 transition-transform" />
+                  <a href="#contacto" className="mt-auto inline-flex items-center gap-1 text-xs font-semibold transition-colors" style={{ color: "hsl(330 85% 65%)" }}>
+                    {t("services_more")} <ArrowRight size={12} />
                   </a>
                 </div>
               </div>
-            </FloatingUICard>
           ))}
         </div>
 
