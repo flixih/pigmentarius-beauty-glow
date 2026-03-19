@@ -24,7 +24,7 @@ const ServicesSection = () => {
       fallback: "#8B6F5E",
       title: { es: "Keratina & Botox Capilar", en: "Keratin & Hair Botox" },
       desc: { es: "Transforma tu cabello con control total del frizz. Resultados sedosos que duran meses.", en: "Transform your hair with total frizz control. Silky results that last months." },
-      price: "Desde $79",
+      price: "",
       tag: { es: "Más Solicitado", en: "Most Requested" },
     },
     {
@@ -33,7 +33,7 @@ const ServicesSection = () => {
       fallback: "#C9A96E",
       title: { es: "Microblading", en: "Microblading" },
       desc: { es: "Cejas perfectas diseñadas a medida. Trazos ultra finos que duran 12–18 meses.", en: "Perfect brows designed just for you. Ultra-fine strokes lasting 12–18 months." },
-      price: "$370",
+      price: "",
       tag: { es: "Semi-Permanente", en: "Semi-Permanent" },
     },
     {
@@ -42,7 +42,7 @@ const ServicesSection = () => {
       fallback: "#D4A8A0",
       title: { es: "Diseño de Cejas", en: "Brow Design" },
       desc: { es: "Diseño experto que enmarca tu rostro y realza tu belleza natural.", en: "Expert design that frames your face and enhances your natural beauty." },
-      price: "Desde $30",
+      price: "",
       tag: { es: "Favorito", en: "Fan Favorite" },
     },
     {
@@ -51,7 +51,7 @@ const ServicesSection = () => {
       fallback: "#5A8A9F",
       title: { es: "Depilación Láser", en: "Laser Hair Removal" },
       desc: { es: "Piel suave y libre de vello para siempre. Tecnología profesional para todo tipo de piel.", en: "Smooth, hair-free skin permanently. Professional technology for all skin types." },
-      price: "Desde $25",
+      price: "",
       tag: { es: "Alta Demanda", en: "High Demand" },
     },
   ];
@@ -99,7 +99,7 @@ const ServicesSection = () => {
                   <p className="text-muted-foreground text-xs leading-relaxed hidden md:block">{s.desc[lang]}</p>
                 </div>
                 <div className="flex items-center justify-between mt-3 pt-2 border-t border-border">
-                  <span className="text-primary font-bold text-xs md:text-sm">{s.price}</span>
+                  
                   <a href="#contacto" className="text-xs font-semibold text-primary hover:text-gold-dark transition-colors">{t("services_more")}</a>
                 </div>
               </div>
