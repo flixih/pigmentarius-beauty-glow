@@ -1,7 +1,11 @@
 import { Phone, Instagram } from "lucide-react";
+import { useTheme } from "@/contexts/ThemeContext";
+import { palette } from "@/lib/theme";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const ShopSection = () => {
+  const { theme } = useTheme();
+  const p = palette(theme);
   const { lang } = useLanguage();
 
   const products = [
@@ -54,7 +58,7 @@ const ShopSection = () => {
 
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 mb-10">
           {products.map((p) => (
-            <div key={p.name.es} className="group rounded-2xl p-4 md:p-6 border border-white/8 hover:border-white/15 transition-all duration-500 hover:-translate-y-1" style={{ background: "rgba(255,255,255,0.03)" }}>
+            <div key={p.name.es} className="group rounded-2xl p-4 md:p-6 border border-white/8 hover:border-white/15 transition-all duration-500 hover:-translate-y-1" style={{ background: p.cardBg }}>
               <div className="text-2xl md:text-3xl mb-3 md:mb-4">{p.emoji}</div>
               <h3 className="font-serif text-xs md:text-base font-semibold text-white mb-1 md:mb-2 leading-tight">{p.name[lang]}</h3>
               <p className="text-white/40 text-xs leading-relaxed hidden md:block">{p.desc[lang]}</p>
@@ -64,7 +68,7 @@ const ShopSection = () => {
         </div>
 
         {/* Bottom CTA */}
-        <div className="rounded-2xl p-8 md:p-10 text-center border border-white/8" style={{ background: "rgba(255,255,255,0.03)" }}>
+        <div className="rounded-2xl p-8 md:p-10 text-center border border-white/8" style={{ background: p.cardBg }}>
           <h3 className="font-serif text-2xl md:text-3xl font-bold text-white mb-3">
             {lang === "es" ? "¿Quieres saber más?" : "Want to know more?"}
           </h3>

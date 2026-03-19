@@ -1,5 +1,7 @@
 import { Droplets, PenTool, Eye, Zap, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useTheme } from "@/contexts/ThemeContext";
+import { palette } from "@/lib/theme";
 import { useLanguage } from "@/contexts/LanguageContext";
 import FloatingUICard from "./FloatingUICard";
 
@@ -15,6 +17,8 @@ const IMG = {
 };
 
 const ServicesSection = () => {
+  const { theme } = useTheme();
+  const p = palette(theme);
   const { lang, t } = useLanguage();
 
   const services = [
@@ -49,7 +53,7 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section id="servicios" className="py-20 md:py-32 relative overflow-hidden" style={{ background: "#0a0a0a" }}>
+    <section id="servicios" className="py-20 md:py-32 relative overflow-hidden" style={{ background: p.pageBg }}>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, hsl(330 85% 60% / 0.06) 0%, transparent 70%)" }} />
 
       <div className="container mx-auto px-4 relative z-10">
@@ -76,7 +80,7 @@ const ServicesSection = () => {
               progress={s.preview.progress}
               items={s.preview.items}
             >
-              <div className="group rounded-2xl overflow-hidden border border-white/8 hover:border-white/16 transition-all duration-300 flex flex-col cursor-pointer" style={{ background: "rgba(255,255,255,0.03)" }}>
+              <div className="group rounded-2xl overflow-hidden border border-white/8 hover:border-white/16 transition-all duration-300 flex flex-col cursor-pointer" style={{ background: p.cardBg }}>
                 <div className="overflow-hidden aspect-[16/10] relative">
                   <img src={s.photo} alt={s.title[lang]} className="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" loading="lazy" />
                   <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(10,10,10,0.8) 0%, transparent 60%)" }} />
@@ -86,7 +90,7 @@ const ServicesSection = () => {
                 </div>
                 <div className="p-4 md:p-5 flex flex-col flex-1">
                   <div className="flex items-center gap-2 mb-2">
-                    <div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 border border-white/10 transition-all duration-300 group-hover:border-[hsl(330_85%_60%/0.4)]" style={{ background: "rgba(255,255,255,0.05)", color: "hsl(330 85% 65%)" }}>
+                    <div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 border border-white/10 transition-all duration-300 group-hover:border-[hsl(330_85%_60%/0.4)]" style={{ background: p.cardBg, color: "hsl(330 85% 65%)" }}>
                       <s.icon size={14} />
                     </div>
                     <h3 className="text-white font-semibold text-xs md:text-sm leading-tight">{s.title[lang]}</h3>

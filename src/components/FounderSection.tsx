@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { useTheme } from "@/contexts/ThemeContext";
+import { palette } from "@/lib/theme";
 import { useLanguage } from "@/contexts/LanguageContext";
 import w01 from "@/assets/windy-01.png";
 import w02 from "@/assets/windy-02.png";
@@ -9,6 +11,8 @@ import w05 from "@/assets/windy-05.png";
 const photos = [w01, w02, w03, w04, w05];
 
 const FounderSection = () => {
+  const { theme } = useTheme();
+  const p = palette(theme);
   const { lang } = useLanguage();
   const [active, setActive] = useState(0);
 
@@ -45,7 +49,7 @@ const FounderSection = () => {
   const c = content[lang];
 
   return (
-    <section id="nosotros" className="py-20 md:py-32 relative overflow-hidden" style={{ background: "#070707" }}>
+    <section id="nosotros" className="py-20 md:py-32 relative overflow-hidden" style={{ background: p.sectionBg }}>
       {/* Glow */}
       <div className="absolute top-1/2 right-0 w-96 h-96 -translate-y-1/2 pointer-events-none"
         style={{ background: "radial-gradient(circle, hsl(330 85% 60% / 0.07) 0%, transparent 70%)" }} />

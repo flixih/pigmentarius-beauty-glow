@@ -12,6 +12,8 @@ import AnimatedBackground from "@/components/AnimatedBackground";
 import CustomCursor from "@/components/CustomCursor";
 import PageLoader from "@/components/PageLoader";
 import { useEffect, useState } from "react";
+import { useTheme } from "@/contexts/ThemeContext";
+import { palette } from "@/lib/theme";
 
 const useScrollReveal = () => {
   useEffect(() => {
@@ -38,10 +40,12 @@ const useScrollReveal = () => {
 
 const Index = () => {
   const [loaded, setLoaded] = useState(false);
+  const { theme } = useTheme();
+  const p = palette(theme);
   useScrollReveal();
 
   return (
-    <div style={{ background: "#050505" }}>
+    <div style={{ background: p.pageBg, minHeight: "100vh", transition: "background 0.4s ease, color 0.4s ease", color: p.textPrimary }}>
       <PageLoader onComplete={() => setLoaded(true)} />
       <CustomCursor />
       <AnimatedBackground />

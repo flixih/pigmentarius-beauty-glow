@@ -1,4 +1,6 @@
 import { useRef, useState, useEffect } from "react";
+import { useTheme } from "@/contexts/ThemeContext";
+import { palette } from "@/lib/theme";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 import g01 from "@/assets/gallery-01.png";
@@ -24,6 +26,8 @@ const photos = [
 ];
 
 const DragGallery = () => {
+  const { theme } = useTheme();
+  const p = palette(theme);
   const { lang } = useLanguage();
   const trackRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);

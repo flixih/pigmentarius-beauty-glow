@@ -5,6 +5,9 @@ type Theme = "dark" | "light";
 interface ThemeContextType {
   theme: Theme;
   toggleTheme: () => void;
+  // Helper: returns bg color based on theme
+  bg: (dark: string, light: string) => string;
+  tx: (dark: string, light: string) => string;
 }
 
 const ThemeContext = createContext<ThemeContextType | null>(null);
@@ -12,19 +15,12 @@ const ThemeContext = createContext<ThemeContextType | null>(null);
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const [theme, setTheme] = useState<Theme>("dark");
 
-  useEffect(() => {
-    const root = document.documentElement;
-    if (theme === "light") {
-      root.classList.add("light-mode");
-    } else {
-      root.classList.remove("light-mode");
-    }
-  }, [theme]);
-
   const toggleTheme = () => setTheme(t => t === "dark" ? "light" : "dark");
+  const bg = (dark: string, light: string) => theme === "dark" ? dark : light;
+  const tx = (dark: string, light: string) => theme === "dark" ? dark : light;
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme, bg, tx }}>
       {children}
     </ThemeContext.Provider>
   );
