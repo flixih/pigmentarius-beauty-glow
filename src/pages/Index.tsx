@@ -3,6 +3,7 @@ import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
 import DragGallery from "@/components/DragGallery";
 import ReviewsSection from "@/components/ReviewsSection";
+import FounderSection from "@/components/FounderSection";
 import ShopSection from "@/components/ShopSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
@@ -50,6 +51,7 @@ const Index = () => {
         <main className="relative z-10">
           <HeroSection />
           <div data-reveal><ReviewsSection /></div>
+          <div data-reveal><FounderSection /></div>
           <div data-reveal><ServicesSection /></div>
           <DragGallery />
           <div data-reveal><ShopSection /></div>
