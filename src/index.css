@@ -246,3 +246,8 @@ html.light-mode .hover\:bg-white:hover { background: #111111 !important; color: 
 
 /* Custom cursor dot — black in light mode */
 html.light-mode [style*="mix-blend-difference"] { mix-blend-mode: normal !important; background: #111 !important; }
+
+/* Servicios page light mode */
+html.light-mode .servicios-page { background: #f5f0eb !important; }
+html.light-mode .servicios-page section,
+html.light-mode .servicios-page main { background: transparent !important; }
