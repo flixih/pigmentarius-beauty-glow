@@ -13,7 +13,7 @@ const LaserSection = () => {
   ];
 
   return (
-    <section id="laser" className="py-16 md:py-24 bg-background">
+    <section id="laser" className="py-16 md:py-24 bg-[#0a0a0a]">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10">
           <p className="text-primary text-xs font-semibold tracking-widest uppercase mb-3">

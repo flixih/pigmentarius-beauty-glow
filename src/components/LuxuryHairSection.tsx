@@ -16,7 +16,7 @@ const treatments = [
 const LuxuryHairSection = () => {
   const { lang } = useLanguage();
   return (
-    <section id="tratamientos" className="py-16 md:py-24 bg-cream-dark">
+    <section id="tratamientos" className="py-16 md:py-24 bg-[#070707]">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10">
           <p className="text-primary text-xs font-semibold tracking-widest uppercase mb-3">
@@ -39,7 +39,7 @@ const LuxuryHairSection = () => {
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-10">
           {treatments.map((t) => (
-            <div key={t.title.es} className="bg-background rounded-xl p-5 shadow-soft hover:shadow-elevated transition-all duration-500 group">
+            <div key={t.title.es} className="bg-[#0a0a0a] rounded-xl p-5 shadow-soft hover:shadow-elevated transition-all duration-500 group">
               <div className="w-10 h-10 rounded-lg bg-accent flex items-center justify-center mb-3 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
                 <t.icon size={18} />
               </div>

@@ -1,28 +1,16 @@
-const items = [
-  "Cortes de Cabello",
-  "Microblading",
-  "Coloración & Highlights",
-  "Maquillaje Permanente",
-  "Botox Capilar",
-  "Tratamientos Capilares",
-  "Diseño de Cejas",
-  "Cambios de Imagen",
-  "Manicura & Pedicura",
-  "Faciales",
-];
+import { useLanguage } from "@/contexts/LanguageContext";
+
+const items = ["Keratina", "Microblading", "Coloración", "Maquillaje Permanente", "Botox Capilar", "Diseño de Cejas", "Depilación Láser", "Sombreado de Cejas", "Brazilian Blowout", "Shellac & Gel"];
 
 const MarqueeStrip = () => {
   const doubled = [...items, ...items];
   return (
-    <div className="bg-foreground py-4 overflow-hidden">
-      <div className="flex gap-10 animate-marquee w-max">
+    <div className="overflow-hidden py-5 border-y border-white/6" style={{ background: "rgba(255,255,255,0.02)" }}>
+      <div className="flex gap-12 animate-marquee w-max">
         {doubled.map((item, i) => (
-          <span
-            key={i}
-            className="text-gold-light text-xs font-semibold tracking-[0.3em] uppercase whitespace-nowrap flex items-center gap-4"
-          >
+          <span key={i} className="text-white/30 text-xs font-semibold tracking-[0.3em] uppercase whitespace-nowrap flex items-center gap-5">
             {item}
-            <span className="text-primary opacity-60">✦</span>
+            <span style={{ color: "hsl(330 85% 60%)", opacity: 0.6 }}>✦</span>
           </span>
         ))}
       </div>

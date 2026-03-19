@@ -2,114 +2,73 @@ import { Droplets, PenTool, Eye, Zap, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-// Pexels free commercial photos — each one matched to its exact service
 const IMG = {
-  // Keratin: woman with glossy, perfectly straight treated hair
-  keratina: "https://images.pexels.com/photos/1319460/pexels-photo-1319460.jpeg?auto=compress&cs=tinysrgb&w=600",
-  // Microblading: beautician applying pigment to eyebrow close-up
+  keratina:     "https://images.pexels.com/photos/1319460/pexels-photo-1319460.jpeg?auto=compress&cs=tinysrgb&w=600",
   microblading: "https://images.pexels.com/photos/5069397/pexels-photo-5069397.jpeg?auto=compress&cs=tinysrgb&w=600",
-  // Brow design: perfectly shaped eyebrows close-up
-  cejas: "https://images.pexels.com/photos/3765147/pexels-photo-3765147.jpeg?auto=compress&cs=tinysrgb&w=600",
-  // Laser: laser device being applied to skin
-  laser: "https://images.pexels.com/photos/5069612/pexels-photo-5069612.jpeg?auto=compress&cs=tinysrgb&w=600",
+  cejas:        "https://images.pexels.com/photos/3765147/pexels-photo-3765147.jpeg?auto=compress&cs=tinysrgb&w=600",
+  laser:        "https://images.pexels.com/photos/5069612/pexels-photo-5069612.jpeg?auto=compress&cs=tinysrgb&w=600",
 };
 
 const ServicesSection = () => {
   const { lang, t } = useLanguage();
 
   const services = [
-    {
-      icon: Droplets,
-      photo: IMG.keratina,
-      fallback: "#8B6F5E",
-      title: { es: "Keratina & Botox Capilar", en: "Keratin & Hair Botox" },
-      desc: { es: "Transforma tu cabello con control total del frizz. Resultados sedosos que duran meses.", en: "Transform your hair with total frizz control. Silky results that last months." },
-      price: "",
-      tag: { es: "Más Solicitado", en: "Most Requested" },
-    },
-    {
-      icon: PenTool,
-      photo: IMG.microblading,
-      fallback: "#C9A96E",
-      title: { es: "Microblading", en: "Microblading" },
-      desc: { es: "Cejas perfectas diseñadas a medida. Trazos ultra finos que duran 12–18 meses.", en: "Perfect brows designed just for you. Ultra-fine strokes lasting 12–18 months." },
-      price: "",
-      tag: { es: "Semi-Permanente", en: "Semi-Permanent" },
-    },
-    {
-      icon: Eye,
-      photo: IMG.cejas,
-      fallback: "#D4A8A0",
-      title: { es: "Diseño de Cejas", en: "Brow Design" },
-      desc: { es: "Diseño experto que enmarca tu rostro y realza tu belleza natural.", en: "Expert design that frames your face and enhances your natural beauty." },
-      price: "",
-      tag: { es: "Favorito", en: "Fan Favorite" },
-    },
-    {
-      icon: Zap,
-      photo: IMG.laser,
-      fallback: "#5A8A9F",
-      title: { es: "Depilación Láser", en: "Laser Hair Removal" },
-      desc: { es: "Piel suave y libre de vello para siempre. Tecnología profesional para todo tipo de piel.", en: "Smooth, hair-free skin permanently. Professional technology for all skin types." },
-      price: "",
-      tag: { es: "Alta Demanda", en: "High Demand" },
-    },
+    { icon: Droplets, photo: IMG.keratina,     title: { es: "Keratina & Botox Capilar",  en: "Keratin & Hair Botox"    }, desc: { es: "Control total del frizz. Resultados sedosos que duran meses.",        en: "Total frizz control. Silky results that last months."         }, tag: { es: "Más Solicitado",  en: "Most Requested" } },
+    { icon: PenTool,  photo: IMG.microblading,  title: { es: "Microblading",               en: "Microblading"            }, desc: { es: "Cejas perfectas diseñadas a medida. Duran 12–18 meses.",              en: "Perfect brows designed just for you. Last 12–18 months."      }, tag: { es: "Semi-Permanente", en: "Semi-Permanent" } },
+    { icon: Eye,      photo: IMG.cejas,         title: { es: "Diseño de Cejas",            en: "Brow Design"             }, desc: { es: "Diseño experto que enmarca tu rostro y realza tu belleza.",           en: "Expert design that frames your face and enhances your beauty."}, tag: { es: "Favorito",        en: "Fan Favorite"   } },
+    { icon: Zap,      photo: IMG.laser,         title: { es: "Depilación Láser",           en: "Laser Hair Removal"      }, desc: { es: "Piel suave y libre de vello para siempre. Para todo tipo de piel.",  en: "Smooth, hair-free skin permanently. For all skin types."      }, tag: { es: "Alta Demanda",    en: "High Demand"    } },
   ];
 
   return (
-    <section id="servicios" className="py-16 md:py-24 bg-cream-dark">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-10 gap-4">
-          <div>
-            <p className="text-primary text-xs font-semibold tracking-widest uppercase mb-3">{t("services_label")}</p>
-            <h2 className="font-serif text-2xl md:text-4xl font-bold text-foreground">
-              {t("services_title1")} <span className="italic text-primary">{t("services_title2")}</span>
-            </h2>
+    <section id="servicios" className="py-20 md:py-32 relative overflow-hidden" style={{ background: "#0a0a0a" }}>
+      {/* Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, hsl(330 85% 60% / 0.06) 0%, transparent 70%)" }} />
+
+      <div className="container mx-auto px-4 relative z-10">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-white/50 text-xs font-medium tracking-widest uppercase mb-6">
+            {t("services_label")}
           </div>
-          <Link to="/servicios" className="inline-flex items-center gap-2 text-primary font-semibold text-sm hover:text-gold-dark transition-colors group whitespace-nowrap">
-            {lang === "es" ? "Ver todos los servicios" : "View all services"}
-            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-          </Link>
+          <h2 className="font-serif text-4xl md:text-6xl font-bold text-white mb-4">
+            {t("services_title1")}{" "}
+            <span style={{ background: "linear-gradient(135deg, hsl(330 85% 70%) 0%, hsl(40 80% 65%) 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+              {t("services_title2")}
+            </span>
+          </h2>
         </div>
 
-        {/* 2-col grid on ALL screen sizes */}
-        <div className="grid grid-cols-2 gap-3 md:gap-5">
+        {/* 2-col grid */}
+        <div className="grid grid-cols-2 gap-3 md:gap-4 max-w-4xl mx-auto">
           {services.map((s) => (
-            <div key={s.title.es} className="group bg-background rounded-2xl overflow-hidden shadow-soft hover:shadow-elevated transition-all duration-500 hover:-translate-y-1 flex flex-col">
-              <div className="overflow-hidden aspect-[4/3] relative" style={{ backgroundColor: s.fallback }}>
-                <img
-                  src={s.photo}
-                  alt={s.title[lang]}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  loading="lazy"
-                  onError={(e) => {
-                    e.currentTarget.style.display = "none";
-                  }}
-                />
+            <div key={s.title.es} className="group rounded-2xl overflow-hidden border border-white/8 hover:border-white/16 transition-all duration-500 flex flex-col" style={{ background: "rgba(255,255,255,0.03)" }}>
+              <div className="overflow-hidden aspect-[16/10] relative">
+                <img src={s.photo} alt={s.title[lang]} className="w-full h-full object-cover opacity-70 group-hover:opacity-90 group-hover:scale-105 transition-all duration-700" loading="lazy" />
+                <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(10,10,10,0.8) 0%, transparent 60%)" }} />
+                <span className="absolute top-3 left-3 text-xs px-2 py-0.5 rounded-full font-semibold border border-white/20" style={{ background: "rgba(255,255,255,0.1)", color: "hsl(330 85% 75%)", backdropFilter: "blur(8px)" }}>
+                  {s.tag[lang]}
+                </span>
               </div>
-              <div className="p-3 md:p-5 flex flex-col justify-between flex-1">
-                <div>
-                  <div className="flex items-center gap-1.5 mb-1.5">
-                    <div className="w-7 h-7 rounded-lg bg-accent flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
-                      <s.icon size={14} />
-                    </div>
-                    <h3 className="font-serif text-xs md:text-base font-semibold text-foreground leading-tight">{s.title[lang]}</h3>
+              <div className="p-4 md:p-5 flex flex-col flex-1">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 border border-white/10" style={{ background: "rgba(255,255,255,0.05)", color: "hsl(330 85% 65%)" }}>
+                    <s.icon size={14} />
                   </div>
-                  <span className="inline-block text-xs bg-accent text-primary px-2 py-0.5 rounded-full font-semibold mb-2">{s.tag[lang]}</span>
-                  <p className="text-muted-foreground text-xs leading-relaxed hidden md:block">{s.desc[lang]}</p>
+                  <h3 className="text-white font-semibold text-xs md:text-sm leading-tight">{s.title[lang]}</h3>
                 </div>
-                <div className="flex items-center justify-between mt-3 pt-2 border-t border-border">
-                  
-                  <a href="#contacto" className="text-xs font-semibold text-primary hover:text-gold-dark transition-colors">{t("services_more")}</a>
-                </div>
+                <p className="text-white/40 text-xs leading-relaxed hidden md:block mb-3">{s.desc[lang]}</p>
+                <a href="#contacto" className="mt-auto inline-flex items-center gap-1 text-xs font-semibold transition-colors group/link" style={{ color: "hsl(330 85% 65%)" }}>
+                  {t("services_more")} <ArrowRight size={12} className="group-hover/link:translate-x-0.5 transition-transform" />
+                </a>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="mt-8 text-center">
-          <Link to="/servicios" className="inline-flex items-center gap-2 border border-border text-foreground px-7 py-3 rounded-full text-sm font-semibold hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300">
-            {lang === "es" ? "Ver Lista Completa de Servicios" : "View Full Services List"}
+        <div className="text-center mt-10">
+          <Link to="/servicios"
+            className="inline-flex items-center gap-2 px-7 py-3 rounded-full text-sm font-semibold text-white/70 border border-white/10 hover:border-white/20 hover:text-white hover:bg-white/5 transition-all duration-300">
+            {lang === "es" ? "Ver todos los servicios" : "View all services"}
             <ArrowRight size={15} />
           </Link>
         </div>

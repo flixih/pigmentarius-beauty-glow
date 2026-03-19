@@ -2,50 +2,57 @@ import { Star, Quote } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const reviews = [
-  { name: "Cliente de Pennsylvania", text: { es: "Viajé desde Pennsylvania y ¡finalmente logré el rubio que siempre quise! El Botox capilar con colágeno quedó absolutamente hermoso. Les doy 5 estrellas.", en: "I flew in from Pennsylvania and finally got the blonde I always wanted! The collagen hair Botox was absolutely beautiful. I give this place 5 stars." } },
-  { name: "Cliente Verificada", text: { es: "¡Me siento renacida! Windy me dio un corte rizado con capas largas y quedé impactada. Definitivamente aquí es donde ocurre la magia.", en: "I feel reborn! Windy gave me a curly cut with long layers and I was shocked. This is definitely where the magic happens." } },
-  { name: "Cliente Local", text: { es: "¡Una experiencia para repetir! Te llaman Princesa y te tratan de show. Windy está súper pendiente de TODAS las clientas.", en: "An experience worth repeating! They call you Princess and treat you like royalty. Windy is attentive to ALL her clients." } },
-  { name: "Primera Visita", text: { es: "Hoy por primera vez visité el lugar, quedé encantada con el servicio. Su trabajo es excelente y la atención ni se diga. Lo recomiendo 100%.", en: "First time visiting today — I was delighted with the service. The work is excellent and the attention is unmatched. 100% recommend." } },
-  { name: "Cliente Fiel", text: { es: "Este lugar es como ir al Mayo Clinic o Cedars Sinaí pero para el cabello. Nunca volveré a otro salón.", en: "This place is like going to the Mayo Clinic or Cedars Sinai but for your hair. I will never go anywhere else." } },
-  { name: "Clienta Satisfecha", text: { es: "Me atendió Coralis y fue increíblemente servicial. El tratamiento de cirugía plástica capilar me dejó completamente enamorada del resultado.", en: "Coralis attended me and was incredibly helpful. The hair treatment left me completely in love with the results." } },
+  { name: "Cliente de Pennsylvania", text: { es: "Viajé desde Pennsylvania y finalmente logré el rubio que siempre quise. El Botox capilar con colágeno quedó absolutamente hermoso. Les doy 5 estrellas.", en: "I flew from Pennsylvania and finally got the blonde I always wanted. The collagen hair Botox was absolutely beautiful. 5 stars." } },
+  { name: "Cliente Verificada",       text: { es: "¡Me siento renacida! Windy me dio un corte rizado con capas largas y quedé impactada. Definitivamente aquí es donde ocurre la magia.", en: "I feel reborn! Windy gave me a curly cut with long layers and I was amazed. This is definitely where the magic happens." } },
+  { name: "Cliente Local",            text: { es: "¡Una experiencia para repetir! Te llaman Princesa y te tratan de show. Windy está súper pendiente de todas las clientas.", en: "An experience worth repeating! They call you Princess and treat you like royalty. Windy is attentive to every client." } },
+  { name: "Primera Visita",           text: { es: "Quedé encantada con el servicio. Su trabajo es excelente y la atención ni se diga. Lo recomiendo 100%.", en: "I was delighted with the service. The work is excellent and the attention is unmatched. 100% recommend." } },
+  { name: "Cliente Fiel",             text: { es: "Este lugar es como ir al Mayo Clinic pero para el cabello. Nunca volveré a otro salón.", en: "This place is like going to the Mayo Clinic but for your hair. I will never go anywhere else." } },
+  { name: "Clienta Satisfecha",       text: { es: "El tratamiento de cirugía plástica capilar me dejó completamente enamorada del resultado. Increíble profesionalismo.", en: "The hair treatment left me completely in love with the results. Incredible professionalism." } },
 ];
 
 const ReviewsSection = () => {
   const { lang, t } = useLanguage();
   return (
-    <section id="resenas" className="py-16 md:py-24 bg-cream-dark">
+    <section id="resenas" className="py-20 md:py-32 relative" style={{ background: "#0a0a0a" }}>
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-96 h-48 pointer-events-none" style={{ background: "radial-gradient(ellipse, hsl(330 85% 60% / 0.08) 0%, transparent 70%)" }} />
+
       <div className="container mx-auto px-4">
-        <div className="text-center mb-10">
-          <p className="text-primary text-xs font-semibold tracking-widest uppercase mb-3">{t("reviews_label")}</p>
-          <h2 className="font-serif text-2xl md:text-4xl font-bold text-foreground mb-3">
-            {t("reviews_title1")} <span className="italic text-primary">{t("reviews_title2")}</span>
+        <div className="text-center mb-14">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-white/50 text-xs font-medium tracking-widest uppercase mb-6">
+            {t("reviews_label")}
+          </div>
+          <h2 className="font-serif text-4xl md:text-6xl font-bold text-white mb-4">
+            {t("reviews_title1")}{" "}
+            <span className="italic" style={{ background: "linear-gradient(135deg, hsl(330 85% 70%) 0%, hsl(40 80% 65%) 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+              {t("reviews_title2")}
+            </span>
           </h2>
-          <div className="flex items-center justify-center gap-2">
-            <div className="flex">{[...Array(5)].map((_, i) => <Star key={i} size={16} className="fill-primary text-primary" />)}</div>
-            <span className="text-foreground font-semibold text-sm">4.8</span>
-            <span className="text-muted-foreground text-xs">· 211+ {t("reviews_count")}</span>
+          <div className="flex items-center justify-center gap-2 mt-3">
+            <div className="flex">{[...Array(5)].map((_, i) => <Star key={i} size={16} className="fill-[hsl(330_85%_60%)] text-[hsl(330_85%_60%)]" />)}</div>
+            <span className="text-white font-semibold text-sm">4.8</span>
+            <span className="text-white/30 text-xs">· 211+ {t("reviews_count")}</span>
           </div>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {reviews.map((review, i) => (
-            <div key={i} className="bg-background rounded-2xl p-6 shadow-soft hover:shadow-elevated transition-all duration-500 flex flex-col">
-              <Quote size={24} className="text-primary/20 mb-3 flex-shrink-0" />
-              <p className="text-foreground leading-relaxed mb-4 italic text-sm flex-1">"{review.text[lang]}"</p>
-              <div className="flex items-center justify-between pt-3 border-t border-border">
+            <div key={i} className="rounded-2xl p-6 border border-white/8 hover:border-white/15 transition-all duration-500 flex flex-col group" style={{ background: "rgba(255,255,255,0.03)" }}>
+              <Quote size={22} className="mb-4 flex-shrink-0" style={{ color: "hsl(330 85% 60% / 0.4)" }} />
+              <p className="text-white/60 leading-relaxed mb-5 italic text-sm flex-1">"{review.text[lang]}"</p>
+              <div className="flex items-center justify-between pt-4 border-t border-white/8">
                 <div>
-                  <p className="font-serif font-semibold text-foreground text-sm">{review.name}</p>
-                  <p className="text-xs text-muted-foreground">{t("reviews_verified")}</p>
+                  <p className="font-semibold text-white text-sm">{review.name}</p>
+                  <p className="text-white/30 text-xs mt-0.5">{t("reviews_verified")}</p>
                 </div>
-                <div className="flex">{[...Array(5)].map((_, j) => <Star key={j} size={10} className="fill-primary text-primary" />)}</div>
+                <div className="flex">{[...Array(5)].map((_, j) => <Star key={j} size={10} className="fill-[hsl(330_85%_60%)] text-[hsl(330_85%_60%)]" />)}</div>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="text-center mt-8">
+        <div className="text-center mt-10">
           <a href="https://maps.google.com/?q=Pigmentarius+Hair+Brow+Salon+Añasco+Puerto+Rico" target="_blank" rel="noopener noreferrer"
-            className="text-primary font-semibold text-sm hover:text-gold-dark transition-colors">
+            className="text-sm font-semibold transition-colors hover:text-white" style={{ color: "hsl(330 85% 60%)" }}>
             {t("reviews_google")}
           </a>
         </div>

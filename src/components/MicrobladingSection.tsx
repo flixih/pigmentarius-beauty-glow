@@ -19,7 +19,7 @@ const MicrobladingSection = () => {
   ];
 
   return (
-    <section id="microblading" className="py-16 md:py-24 bg-cream-dark">
+    <section id="microblading" className="py-16 md:py-24 bg-[#070707]">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <div>
@@ -35,7 +35,7 @@ const MicrobladingSection = () => {
                 : "Perfect brows designed just for you. Our certified artists create ultra-fine strokes that mimic real hair."}
             </p>
 
-            <div className="inline-flex items-center gap-3 bg-background rounded-xl px-4 py-2.5 shadow-soft mb-6 border border-border">
+            <div className="inline-flex items-center gap-3 bg-[#0a0a0a] rounded-xl px-4 py-2.5 shadow-soft mb-6 border border-border">
               <span className="text-muted-foreground text-xs">{lang === "es" ? "Desde" : "From"}</span>
               <span className="font-serif text-2xl font-bold text-primary">$150</span>
               <span className="text-muted-foreground text-xs">· {lang === "es" ? "Retoque incluido" : "Touch-up included"}</span>

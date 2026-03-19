@@ -1,36 +1,34 @@
-import { Phone, Calendar, Instagram } from "lucide-react";
+import { Calendar, Phone, ArrowRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-
-const REAL_3 = "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=80";
 
 const CTASection = () => {
   const { t } = useLanguage();
   return (
-    <section className="relative bg-foreground overflow-hidden">
-      <div className="grid lg:grid-cols-2">
-        <div className="relative h-48 lg:h-auto order-2 lg:order-1">
-          <img src={REAL_3} alt="Pigmentarius result" className="w-full h-full object-cover opacity-80" />
-          <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent lg:hidden" />
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent to-foreground/60 hidden lg:block" />
+    <section className="py-20 md:py-32 relative overflow-hidden" style={{ background: "#070707" }}>
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full" style={{ background: "radial-gradient(circle, hsl(330 85% 60% / 0.12) 0%, transparent 70%)" }} />
+      </div>
+      <div className="relative z-10 container mx-auto px-4 text-center">
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-white/50 text-xs font-medium tracking-widest uppercase mb-8">
+          {t("cta_label")}
         </div>
-        <div className="relative z-10 px-6 md:px-12 lg:px-16 py-14 md:py-20 flex flex-col justify-center order-1 lg:order-2">
-          <div className="absolute top-0 right-0 w-48 h-48 rounded-full bg-primary/10 blur-3xl pointer-events-none" />
-          <p className="text-primary text-xs font-semibold tracking-widest uppercase mb-3 relative z-10">{t("cta_label")}</p>
-          <h2 className="font-serif text-2xl md:text-4xl font-bold text-cream mb-5 leading-tight relative z-10">
-            {t("cta_title1")}{" "}<span className="italic text-primary">{t("cta_title2")}</span>?
-          </h2>
-          <p className="text-cream/70 text-sm md:text-base max-w-sm mb-8 leading-relaxed relative z-10">{t("cta_desc")}</p>
-          <div className="flex flex-col sm:flex-row gap-3 relative z-10">
-            <a href="#contacto" className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-7 py-3.5 rounded-full text-sm font-semibold tracking-wide hover:bg-gold-dark transition-colors duration-300 shadow-glow">
-              <Calendar size={15} />{t("cta_book")}
-            </a>
-            <a href="tel:7878261684" className="inline-flex items-center justify-center gap-2 border border-cream/30 text-cream px-7 py-3.5 rounded-full text-sm font-semibold tracking-wide hover:bg-cream/10 transition-colors duration-300">
-              <Phone size={15} />(787) 826-1684
-            </a>
-          </div>
-          <a href="https://www.instagram.com/pigmentariushs/" target="_blank" rel="noopener noreferrer"
-            className="mt-5 inline-flex items-center gap-2 text-cream/40 hover:text-gold-light transition-colors text-xs relative z-10 w-fit">
-            <Instagram size={13} />{t("cta_follow")}
+        <h2 className="font-serif text-4xl md:text-7xl font-bold text-white mb-6 max-w-3xl mx-auto leading-tight">
+          {t("cta_title1")}{" "}
+          <span className="italic" style={{ background: "linear-gradient(135deg, hsl(330 85% 70%) 0%, hsl(40 80% 65%) 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+            {t("cta_title2")}
+          </span>?
+        </h2>
+        <p className="text-white/40 text-lg max-w-md mx-auto mb-10">{t("cta_desc")}</p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="#contacto"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-sm font-semibold text-white group transition-all duration-300"
+            style={{ background: "linear-gradient(135deg, hsl(330 85% 55%) 0%, hsl(330 85% 45%) 100%)", boxShadow: "0 0 30px hsl(330 85% 60% / 0.4)" }}>
+            <Calendar size={15} />{t("cta_book")}
+            <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
+          </a>
+          <a href="tel:7878261684"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-sm font-semibold text-white/60 border border-white/10 hover:border-white/20 hover:text-white hover:bg-white/5 transition-all duration-300">
+            <Phone size={15} />(787) 826-1684
           </a>
         </div>
       </div>

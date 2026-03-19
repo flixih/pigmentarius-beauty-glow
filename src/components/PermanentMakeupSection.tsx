@@ -12,7 +12,7 @@ const services = [
 const PermanentMakeupSection = () => {
   const { lang } = useLanguage();
   return (
-    <section id="maquillaje-permanente" className="py-16 md:py-24 bg-background">
+    <section id="maquillaje-permanente" className="py-16 md:py-24 bg-[#0a0a0a]">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <div className="order-2 lg:order-1 relative">
@@ -35,7 +35,7 @@ const PermanentMakeupSection = () => {
                 : "Permanent makeup specialists. Wake up every morning looking flawless — our pigments are customized for your unique skin tone."}
             </p>
 
-            <div className="bg-cream-dark rounded-xl p-4 mb-6 space-y-2.5">
+            <div className="bg-[#070707] rounded-xl p-4 mb-6 space-y-2.5">
               {services.map((s) => (
                 <div key={s.name.es} className="flex justify-between items-center py-1 border-b border-border last:border-0">
                   <span className="font-medium text-foreground text-sm">{s.name[lang]}</span>

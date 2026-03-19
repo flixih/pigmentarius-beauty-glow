@@ -30,7 +30,7 @@ const products = [
 
 const ShopSection = () => {
   return (
-    <section id="tienda" className="py-24 bg-background">
+    <section id="tienda" className="py-24 bg-[#0a0a0a]">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <p className="text-primary text-sm font-semibold tracking-widest uppercase mb-4">Productos Profesionales</p>
@@ -46,7 +46,7 @@ const ShopSection = () => {
           {products.map((p) => (
             <div
               key={p.name}
-              className="group bg-cream-dark rounded-2xl p-8 shadow-soft hover:shadow-elevated transition-all duration-500 hover:-translate-y-1"
+              className="group bg-[#070707] rounded-2xl p-8 shadow-soft hover:shadow-elevated transition-all duration-500 hover:-translate-y-1"
             >
               <div className="text-3xl mb-5">{p.emoji}</div>
               <h3 className="font-serif text-lg font-semibold text-foreground mb-2">{p.name}</h3>
@@ -65,7 +65,7 @@ const ShopSection = () => {
             </div>
             <a
               href="tel:7878261684"
-              className="mt-6 inline-flex items-center justify-center gap-2 bg-primary-foreground text-foreground px-6 py-3 rounded-full text-sm font-semibold hover:bg-cream-dark transition-colors duration-300"
+              className="mt-6 inline-flex items-center justify-center gap-2 bg-primary-foreground text-foreground px-6 py-3 rounded-full text-sm font-semibold hover:bg-[#070707] transition-colors duration-300"
             >
               <Phone size={14} />
               Llamar al Salón
@@ -74,7 +74,7 @@ const ShopSection = () => {
         </div>
 
         {/* Contact CTAs */}
-        <div className="bg-cream-dark rounded-2xl p-8 md:p-12 text-center">
+        <div className="bg-[#070707] rounded-2xl p-8 md:p-12 text-center">
           <h3 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-4">
             ¿Quieres comprar productos o saber más?
           </h3>
@@ -93,7 +93,7 @@ const ShopSection = () => {
             </a>
             <a
               href="tel:7878261684"
-              className="inline-flex items-center justify-center gap-2 border-2 border-border text-foreground px-8 py-4 rounded-full text-sm font-semibold tracking-wide hover:bg-background transition-colors duration-300"
+              className="inline-flex items-center justify-center gap-2 border-2 border-border text-foreground px-8 py-4 rounded-full text-sm font-semibold tracking-wide hover:bg-[#0a0a0a] transition-colors duration-300"
             >
               <Phone size={16} />
               (787) 826-1684
