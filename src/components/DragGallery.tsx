@@ -1,19 +1,26 @@
 import { useRef, useState, useEffect } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
+import g01 from "@/assets/gallery-01.png";
+import g02 from "@/assets/gallery-02.png";
+import g03 from "@/assets/gallery-03.png";
+import g04 from "@/assets/gallery-04.png";
+import g05 from "@/assets/gallery-05.png";
+import g06 from "@/assets/gallery-06.png";
+import g07 from "@/assets/gallery-07.png";
+import g08 from "@/assets/gallery-08.png";
+import g09 from "@/assets/gallery-09.png";
+
 const photos = [
-  // Keratin: sleek straight shiny hair result ✓
-  { src: "https://images.pexels.com/photos/1319460/pexels-photo-1319460.jpeg?auto=compress&cs=tinysrgb&w=700",  label: { es: "Keratina",        en: "Keratin"      } },
-  // Microblading: artist applying pigment to eyebrow ✓
-  { src: "https://images.pexels.com/photos/7755208/pexels-photo-7755208.jpeg?auto=compress&cs=tinysrgb&w=700",  label: { es: "Microblading",    en: "Microblading" } },
-  // Brow Design: perfect eyebrows close-up ✓
-  { src: "https://images.pexels.com/photos/6663356/pexels-photo-6663356.jpeg?auto=compress&cs=tinysrgb&w=700",  label: { es: "Diseño de Cejas", en: "Brow Design"  } },
-  // Haircut: scissors cutting hair ✓
-  { src: "https://images.pexels.com/photos/3065209/pexels-photo-3065209.jpeg?auto=compress&cs=tinysrgb&w=700",  label: { es: "Corte",           en: "Haircut"      } },
-  // Laser: laser device on skin ✓
-  { src: "https://images.pexels.com/photos/7659565/pexels-photo-7659565.jpeg?auto=compress&cs=tinysrgb&w=700",  label: { es: "Láser",           en: "Laser"        } },
-  // Gel nails: nails being painted with gel ✓
-  { src: "https://images.pexels.com/photos/1604869/pexels-photo-1604869.jpeg?auto=compress&cs=tinysrgb&w=700",  label: { es: "Uñas Gel",        en: "Gel Nails"    } },
+  { src: g01, label: "01" },
+  { src: g02, label: "02" },
+  { src: g03, label: "03" },
+  { src: g04, label: "04" },
+  { src: g05, label: "05" },
+  { src: g06, label: "06" },
+  { src: g07, label: "07" },
+  { src: g08, label: "08" },
+  { src: g09, label: "09" },
 ];
 
 const DragGallery = () => {
@@ -115,7 +122,7 @@ const DragGallery = () => {
           >
             <img
               src={p.src}
-              alt={p.label[lang]}
+              alt={p.label}
               className="w-full h-full object-cover"
               style={{
                 transform: isDragging ? "scale(1.05)" : "scale(1)",
@@ -127,8 +134,7 @@ const DragGallery = () => {
             <div className="absolute inset-0 flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
               style={{ background: "linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%)" }}>
               <div>
-                <p className="text-white/40 text-xs tracking-[0.3em] uppercase mb-1">0{i + 1}</p>
-                <p className="text-white font-semibold text-lg">{p.label[lang]}</p>
+                <p className="text-white/50 text-sm font-semibold tracking-widest">{p.label}</p>
               </div>
             </div>
           </div>
