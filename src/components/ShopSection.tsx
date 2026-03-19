@@ -61,27 +61,6 @@ const ShopSection = () => {
             </div>
           ))}
 
-          {/* CTA card */}
-          <div className="rounded-2xl p-6 flex flex-col justify-between border border-white/10" style={{ background: "linear-gradient(135deg, hsl(330 85% 55% / 0.15) 0%, hsl(330 85% 45% / 0.08) 100%)" }}>
-            <div>
-              <p className="text-white/50 text-xs tracking-widest uppercase mb-3">
-                {lang === "es" ? "¿Tienes preguntas?" : "Have questions?"}
-              </p>
-              <h3 className="font-serif text-lg font-bold text-white mb-3">
-                {lang === "es" ? "Consúltanos sobre cualquier producto" : "Ask us about any product"}
-              </h3>
-              <p className="text-white/40 text-sm leading-relaxed">
-                {lang === "es"
-                  ? "Nuestro equipo te guiará para elegir los productos perfectos para tu cabello."
-                  : "Our team will guide you to choose the perfect products for your hair type."}
-              </p>
-            </div>
-            <a href="tel:7878261684"
-              className="mt-6 inline-flex items-center justify-center gap-2 bg-white text-black px-6 py-3 rounded-full text-sm font-semibold hover:bg-white/90 transition-colors duration-300">
-              <Phone size={14} />
-              {lang === "es" ? "Llamar al Salón" : "Call the Salon"}
-            </a>
-          </div>
         </div>
 
         {/* Bottom CTA */}
