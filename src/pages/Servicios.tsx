@@ -71,7 +71,7 @@ const Servicios = () => {
       items: [
         { photo: imgLaserFace, name: { es: "Rostro Completo",   en: "Full Face"       }, desc: { es: "Tratamiento completo de rostro.",             en: "Full face laser treatment."              } },
         { photo: imgBigote,    name: { es: "Bigote",            en: "Upper Lip"       }, desc: { es: "Resultados desde la primera sesión.",         en: "Visible results from the first session." } },
-        { photo: imgWax,       name: { es: "Piernas Completas", en: "Full Legs"       }, desc: { es: "Piernas perfectamente suaves para siempre.", en: "Perfectly smooth legs permanently."      } },
+        
         { photo: imgBikini,    name: { es: "Zona Bikini",       en: "Bikini Area"     }, desc: { es: "Tratamiento de zona bikini clásica.",        en: "Classic bikini area treatment."          } },
         { photo: imgBrazilian, name: { es: "Laser Brazilian",   en: "Laser Brazilian" }, desc: { es: "Tratamiento completo zona brasileña.",       en: "Full Brazilian area treatment."          } },
       ],
