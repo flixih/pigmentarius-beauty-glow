@@ -119,7 +119,7 @@ const HeroSection = () => {
             <ScrambleText text={lang === "es" ? "Cejas" : "Beautiful"} delay={300} trigger={lang === "es"} />
           </h1>
           <h1 className="font-serif font-bold leading-none block"
-            style={{ fontSize: "clamp(3.8rem, 20vw, 9rem)", letterSpacing: "-0.04em", lineHeight: 0.85, WebkitTextStroke: "1px hsl(330 85% 65% / 0.5)", color: "transparent" }}>
+            style={{ fontSize: "clamp(3.8rem, 20vw, 9rem)", letterSpacing: "-0.04em", lineHeight: 0.85, WebkitTextStroke: "2.5px hsl(330 85% 65% / 0.7)", color: "transparent" }}>
             <ScrambleText text={lang === "es" ? "Bellas y" : "& Perfected"} delay={500} trigger={lang === "es"} />
           </h1>
           <h1 className="font-serif font-bold leading-none text-white block"
