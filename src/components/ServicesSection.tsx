@@ -1,44 +1,37 @@
-// v2 - real salon photos
+// real salon photos v3
 import { Droplets, PenTool, Eye, Zap, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-import svcKeratina    from "@/assets/svc-keratina.webp";
-import svcMicroblading from "@/assets/svc-microblading.webp";
-import svcCejas        from "@/assets/svc-cejas.webp";
-import svcLaser        from "@/assets/svc-laser.webp";
-
-const IMG = {
-  keratina:     svcKeratina,
-  microblading: svcMicroblading,
-  cejas:        svcCejas,
-  laser:        svcLaser,
-};
+import imgKeratina    from "@/assets/svc-keratina.webp";
+import imgMicroblading from "@/assets/svc-microblading.webp";
+import imgCejas        from "@/assets/svc-cejas.webp";
+import imgLaser        from "@/assets/svc-laser.webp";
 
 const ServicesSection = () => {
   const { lang, t } = useLanguage();
 
   const services = [
     {
-      icon: Droplets, photo: IMG.keratina,
+      icon: Droplets, img: imgKeratina,
       title: { es: "Keratina & Botox Capilar", en: "Keratin & Hair Botox" },
       desc:  { es: "Control total del frizz. Resultados sedosos que duran meses.", en: "Total frizz control. Silky results that last months." },
       tag:   { es: "Más Solicitado", en: "Most Requested" },
     },
     {
-      icon: PenTool, photo: IMG.microblading,
+      icon: PenTool, img: imgMicroblading,
       title: { es: "Microblading", en: "Microblading" },
       desc:  { es: "Cejas perfectas diseñadas a medida. Duran 12–18 meses.", en: "Perfect brows designed just for you. Last 12–18 months." },
       tag:   { es: "Semi-Permanente", en: "Semi-Permanent" },
     },
     {
-      icon: Eye, photo: IMG.cejas,
+      icon: Eye, img: imgCejas,
       title: { es: "Diseño de Cejas", en: "Brow Design" },
       desc:  { es: "Diseño experto que enmarca tu rostro y realza tu belleza.", en: "Expert design that frames your face and enhances your beauty." },
       tag:   { es: "Favorito", en: "Fan Favorite" },
     },
     {
-      icon: Zap, photo: IMG.laser,
+      icon: Zap, img: imgLaser,
       title: { es: "Depilación Láser", en: "Laser Hair Removal" },
       desc:  { es: "Piel suave y libre de vello para siempre.", en: "Smooth, hair-free skin permanently." },
       tag:   { es: "Alta Demanda", en: "High Demand" },
@@ -64,7 +57,7 @@ const ServicesSection = () => {
           {services.map((s) => (
             <div key={s.title.es} className="group rounded-2xl overflow-hidden border border-white/8 hover:border-white/20 transition-all duration-300 flex flex-col" style={{ background: "rgba(255,255,255,0.03)" }}>
               <div className="overflow-hidden aspect-[4/3] relative">
-                <img src={s.photo} alt={s.title[lang]} className="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" loading="lazy" />
+                <img src={s.img} alt={s.title[lang]} className="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" loading="lazy" />
                 <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(5,5,5,0.85) 0%, transparent 55%)" }} />
                 <span className="absolute top-2 left-2 md:top-3 md:left-3 text-[10px] md:text-xs px-2 py-0.5 rounded-full font-semibold border border-white/20" style={{ background: "rgba(255,255,255,0.1)", color: "hsl(330 85% 75%)", backdropFilter: "blur(8px)" }}>
                   {s.tag[lang]}

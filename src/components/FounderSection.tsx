@@ -5,11 +5,11 @@ import w02 from "@/assets/windy-02.png";
 import w03 from "@/assets/windy-03.png";
 import w04 from "@/assets/windy-04.png";
 import w05 from "@/assets/windy-05.png";
-import w06 from "@/assets/windy-06.webp";
-import w07 from "@/assets/windy-07.webp";
-import w08 from "@/assets/windy-08.webp";
+import wn1 from "@/assets/windy-new-01.webp";
+import wn2 from "@/assets/windy-new-02.webp";
+import wn3 from "@/assets/windy-new-03.webp";
 
-const photos = [w01, w02, w03, w04, w05, w06, w07, w08];
+const photos = [w01, w02, w03, w04, w05, wn1, wn2, wn3];
 
 const FounderSection = () => {
   const { lang } = useLanguage();
