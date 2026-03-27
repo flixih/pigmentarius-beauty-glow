@@ -7,9 +7,8 @@ import w04 from "@/assets/windy-04.png";
 import w05 from "@/assets/windy-05.png";
 import wn1 from "@/assets/windy-new-01.webp";
 import wn2 from "@/assets/windy-new-02.webp";
-import wn3 from "@/assets/windy-new-03.webp";
 
-const photos = [w01, w02, w03, w04, w05, wn1, wn2, wn3];
+const photos = [w01, w02, w03, w04, w05, wn1, wn2];
 
 const FounderSection = () => {
   const { lang } = useLanguage();
