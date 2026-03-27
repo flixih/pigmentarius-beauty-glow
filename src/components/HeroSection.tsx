@@ -120,11 +120,11 @@ const HeroSection = () => {
           </h1>
           <h1 className="font-serif font-bold leading-none block"
             style={{ fontSize: "clamp(3.8rem, 20vw, 9rem)", letterSpacing: "-0.04em", lineHeight: 0.85, WebkitTextStroke: "1px hsl(330 85% 65% / 0.5)", color: "transparent" }}>
-            <ScrambleText text={lang === "es" ? "Bellas y" : "& Brows"} delay={500} trigger={lang === "es"} />
+            <ScrambleText text={lang === "es" ? "Bellas y" : "& Perfected"} delay={500} trigger={lang === "es"} />
           </h1>
           <h1 className="font-serif font-bold leading-none text-white block"
             style={{ fontSize: "clamp(3.8rem, 20vw, 9rem)", letterSpacing: "-0.04em", lineHeight: 0.85 }}>
-            <ScrambleText text={lang === "es" ? "Perfectas" : "Perfected"} delay={700} trigger={lang === "es"} />
+            <ScrambleText text={lang === "es" ? "Perfectas" : "Brows"} delay={700} trigger={lang === "es"} />
           </h1>
         </div>
 
