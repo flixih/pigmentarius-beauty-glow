@@ -94,40 +94,18 @@ const ContactSection = () => {
             </div>
           </div>
 
-          {/* Form */}
-          <div className="rounded-2xl p-6 border border-white/8" style={{ background: "rgba(255,255,255,0.03)", backdropFilter: "blur(20px)" }}>
-            <h3 className="font-serif text-xl font-semibold text-white mb-5">{t("contact_form_title")}</h3>
-            {submitted ? (
-              <div className="flex flex-col items-center justify-center py-12 text-center">
-                <div className="w-14 h-14 rounded-full flex items-center justify-center mb-4 border border-white/10" style={{ background: "rgba(255,255,255,0.05)", color: "hsl(330 85% 60%)" }}>
-                  <Send size={22} />
-                </div>
-                <h4 className="font-serif text-lg font-semibold text-white mb-2">{t("contact_success_title")}</h4>
-                <p className="text-white/40 text-sm">{t("contact_success_desc")}</p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-3">
-                <div className="grid grid-cols-2 gap-3">
-                  <div><label className="block text-xs font-semibold tracking-wider uppercase text-white/30 mb-1.5">{t("contact_name")}</label><input name="nombre" type="text" required placeholder={lang==="es"?"Tu nombre":"First name"} className={inputCls} style={inputStyle} /></div>
-                  <div><label className="block text-xs font-semibold tracking-wider uppercase text-white/30 mb-1.5">{t("contact_lastname")}</label><input name="apellido" type="text" placeholder={lang==="es"?"Tu apellido":"Last name"} className={inputCls} style={inputStyle} /></div>
-                </div>
-                <div><label className="block text-xs font-semibold tracking-wider uppercase text-white/30 mb-1.5">{t("contact_contact")}</label><input name="contacto" type="text" required placeholder="787-000-0000" className={inputCls} style={inputStyle} /></div>
-                <div><label className="block text-xs font-semibold tracking-wider uppercase text-white/30 mb-1.5">{t("contact_service")}</label>
-                  <select name="servicio" required className={inputCls} style={inputStyle}><option value="">{t("contact_service_placeholder")}</option>{services.map(s=><option key={s}>{s}</option>)}</select>
-                </div>
-                <div className="grid grid-cols-2 gap-3">
-                  <div><label className="block text-xs font-semibold tracking-wider uppercase text-white/30 mb-1.5">{t("contact_date")}</label><input name="fecha" type="date" required className={inputCls} style={inputStyle} /></div>
-                  <div><label className="block text-xs font-semibold tracking-wider uppercase text-white/30 mb-1.5">{t("contact_time")}</label><select name="hora" className={inputCls} style={inputStyle}>{times.map(t=><option key={t}>{t}</option>)}</select></div>
-                </div>
-                <div><label className="block text-xs font-semibold tracking-wider uppercase text-white/30 mb-1.5">{t("contact_message")}</label><textarea name="mensaje" rows={2} placeholder={t("contact_message_placeholder")} className={`${inputCls} resize-none`} style={inputStyle} /></div>
-                <button type="submit" disabled={loading}
-                  className="w-full py-3.5 rounded-full text-sm font-semibold text-white transition-all duration-300 disabled:opacity-50"
-                  style={{ background: "linear-gradient(135deg, hsl(330 85% 55%) 0%, hsl(330 85% 45%) 100%)", boxShadow: "0 0 20px hsl(330 85% 60% / 0.3)" }}>
-                  {loading ? (lang==="es"?"Enviando...":"Sending...") : t("contact_submit")}
-                </button>
-                <p className="text-xs text-white/30 text-center">{lang==="es"?"O llámanos:":"Or call us:"} <a href="tel:7878261684" className="font-semibold hover:text-white transition-colors" style={{ color: "hsl(330 85% 60%)" }}>(787) 826-1684</a></p>
-              </form>
-            )}
+          {/* Call to action */}
+          <div className="rounded-2xl p-6 border border-white/8 flex flex-col items-center justify-center text-center" style={{ background: "rgba(255,255,255,0.03)", backdropFilter: "blur(20px)" }}>
+            <div className="w-16 h-16 rounded-full flex items-center justify-center mb-6 border border-white/10" style={{ background: "rgba(255,255,255,0.05)", color: "hsl(330 85% 60%)" }}>
+              <Phone size={28} />
+            </div>
+            <h3 className="font-serif text-2xl font-semibold text-white mb-3">{lang === "es" ? "Llámanos" : "Call Us"}</h3>
+            <p className="text-white/40 text-sm mb-6 max-w-xs">{lang === "es" ? "Llámanos para reservar tu cita o resolver cualquier duda." : "Call us to book your appointment or ask any questions."}</p>
+            <a href="tel:7878261684"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-lg font-semibold text-white transition-all duration-300"
+              style={{ background: "linear-gradient(135deg, hsl(330 85% 55%) 0%, hsl(330 85% 45%) 100%)", boxShadow: "0 0 20px hsl(330 85% 60% / 0.3)" }}>
+              <Phone size={18} />(787) 826-1684
+            </a>
           </div>
         </div>
       </div>

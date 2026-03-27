@@ -50,9 +50,9 @@ const Navbar = () => {
           className="flex items-center justify-center w-8 h-8 rounded-full border border-white/10 hover:border-white/30 text-white/40 hover:text-white transition-all duration-200">
           {theme === "dark" ? <Sun size={13} /> : <Moon size={13} />}
         </button>
-        <a href="#contacto"
+        <a href="tel:7878261684"
           className="hidden md:inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-white border border-white/20 px-5 py-2.5 rounded-full hover:bg-white hover:text-black transition-all duration-300">
-          {t("nav_reservar")}
+          {lang === "es" ? "Llamar" : "Call"}
         </a>
         <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-white/60 hover:text-white p-1">
           {isOpen ? <X size={18} /> : <Menu size={18} />}
