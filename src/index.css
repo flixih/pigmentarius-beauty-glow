@@ -255,3 +255,6 @@ html.light-mode .servicios-page main { background: transparent !important; }
 /* Servicios page base + light mode */
 .servicios-page { background: #050505; color: white; }
 html.light-mode .servicios-page { background: #f5f0eb !important; color: #111 !important; }
+
+/* Hide Lovable badge */
+#lovable-badge { display: none !important; }
