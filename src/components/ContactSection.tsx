@@ -1,11 +1,7 @@
 import { MapPin, Phone, Clock, Instagram, Facebook, Send } from "lucide-react";
 import { useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import emailjs from "@emailjs/browser";
-
-const EMAILJS_SERVICE_ID  = "service_pigmentarius";
-const EMAILJS_TEMPLATE_ID = "template_booking";
-const EMAILJS_PUBLIC_KEY  = "YOUR_PUBLIC_KEY";
+import { supabase } from "@/integrations/supabase/client";
 
 const ContactSection = () => {
   const [submitted, setSubmitted] = useState(false);
@@ -27,7 +23,10 @@ const ContactSection = () => {
     const fechaFormatted = fecha ? new Date(fecha + "T12:00:00").toLocaleDateString("es-PR", { weekday: "long", year: "numeric", month: "long", day: "numeric" }) : "No especificada";
 
     try {
-      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, { to_email: "pigmentariusforms@gmail.com", from_name: `${nombre} ${apellido}`, contacto, servicio, fecha: fechaFormatted, hora, mensaje: mensaje || "Ninguno", reply_to: contacto.includes("@") ? contacto : "pigmentariusforms@gmail.com" }, EMAILJS_PUBLIC_KEY);
+      const { error } = await supabase.functions.invoke("send-booking", {
+        body: { nombre, apellido, contacto, servicio, fecha: fechaFormatted, hora, mensaje: mensaje || "" },
+      });
+      if (error) throw error;
       setSubmitted(true); form.reset(); setTimeout(() => setSubmitted(false), 7000);
     } catch {
       const body = encodeURIComponent(`Nueva Cita\n\nCliente: ${nombre} ${apellido}\nContacto: ${contacto}\nServicio: ${servicio}\nFecha: ${fechaFormatted}\nHora: ${hora}\nMensaje: ${mensaje}`);
