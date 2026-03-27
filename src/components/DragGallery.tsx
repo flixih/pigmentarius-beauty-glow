@@ -10,6 +10,10 @@ import g06 from "@/assets/gallery-06.webp";
 import g07 from "@/assets/gallery-07.webp";
 import g08 from "@/assets/gallery-08.webp";
 import g09 from "@/assets/gallery-09.webp";
+import g10 from "@/assets/gallery-10.webp";
+import g11 from "@/assets/gallery-11.webp";
+import g12 from "@/assets/gallery-12.webp";
+import g13 from "@/assets/gallery-13.webp";
 
 const photos = [
   { src: g01, label: "01" },
@@ -21,6 +25,10 @@ const photos = [
   { src: g07, label: "07" },
   { src: g08, label: "08" },
   { src: g09, label: "09" },
+  { src: g10, label: "10" },
+  { src: g11, label: "11" },
+  { src: g12, label: "12" },
+  { src: g13, label: "13" },
 ];
 
 const DragGallery = () => {
