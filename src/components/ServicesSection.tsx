@@ -2,11 +2,16 @@ import { Droplets, PenTool, Eye, Zap, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
 
+import svcKeratina    from "@/assets/svc-keratina.webp";
+import svcMicroblading from "@/assets/svc-microblading.webp";
+import svcCejas        from "@/assets/svc-cejas.webp";
+import svcLaser        from "@/assets/svc-laser.webp";
+
 const IMG = {
-  keratina:     "https://images.pexels.com/photos/1319460/pexels-photo-1319460.jpeg?auto=compress&cs=tinysrgb&w=600",
-  microblading: "https://images.pexels.com/photos/7755208/pexels-photo-7755208.jpeg?auto=compress&cs=tinysrgb&w=600",
-  cejas:        "https://images.pexels.com/photos/6663356/pexels-photo-6663356.jpeg?auto=compress&cs=tinysrgb&w=600",
-  laser:        "https://images.pexels.com/photos/7659565/pexels-photo-7659565.jpeg?auto=compress&cs=tinysrgb&w=600",
+  keratina:     svcKeratina,
+  microblading: svcMicroblading,
+  cejas:        svcCejas,
+  laser:        svcLaser,
 };
 
 const ServicesSection = () => {
