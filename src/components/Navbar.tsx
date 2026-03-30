@@ -1,14 +1,12 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Globe, Sun, Moon } from "lucide-react";
+import { Menu, X, Globe } from "lucide-react";
 import logo from "@/assets/logo-real.png";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { useTheme } from "@/contexts/ThemeContext";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { lang, toggleLang, t } = useLanguage();
-  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 20);
@@ -57,11 +55,6 @@ const Navbar = () => {
             className="flex items-center gap-1 text-xs tracking-widest font-medium px-3 py-1.5 rounded-full transition-all"
             style={{ color: "var(--ink-mid)", border: "1px solid var(--border)" }}>
             <Globe size={11} />{lang === "es" ? "EN" : "ES"}
-          </button>
-          <button onClick={toggleTheme}
-            className="w-8 h-8 rounded-full flex items-center justify-center transition-all"
-            style={{ color: "var(--ink-mid)", border: "1px solid var(--border)" }}>
-            {theme === "dark" ? <Sun size={13} /> : <Moon size={13} />}
           </button>
           <a href="#contacto"
             className="hidden md:inline-flex items-center px-5 py-2.5 rounded-full text-xs tracking-widest uppercase font-semibold text-white transition-all duration-300 hover:opacity-90"
