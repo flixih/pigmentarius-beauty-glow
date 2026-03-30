@@ -1,173 +1,112 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import ownerPhoto from "@/assets/owner-wildaliz-cropped.png";
-import ScrambleText from "./ScrambleText";
-
-const PHOTOS = [
-  "https://images.pexels.com/photos/1319460/pexels-photo-1319460.jpeg?auto=compress&cs=tinysrgb&w=900",
-  "https://images.pexels.com/photos/5069397/pexels-photo-5069397.jpeg?auto=compress&cs=tinysrgb&w=900",
-  "https://images.pexels.com/photos/3065209/pexels-photo-3065209.jpeg?auto=compress&cs=tinysrgb&w=900",
-  "https://images.pexels.com/photos/3765147/pexels-photo-3765147.jpeg?auto=compress&cs=tinysrgb&w=900",
-];
+import heroBg from "@/assets/pg-01.webp";
+import heroRight from "@/assets/pg-03.webp";
 
 export const CursorGlow = () => null;
 
-const MobileCarousel = ({ ownerPhoto }: { ownerPhoto: string }) => {
-  const allPhotos = [ownerPhoto, ...PHOTOS.slice(0, 3)];
-  const [active, setActive] = useState(0);
-  useEffect(() => {
-    const t = setInterval(() => setActive(p => (p + 1) % allPhotos.length), 2800);
-    return () => clearInterval(t);
-  }, []);
-  return (
-    <div className="relative w-full rounded overflow-hidden mt-10" style={{ aspectRatio: "16/9" }}>
-      {allPhotos.map((src, i) => (
-        <img key={i} src={src} alt="" draggable={false}
-          className="absolute inset-0 w-full h-full object-cover object-top transition-all duration-700"
-          style={{ opacity: i === active ? 1 : 0, transform: i === active ? "scale(1)" : "scale(1.04)" }} />
-      ))}
-      {/* Name overlay on first slide */}
-      {active === 0 && (
-        <div className="absolute bottom-0 left-0 right-0 p-4" style={{ background: "linear-gradient(to top, rgba(5,5,5,0.8) 0%, transparent 60%)" }}>
-          <p className="text-white font-semibold text-sm">Windy Arroyo</p>
-          <p className="text-white/50 text-xs">Fundadora & Dueña · Pigmentarius</p>
-        </div>
-      )}
-      <div className="absolute bottom-3 right-4 flex gap-1.5">
-        {allPhotos.map((_, i) => (
-          <div key={i} className="h-1 rounded-full transition-all duration-300 cursor-pointer"
-            style={{ width: i === active ? "20px" : "6px", background: i === active ? "white" : "rgba(255,255,255,0.3)" }}
-            onClick={() => setActive(i)} />
-        ))}
-      </div>
-    </div>
-  );
-};
-
 const HeroSection = () => {
-  const { t, lang } = useLanguage();
+  const { lang, t } = useLanguage();
   const [visible, setVisible] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
-  const [mouse, setMouse] = useState({ x: 0, y: 0 });
-  const [glowPos, setGlowPos] = useState({ x: 0, y: 0 });
-  const headlineRef = useRef<HTMLDivElement>(null);
-  const glowRef = useRef({ x: 0, y: 0 });
-  const rafRef = useRef(0);
 
   useEffect(() => {
-    const t = setTimeout(() => setVisible(true), 200);
-    return () => clearTimeout(t);
+    const timer = setTimeout(() => setVisible(true), 100);
+    return () => clearTimeout(timer);
   }, []);
-
-  // Parallax on scroll
-  useEffect(() => {
-    const onScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  // Mouse glow — very faint pink that follows cursor with lag
-  useEffect(() => {
-    const onMove = (e: MouseEvent) => {
-      setMouse({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener("mousemove", onMove);
-
-    const animate = () => {
-      glowRef.current.x += (mouse.x - glowRef.current.x) * 0.06;
-      glowRef.current.y += (mouse.y - glowRef.current.y) * 0.06;
-      setGlowPos({ x: glowRef.current.x, y: glowRef.current.y });
-      rafRef.current = requestAnimationFrame(animate);
-    };
-    rafRef.current = requestAnimationFrame(animate);
-
-    return () => {
-      window.removeEventListener("mousemove", onMove);
-      cancelAnimationFrame(rafRef.current);
-    };
-  }, [mouse.x, mouse.y]);
-
-  const headline = lang === "es" ? "Cabello y Cejas Perfectas" : "Perfect Hair & Brows";
 
   return (
-    <section id="inicio" className="relative min-h-screen flex flex-col justify-center px-6 md:px-16 pt-20 md:pt-24 pb-10 md:pb-16 overflow-hidden" style={{ background: "#050505" }}>
+    <section id="inicio" className="relative min-h-screen flex items-center overflow-hidden"
+      style={{ background: "var(--cream)" }}>
 
-      {/* Very faint pink mouse glow — desktop only */}
-      <div className="fixed pointer-events-none z-0 hidden md:block"
-        style={{
-          width: "500px", height: "500px", borderRadius: "50%",
-          background: "radial-gradient(circle, hsl(330 85% 60% / 0.07) 0%, transparent 65%)",
-          transform: `translate(${glowPos.x - 250}px, ${glowPos.y - 250}px)`,
-        }} />
+      {/* Left — content */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-12 items-center min-h-screen pt-20 md:pt-0">
+        <div className={`transition-all duration-1000 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
 
-      {/* Grain */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.03]"
-        style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")", backgroundSize: "200px" }} />
+          {/* Eyebrow */}
+          <div className="flex items-center gap-3 mb-8">
+            <div className="h-px w-10" style={{ background: "var(--pink)" }} />
+            <span className="text-xs tracking-[0.35em] uppercase font-medium" style={{ color: "var(--ink-light)" }}>
+              Añasco, Puerto Rico · 4.8★ Google
+            </span>
+          </div>
 
-      <div className={`relative z-10 max-w-5xl transition-opacity duration-700 ${visible ? "opacity-100" : "opacity-0"}`}>
-
-        {/* Location tag */}
-        <div className="flex items-center gap-3 mb-6 md:mb-16">
-          <div className="w-5 md:w-6 h-px bg-white/30" />
-          <span className="text-white/30 text-[10px] md:text-xs tracking-[0.3em] md:tracking-[0.4em] uppercase">Añasco, Puerto Rico</span>
-        </div>
-
-        <div ref={headlineRef} style={{ transform: `translateY(${scrollY * -0.18}px)`, transition: "transform 0.05s linear" }}>
-          <h1 className="font-serif font-bold leading-none text-white block"
-            style={{ fontSize: "clamp(3.8rem, 20vw, 9rem)", letterSpacing: "-0.04em", lineHeight: 0.85 }}>
-            <ScrambleText text={lang === "es" ? "Cejas" : "Beautiful"} delay={300} trigger={lang === "es"} />
+          {/* Headline */}
+          <h1 className="font-serif mb-6 leading-none"
+            style={{ fontSize: "clamp(3rem, 7vw, 6rem)", letterSpacing: "-0.02em", color: "var(--ink)", fontWeight: 300 }}>
+            {lang === "es" ? (
+              <>Cabello & Cejas<br /><em style={{ fontStyle: "italic", color: "var(--pink)" }}>Perfectas</em></>
+            ) : (
+              <>Perfect Hair<br /><em style={{ fontStyle: "italic", color: "var(--pink)" }}>& Brows</em></>
+            )}
           </h1>
-          <h1 className="font-serif font-bold leading-none block"
-            style={{ fontSize: "clamp(3.8rem, 20vw, 9rem)", letterSpacing: "-0.04em", lineHeight: 0.85, WebkitTextStroke: "2.5px hsl(330 85% 65% / 0.7)", color: "transparent" }}>
-            <ScrambleText text={lang === "es" ? "Bellas y" : "& Perfected"} delay={500} trigger={lang === "es"} />
-          </h1>
-          <h1 className="font-serif font-bold leading-none text-white block"
-            style={{ fontSize: "clamp(3.8rem, 20vw, 9rem)", letterSpacing: "-0.04em", lineHeight: 0.85 }}>
-            <ScrambleText text={lang === "es" ? "Perfectas" : "Brows"} delay={700} trigger={lang === "es"} />
-          </h1>
-        </div>
 
-        {/* Bottom row */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-5 md:gap-8 mt-8 md:mt-16 pt-6 md:pt-8 border-t border-white/8">
-          <p className="text-white/40 text-sm leading-relaxed max-w-sm hidden md:block">
-            {t("hero_desc")}
+          <p className="text-base mb-10 max-w-md leading-relaxed" style={{ color: "var(--ink-mid)" }}>
+            {lang === "es"
+              ? "Especialistas en coloración, microblading, maquillaje permanente y tratamientos capilares. Ubicados en Plaza del Valle Mall, Añasco."
+              : "Specialists in color, microblading, permanent makeup and hair treatments. Located at Plaza del Valle Mall, Añasco."}
           </p>
-          {/* Mobile: short tagline */}
-          <p className="text-white/40 text-xs leading-relaxed md:hidden">
-            {lang === "es" ? "Salón de belleza en Añasco, Puerto Rico" : "Beauty salon in Añasco, Puerto Rico"}
-          </p>
-          <div className="flex items-center gap-5">
+
+          {/* CTAs */}
+          <div className="flex flex-wrap items-center gap-4">
             <a href="#contacto"
-              className="inline-flex items-center gap-3 text-white text-sm font-semibold tracking-wide group link-underline">
-              {t("hero_cta")}
-              <span className="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center group-hover:border-white/70 transition-colors">
-                <ArrowRight size={14} />
-              </span>
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-full text-sm font-semibold text-white transition-all duration-300 hover:opacity-90 hover:shadow-lg"
+              style={{ background: "var(--pink)", letterSpacing: "0.05em" }}>
+              {lang === "es" ? "Reservar Cita" : "Book Appointment"}
+              <ArrowRight size={16} />
             </a>
-            <div className="text-white/20 text-xs tracking-[0.3em] uppercase hidden md:flex flex-col gap-1">
-              <span>4.8★ Google</span>
-              <span>211+ Reviews</span>
-            </div>
-            {/* Mobile stats inline */}
-            <div className="text-white/20 text-[10px] tracking-widest uppercase flex md:hidden gap-3">
-              <span>4.8★</span>
-              <span>211+</span>
-            </div>
+            <a href="#galeria"
+              className="inline-flex items-center gap-2 text-sm font-medium link-hover"
+              style={{ color: "var(--ink-mid)" }}>
+              {lang === "es" ? "Ver Trabajos" : "View Our Work"}
+            </a>
+          </div>
+
+          {/* Stats */}
+          <div className="flex items-center gap-10 mt-14 pt-10" style={{ borderTop: "1px solid var(--border)" }}>
+            {[
+              { val: "4.8★", lbl: lang === "es" ? "Rating Google" : "Google Rating" },
+              { val: "211+", lbl: lang === "es" ? "Reseñas" : "Reviews" },
+              { val: "20+", lbl: lang === "es" ? "Años" : "Years" },
+            ].map(s => (
+              <div key={s.val}>
+                <p className="font-serif text-2xl font-semibold" style={{ color: "var(--ink)", letterSpacing: "-0.02em" }}>{s.val}</p>
+                <p className="text-xs tracking-widest uppercase mt-0.5" style={{ color: "var(--ink-light)" }}>{s.lbl}</p>
+              </div>
+            ))}
           </div>
         </div>
 
+        {/* Right — photos */}
+        <div className={`hidden md:block relative transition-all duration-1000 delay-200 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+          style={{ height: "80vh" }}>
+          {/* Main large photo */}
+          <div className="absolute top-0 right-0 overflow-hidden rounded-2xl shadow-2xl"
+            style={{ width: "72%", height: "65%", top: "5%" }}>
+            <img src={heroBg} alt="Salon result" className="w-full h-full object-cover animate-float" draggable={false} />
+          </div>
+          {/* Secondary smaller photo */}
+          <div className="absolute overflow-hidden rounded-2xl shadow-xl animate-float delay-1"
+            style={{ width: "52%", height: "48%", bottom: "2%", left: "0%", border: "4px solid var(--cream)" }}>
+            <img src={heroRight} alt="Salon work" className="w-full h-full object-cover" draggable={false} />
+          </div>
+          {/* Decorative pill */}
+          <div className="absolute rounded-2xl px-5 py-3 shadow-lg"
+            style={{ background: "var(--white)", top: "58%", right: "4%", minWidth: "160px", border: "1px solid var(--border)" }}>
+            <p className="text-xs font-semibold" style={{ color: "var(--ink)" }}>Plaza del Valle Mall</p>
+            <p className="text-xs mt-0.5" style={{ color: "var(--ink-light)" }}>Añasco, Puerto Rico</p>
+          </div>
+        </div>
+
+        {/* Mobile hero photo */}
+        <div className="md:hidden overflow-hidden rounded-2xl shadow-lg" style={{ height: "55vw" }}>
+          <img src={heroBg} alt="Salon result" className="w-full h-full object-cover object-top" draggable={false} />
+        </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-6 md:left-16 flex items-center gap-3 text-white/20">
-        <div className="w-px h-12 bg-white/15 relative overflow-hidden">
-          <div className="absolute top-0 w-full bg-white/60 animate-[line-reveal_2s_ease-in-out_infinite]" style={{ height: "40%" }} />
-        </div>
-        <span className="text-xs tracking-[0.3em] uppercase" style={{ writingMode: "vertical-lr" }}>
-          {lang === "es" ? "Desplaza" : "Scroll"}
-        </span>
-      </div>
+      {/* Subtle background accent */}
+      <div className="absolute top-0 right-0 w-1/2 h-full pointer-events-none hidden md:block"
+        style={{ background: "linear-gradient(135deg, transparent 40%, #F2EBE4 100%)", zIndex: 0 }} />
     </section>
   );
 };

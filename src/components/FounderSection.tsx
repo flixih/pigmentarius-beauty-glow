@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
+
 import w01 from "@/assets/windy-01.png";
 import w02 from "@/assets/windy-02.png";
 import w03 from "@/assets/windy-03.png";
@@ -7,123 +8,95 @@ import w04 from "@/assets/windy-04.png";
 import w05 from "@/assets/windy-05.png";
 import wn1 from "@/assets/windy-new-01.webp";
 import wn2 from "@/assets/windy-new-02.webp";
+import wn3 from "@/assets/windy-new-03.webp";
 
-const photos = [w01, w02, w03, w04, w05, wn1, wn2];
+const photos = [w01, w02, w03, w04, w05, wn1, wn2, wn3];
 
 const FounderSection = () => {
   const { lang } = useLanguage();
   const [active, setActive] = useState(0);
 
   useEffect(() => {
-    const t = setInterval(() => setActive(p => (p + 1) % photos.length), 3000);
+    const t = setInterval(() => setActive(p => (p + 1) % photos.length), 3500);
     return () => clearInterval(t);
   }, []);
 
-  const content = {
-    es: {
-      label: "Sobre la Fundadora",
-      name: "Windy Arroyo",
-      title: "Fundadora & Dueña · Pigmentarius",
-      bio1: "Wildaliz \"Windy\" Arroyo es la mente y el corazón detrás de Pigmentarius Hair & Brow Salon en Añasco, Puerto Rico. Con más de 20 años de experiencia en la industria de la belleza, Windy ha construido un espacio donde cada clienta es tratada con cariño, profesionalismo y pasión.",
-      bio2: "Especialista certificada en microblading, maquillaje permanente, coloración avanzada y tratamientos capilares, Windy ha llevado el nombre de Pigmentarius más allá de Puerto Rico — con clientas que viajan desde estados como Pennsylvania solo para estar en sus manos.",
-      bio3: "Su filosofía es simple: cada persona merece sentirse bella, confiada y especial. Por eso, desde el primer contacto, cada clienta es recibida como una princesa.",
-      stat1: { value: "20+", label: "Años de experiencia" },
-      stat2: { value: "211+", label: "Reseñas de 5 estrellas" },
-      stat3: { value: "4.8★", label: "Rating en Google" },
-    },
-    en: {
-      label: "About the Founder",
-      name: "Windy Arroyo",
-      title: "Founder & Owner · Pigmentarius",
-      bio1: "Wildaliz \"Windy\" Arroyo is the mind and heart behind Pigmentarius Hair & Brow Salon in Añasco, Puerto Rico. With over 20 years of experience in the beauty industry, Windy has built a space where every client is treated with warmth, professionalism, and passion.",
-      bio2: "A certified specialist in microblading, permanent makeup, advanced color and hair treatments, Windy has taken the Pigmentarius name beyond Puerto Rico — with clients traveling from states like Pennsylvania just to be in her hands.",
-      bio3: "Her philosophy is simple: every person deserves to feel beautiful, confident and special. That's why, from the very first contact, every client is welcomed like a princess.",
-      stat1: { value: "20+", label: "Years of experience" },
-      stat2: { value: "211+", label: "5-star reviews" },
-      stat3: { value: "4.8★", label: "Google rating" },
-    },
-  };
-
-  const c = content[lang];
-
   return (
-    <section id="nosotros" className="py-20 md:py-32 relative overflow-hidden" style={{ background: "#070707" }}>
-      {/* Glow */}
-      <div className="absolute top-1/2 right-0 w-96 h-96 -translate-y-1/2 pointer-events-none"
-        style={{ background: "radial-gradient(circle, hsl(330 85% 60% / 0.07) 0%, transparent 70%)" }} />
+    <section id="nosotros" className="py-24 md:py-36" style={{ background: "var(--cream-alt)" }}>
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-center">
 
-      <div className="container mx-auto px-6 md:px-16">
-        {/* Label */}
-        <div className="flex items-center gap-4 mb-12">
-          <div className="w-6 h-px bg-white/20" />
-          <span className="text-white/30 text-xs tracking-[0.4em] uppercase">{c.label}</span>
-        </div>
-
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-
-          {/* LEFT: Photos */}
-          <div className="space-y-3">
-            {/* Main active photo */}
-            <div className="relative rounded-2xl overflow-hidden border border-white/8" style={{ aspectRatio: "4/5" }}>
+          {/* Photo */}
+          <div className="relative">
+            <div className="overflow-hidden rounded-2xl shadow-xl" style={{ aspectRatio: "4/5" }}>
               {photos.map((src, i) => (
-                <img key={i} src={src} alt={`Windy Arroyo ${i + 1}`}
+                <img key={i} src={src} alt="Windy Arroyo"
                   className="absolute inset-0 w-full h-full object-cover object-top transition-all duration-700"
-                  style={{ opacity: i === active ? 1 : 0, transform: i === active ? "scale(1)" : "scale(1.03)" }} />
+                  style={{ opacity: i === active ? 1 : 0, transform: i === active ? "scale(1.02)" : "scale(1)" }}
+                  loading="lazy" />
               ))}
-              {/* Subtle overlay */}
-              <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(7,7,7,0.5) 0%, transparent 50%)" }} />
             </div>
-
-            {/* Thumbnail strip */}
-            <div className="flex gap-2">
-              {photos.map((src, i) => (
+            {/* Thumbnail dots */}
+            <div className="flex justify-center gap-2 mt-4">
+              {photos.map((_, i) => (
                 <button key={i} onClick={() => setActive(i)}
-                  className="flex-1 rounded-lg overflow-hidden border transition-all duration-300"
-                  style={{ aspectRatio: "1/1", borderColor: i === active ? "hsl(330 85% 60%)" : "rgba(255,255,255,0.08)" }}>
-                  <img src={src} alt="" className="w-full h-full object-cover object-top transition-opacity duration-300"
-                    style={{ opacity: i === active ? 1 : 0.4 }} />
-                </button>
+                  className="rounded-full transition-all duration-300"
+                  style={{
+                    width: i === active ? "20px" : "6px",
+                    height: "6px",
+                    background: i === active ? "var(--pink)" : "var(--border)",
+                  }} />
               ))}
             </div>
           </div>
 
-          {/* RIGHT: Text */}
-          <div className="lg:pt-4">
-            <h2 className="font-serif text-4xl md:text-6xl font-bold text-white mb-2" style={{ letterSpacing: "-0.02em" }}>
-              {c.name}
+          {/* Text */}
+          <div>
+            <div className="flex items-center gap-3 mb-6">
+              <div className="h-px w-8" style={{ background: "var(--pink)" }} />
+              <span className="text-xs tracking-[0.3em] uppercase" style={{ color: "var(--ink-light)" }}>
+                {lang === "es" ? "Sobre la Fundadora" : "About the Founder"}
+              </span>
+            </div>
+
+            <h2 className="font-serif mb-2 leading-tight" style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", color: "var(--ink)", fontWeight: 300, letterSpacing: "-0.02em" }}>
+              Windy Arroyo
             </h2>
-            <p className="text-xs tracking-[0.3em] uppercase mb-8" style={{ color: "hsl(330 85% 60%)" }}>
-              {c.title}
+            <p className="text-sm tracking-widest uppercase mb-8 font-medium" style={{ color: "var(--pink)" }}>
+              {lang === "es" ? "Fundadora & Dueña · Pigmentarius" : "Founder & Owner · Pigmentarius"}
             </p>
 
-            <div className="space-y-5 text-white/50 text-sm md:text-base leading-relaxed">
-              <p>{c.bio1}</p>
-              <p>{c.bio2}</p>
-              <p>{c.bio3}</p>
+            <div className="space-y-5 text-sm md:text-base leading-relaxed" style={{ color: "var(--ink-mid)" }}>
+              <p>{lang === "es"
+                ? "Wildaliz \"Windy\" Arroyo es la mente y el corazón detrás de Pigmentarius Hair & Brow Salon en Añasco, Puerto Rico. Con más de 20 años de experiencia, ha construido un espacio donde cada clienta es tratada con cariño, profesionalismo y pasión."
+                : "Wildaliz \"Windy\" Arroyo is the heart behind Pigmentarius Hair & Brow Salon in Añasco, Puerto Rico. With over 20 years of experience, she has built a space where every client is treated with warmth and passion."}</p>
+              <p>{lang === "es"
+                ? "Especialista certificada en microblading, maquillaje permanente y coloración avanzada. Sus clientas viajan desde estados como Pennsylvania solo para estar en sus manos."
+                : "A certified specialist in microblading, permanent makeup and advanced color. Clients travel from as far as Pennsylvania just to be in her hands."}</p>
+              <p>{lang === "es"
+                ? "Su filosofía: desde el primer contacto, cada clienta es recibida como una princesa."
+                : "Her philosophy: from the very first contact, every client is welcomed like a princess."}</p>
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 mt-10 pt-8 border-t border-white/8">
-              {[c.stat1, c.stat2, c.stat3].map((s) => (
-                <div key={s.value}>
-                  <p className="font-serif text-2xl md:text-3xl font-bold text-white" style={{ letterSpacing: "-0.02em" }}>
-                    {s.value}
-                  </p>
-                  <p className="text-white/30 text-xs mt-1 leading-tight">{s.label}</p>
+            <div className="grid grid-cols-3 gap-6 mt-10 pt-8" style={{ borderTop: "1px solid var(--border)" }}>
+              {[
+                { val: "20+", lbl: lang === "es" ? "Años de experiencia" : "Years experience" },
+                { val: "211+", lbl: lang === "es" ? "Reseñas 5★" : "5★ reviews" },
+                { val: "4.8★", lbl: "Google" },
+              ].map(s => (
+                <div key={s.val}>
+                  <p className="font-serif text-2xl md:text-3xl font-semibold" style={{ color: "var(--ink)", letterSpacing: "-0.02em" }}>{s.val}</p>
+                  <p className="text-xs mt-1 leading-tight" style={{ color: "var(--ink-light)" }}>{s.lbl}</p>
                 </div>
               ))}
             </div>
 
-            {/* CTA */}
-            <div className="mt-10">
-              <a href="#contacto"
-                className="inline-flex items-center gap-3 text-sm font-semibold text-white group link-underline">
-                {lang === "es" ? "Reservar con Windy" : "Book with Windy"}
-                <span className="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center group-hover:border-white/70 transition-colors text-xs">
-                  →
-                </span>
-              </a>
-            </div>
+            <a href="#contacto"
+              className="inline-flex items-center gap-3 mt-10 px-8 py-4 rounded-full text-sm font-semibold text-white transition-all duration-300 hover:opacity-90"
+              style={{ background: "var(--pink)" }}>
+              {lang === "es" ? "Reservar con Windy" : "Book with Windy"}
+            </a>
           </div>
         </div>
       </div>
