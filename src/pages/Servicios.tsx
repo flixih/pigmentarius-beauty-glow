@@ -13,6 +13,11 @@ import pg01 from "@/assets/pg-01.webp";
 import pg02 from "@/assets/pg-02.webp";
 import pg03 from "@/assets/pg-03.webp";
 import pg04 from "@/assets/pg-04.webp";
+import pg05 from "@/assets/pg-05.webp";
+import pg06 from "@/assets/pg-06.webp";
+import pg07 from "@/assets/pg-07.webp";
+import pg08 from "@/assets/pg-08.webp";
+import pg09 from "@/assets/pg-09.webp";
 
 const ServiceCard = ({ photo, name, desc }: { photo: string; name: string; desc: string }) => (
   <div className="group rounded-2xl overflow-hidden bg-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
