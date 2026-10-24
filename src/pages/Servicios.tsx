@@ -3,6 +3,7 @@ import { ArrowLeft, Phone } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 // Real Pigmentarius photos
 import svcKeratina     from "@/assets/svc-keratina.webp";
@@ -34,6 +35,7 @@ const ServiceCard = ({ photo, name, desc }: { photo: string; name: string; desc:
 
 const Servicios = () => {
   const { lang } = useLanguage();
+  usePageMeta("Servicios | Pigmentarius Hair & Brow Salon, Añasco PR", "Cabello, cejas, microblading, maquillaje permanente, depilación láser, uñas y facial en Añasco, PR. Llama al (787) 826-1684 para precios.", "/servicios");
 
   const allServices = [
     {
