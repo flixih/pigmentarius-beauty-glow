@@ -75,6 +75,8 @@ function page(p) {
 <link rel="canonical" href="${url}">
 ${alternates.map(([l, h]) => `<link rel="alternate" hreflang="${l}" href="${h}">`).join("\n")}
 <link rel="icon" href="/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
 <meta property="og:title" content="${esc(p.title)}">
 <meta property="og:description" content="${esc(p.desc)}">
 <meta property="og:type" content="website">
@@ -155,6 +157,8 @@ const index = `<!doctype html>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
     <title>${esc(homeTitle)}</title>
     <meta name="description" content="${esc(homeDesc)}" />
     <meta name="robots" content="index,follow,max-image-preview:large" />
