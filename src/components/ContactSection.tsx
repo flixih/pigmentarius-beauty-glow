@@ -13,6 +13,7 @@ const ContactSection = () => {
     setLoading(true);
     const form = e.currentTarget;
     const fd   = new FormData(form);
+    if (fd.get("website")) { setLoading(false); return; } // honeypot: bots fill this hidden field
     const nombre   = fd.get("nombre")   as string;
     const apellido = fd.get("apellido") as string;
     const contacto = fd.get("contacto") as string;

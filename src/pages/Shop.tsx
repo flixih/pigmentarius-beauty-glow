@@ -1,6 +1,7 @@
 import { ArrowLeft, ShoppingCart, Star, Check } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { usePageMeta } from "@/hooks/usePageMeta";
 import ledMask from "@/assets/led-mask.jpg";
 import logo from "@/assets/logo.png";
 
@@ -29,6 +30,7 @@ const products = [
 ];
 
 const Shop = () => {
+  usePageMeta("Tienda | Pigmentarius Hair & Brow Salon", "Productos de belleza recomendados por Pigmentarius Hair & Brow Salon en Añasco, Puerto Rico.", "/tienda");
   const [selectedProduct, setSelectedProduct] = useState(products[0]);
 
   return (

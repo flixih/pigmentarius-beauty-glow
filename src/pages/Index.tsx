@@ -10,9 +10,15 @@ import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import FloatingBookButton from "@/components/FloatingBookButton";
 import PageLoader from "@/components/PageLoader";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 const Index = () => {
   const [loaded, setLoaded] = useState(false);
+  usePageMeta(
+    "Pigmentarius Hair & Brow Salon | Salón de Belleza en Añasco, PR – Cejas, Microblading, Láser, Keratina",
+    "Salón en Añasco cerca de Mayagüez y Rincón: cabello, cejas, microblading, láser y keratina. 4.8★, 20+ años. Llama al (787) 826-1684.",
+    "/",
+  );
 
   useEffect(() => {
     if (!loaded) return;
@@ -38,7 +44,7 @@ const Index = () => {
       <PageLoader onComplete={() => setLoaded(true)} />
       <div style={{ opacity: loaded ? 1 : 0, transition: "opacity 0.4s ease" }}>
         <Navbar />
-        <main>
+        <main id="main">
           <HeroSection />
           <div data-reveal><ServicesSection /></div>
           <DragGallery />

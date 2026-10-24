@@ -1,0 +1,4 @@
+Contact: mailto:pigmentariusforms@gmail.com
+Expires: 2027-10-24T00:00:00.000Z
+Preferred-Languages: es, en
+Canonical: https://pigmentariuspr.com/.well-known/security.txt
