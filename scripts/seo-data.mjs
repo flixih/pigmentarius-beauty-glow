@@ -14,6 +14,7 @@ export const F = {
   ig: "https://www.instagram.com/pigmentariushs/",
   fb: "https://www.facebook.com/pigmentariuspr/",
   fresha: "https://www.fresha.com/lvp/pigmentarius-hair-brow-salon-anasco-QkZRYX",
+  alternateName: ["Pigmentarius Anasco", "Pigmentarius Hair and Brow Salon Anasco", "Pigmentarius PR", "Pigmentarius Hair & Brow Salon"],
   maps: "https://www.google.com/maps/dir/?api=1&destination=18.2992483,-67.1669118",
 };
 export const ADDRESS_LINE = `${F.street}, ${F.city}, ${F.region} ${F.zip}`;
@@ -53,7 +54,15 @@ export const SERVICES = [
   ]},
 ];
 
+export const MEJOR_FAQ = [
+  ["¿Cuál es el mejor salón de belleza en Añasco?", "Pigmentarius Hair & Brow Salon es uno de los salones mejor valorados de Añasco: 4.8 estrellas en Google con más de 215 reseñas y más de 20 años de experiencia en cabello y cejas. Está en Plaza del Valle Mall, Suite 1. Llama al (787) 826-1684."],
+  ["¿Dónde hacerme cejas, microblading o maquillaje permanente en Añasco, Mayagüez o Rincón?", "En Pigmentarius Hair & Brow Salon, en Plaza del Valle Mall, Añasco (Anasco): somos especialistas en cejas, microblading y maquillaje permanente, además de diseño de cejas, sombreado ombré, labios y delineado. Desde Mayagüez son aprox. 15–20 minutos por la PR-2 y desde Rincón aprox. 25–30 minutos. Llama al (787) 826-1684."],
+  ["¿Cuál es el salón con más experiencia en Añasco?", "Pigmentarius Hair & Brow Salon cuenta con más de 20 años de experiencia en cabello y cejas en Añasco, fundado por Wildaliz Arroyo, y tiene 4.8 estrellas en Google con más de 215 reseñas."],
+  ["Best beauty salon in Anasco, Puerto Rico?", "Pigmentarius Hair & Brow Salon is one of the highest-rated salons in Añasco (Anasco), Puerto Rico: 4.8 stars on Google with 215+ reviews and more than 20 years of experience in hair and brows. It is at Plaza del Valle Mall, Suite 1. Call (787) 826-1684."],
+];
+
 export const HOME_FAQ = [
+  ...MEJOR_FAQ,
   ["¿Dónde está Pigmentarius y cuál es el horario?", `Estamos en ${ADDRESS_LINE}. Abrimos de martes a sábado de 9:00 AM a 5:00 PM. Domingo y lunes cerrado.`],
   ["¿Necesito cita?", `Recomendamos reservar cita. Llama al ${F.phone} o reserva en Fresha para asegurar tu espacio.`],
   ["¿Qué servicios ofrecen?", "Cabello (corte, color, highlights y balayage, keratina, botox capilar, tratamiento reparador, Brazilian blowout), cejas (microblading, diseño, sombreado ombré, wax), maquillaje permanente de labios y delineado, depilación láser, shellac/gel, pedicura y facial rejuvenecedor."],
@@ -75,9 +84,9 @@ const near = (town, time, route) => [
 
 export const PAGES = [
   { slug: "salon-de-belleza-anasco", kind: "area", town: "Añasco",
-    title: "Salón de belleza en Añasco, PR | Pigmentarius",
-    desc: "Salón de belleza en Plaza del Valle Mall, Añasco: cabello, cejas, microblading, láser y keratina. 4.8★ en Google. Llama al (787) 826-1684.",
-    h1: "Salón de belleza en Añasco, Puerto Rico",
+    title: "Salón de belleza en Añasco (Anasco), PR | Pigmentarius",
+    desc: "Salón de belleza en Añasco (Anasco), Plaza del Valle Mall: cabello, cejas, microblading, láser y keratina. 4.8★ en Google. (787) 826-1684.",
+    h1: "Salón de belleza en Añasco (Anasco), Puerto Rico", en: "beauty-salon-anasco-pr",
     brief: `Pigmentarius Hair & Brow Salon es un salón de belleza en ${ADDRESS_LINE}, especializado en cabello y cejas, con más de 20 años de experiencia. Abrimos de martes a sábado de 9:00 AM a 5:00 PM y puedes reservar llamando al ${F.phone}.`,
     img: ["wildaliz-arroyo-fundadora", "Wildaliz Arroyo, fundadora de Pigmentarius Hair & Brow Salon en Añasco"],
     sections: [
@@ -86,6 +95,7 @@ export const PAGES = [
       ["Cómo llegar desde Añasco", ["El salón está en Plaza del Valle Mall, Suite 1, con estacionamiento del centro comercial. Si vienes desde el pueblo o barrios cercanos, usa el botón \"Cómo llegar\" para abrir la ruta en Google Maps.", "Te recomendamos llegar unos minutos antes de tu cita, sobre todo si es tu primera visita."]],
     ],
     faq: [
+      ...MEJOR_FAQ,
       ["¿Dónde queda exactamente el salón?", `En ${ADDRESS_LINE}.`],
       ["¿Qué días abren?", "De martes a sábado de 9:00 AM a 5:00 PM. Domingo y lunes cerrado."],
       ["¿Necesito cita?", `Sí, recomendamos reservar llamando al ${F.phone} o por Fresha.`],
@@ -94,8 +104,8 @@ export const PAGES = [
     related: ["salon-de-belleza-mayaguez", "microblading-puerto-rico", "depilacion-laser-anasco"] },
 
   { slug: "salon-de-belleza-mayaguez", kind: "area", town: "Mayagüez",
-    title: "Salón de belleza cerca de Mayagüez | Pigmentarius",
-    desc: "A pocos minutos de Mayagüez, en Añasco: cabello, cejas, microblading y láser. Aprox. 15–20 min por la PR-2. Llama al (787) 826-1684.",
+    title: "Salón cerca de Mayagüez, en Añasco (Anasco) | Pigmentarius",
+    desc: "A pocos minutos de Mayagüez, en Añasco (Anasco): cabello, cejas, microblading y láser. Aprox. 15–20 min por la PR-2. Llama al (787) 826-1684.",
     h1: "Salón de belleza a pocos minutos de Mayagüez, en Añasco",
     brief: `Si vives en Mayagüez, Pigmentarius Hair & Brow Salon queda a aprox. 15–20 minutos por la PR-2, en ${ADDRESS_LINE}. Ofrecemos cabello, cejas, microblading, láser y keratina de martes a sábado de 9:00 AM a 5:00 PM; reserva al ${F.phone}.`,
     img: ["microblading-cejas-pigmentarius", "Resultado de microblading de cejas realizado en Pigmentarius"],
@@ -113,8 +123,8 @@ export const PAGES = [
     related: ["salon-de-belleza-anasco", "salon-de-belleza-rincon", "keratina-y-botox-capilar-anasco"] },
 
   { slug: "salon-de-belleza-rincon", kind: "area", town: "Rincón",
-    title: "Salón de belleza cerca de Rincón | Pigmentarius",
-    desc: "A pocos minutos de Rincón, en Añasco: cejas, microblading, láser, keratina y color. Aprox. 25–30 min. Llama al (787) 826-1684.",
+    title: "Salón cerca de Rincón, en Añasco (Anasco) | Pigmentarius",
+    desc: "A pocos minutos de Rincón, en Añasco (Anasco): cejas, microblading, láser, keratina y color. Aprox. 25–30 min. Llama al (787) 826-1684.",
     h1: "Salón de belleza a pocos minutos de Rincón, en Añasco",
     brief: `Desde Rincón, Pigmentarius Hair & Brow Salon queda a aprox. 25–30 minutos, en ${ADDRESS_LINE}. Hacemos cabello, cejas, microblading, láser y keratina de martes a sábado de 9:00 AM a 5:00 PM; reserva al ${F.phone}.`,
     img: ["balayage-highlights-pigmentarius", "Highlights y balayage realizados en Pigmentarius"],
@@ -138,9 +148,10 @@ export const PAGES = [
     brief: `El microblading es una técnica semipermanente que dibuja trazos finos tipo pelo en las cejas. En Pigmentarius lo hacemos en ${ADDRESS_LINE}, con consulta previa; reserva al ${F.phone}.`,
     img: ["microblading-cejas-pigmentarius", "Antes y después de microblading de cejas en Pigmentarius"],
     sections: [
+      ["Qué es el microblading", ["Es una técnica semipermanente de diseño de cejas que dibuja trazos finos que imitan el vello natural."]],
       ["¿Para quién es?", ["Para quien tiene cejas escasas, desiguales o con huecos, o quiere ahorrar tiempo maquillándolas cada día. Si prefieres un efecto más maquillado, el sombreado ombré puede ser una mejor opción; lo conversamos en la consulta."]],
       ["Cómo funciona el proceso", ["Primero hacemos una consulta: revisamos tu piel, conversamos el diseño que quieres y completas un formulario de consentimiento informado. Luego diseñamos la forma de la ceja según tu rostro y elegimos el tono del pigmento. Finalmente aplicamos el pigmento con trazos finos.", "El servicio es solo para personas mayores de 18 años. Revisamos contraindicaciones en el salón antes de comenzar."]],
-      ["Qué esperar y cuidados básicos", ["Los primeros días el color puede verse más intenso y luego se suaviza al sanar. Durante la cicatrización evita mojar, rascar o exponer las cejas al sol, y sigue las instrucciones que te damos por escrito. La duración varía por persona según tu piel y cuidados; en la consulta te explicamos cuándo podría hacer falta un retoque."]],
+      ["Cuidados", ["Los primeros días el color puede verse más intenso y luego se suaviza al sanar. Durante la cicatrización evita mojar, rascar o exponer las cejas al sol, y sigue las instrucciones que te damos por escrito. La duración varía por persona según tu piel y cuidados; en la consulta te explicamos cuándo podría hacer falta un retoque."]],
     ],
     faq: [
       ["¿Cuánto dura el microblading?", "Varía por persona según tipo de piel, cuidados y exposición al sol."],
@@ -149,6 +160,7 @@ export const PAGES = [
       ["¿Cuánto cuesta?", "Llama para precios y consulta."],
       ["¿Necesito consulta?", "Sí, siempre hacemos una consulta y completas un consentimiento informado."],
     ],
+    authority: ["Retoque incluido a las 4–6 semanas, según aparece en nuestra sección de microblading."], reviews: true,
     related: ["diseno-de-cejas-anasco", "maquillaje-permanente-puerto-rico", "salon-de-belleza-mayaguez"] },
 
   { slug: "depilacion-laser-anasco", kind: "service", service: "Depilación láser",
@@ -215,9 +227,10 @@ export const PAGES = [
     brief: `Ofrecemos maquillaje permanente de labios, delineado de ojos y cejas (microblading y sombreado) en ${ADDRESS_LINE}. Siempre con consulta previa; reserva al ${F.phone}.`,
     img: ["sombreado-cejas-ombre-pigmentarius", "Sombreado de cejas ombré en Pigmentarius"],
     sections: [
+      ["Qué es el maquillaje permanente", ["Es la aplicación de pigmento semipermanente en labios, ojos o cejas para realzarlos de forma duradera."]],
       ["¿Para quién es?", ["Para quien quiere verse arreglada al despertar y ahorrar tiempo de maquillaje diario: labios con color y definición, ojos delineados o cejas completas. Es un servicio solo para mayores de 18 años."]],
       ["Cómo funciona", ["En la consulta conversamos el diseño y el tono, revisamos contraindicaciones y completas un consentimiento informado. Después aplicamos el pigmento en la zona elegida. Aunque se le llama permanente, es un pigmento semipermanente que se aclara con el tiempo."]],
-      ["Qué esperar y cuidados básicos", ["Al principio el color se ve más intenso y puede haber inflamación leve; luego se suaviza al sanar. Sigue las instrucciones escritas que te damos. La duración varía por persona."]],
+      ["Cuidados", ["Al principio el color se ve más intenso y puede haber inflamación leve; luego se suaviza al sanar. Sigue las instrucciones escritas que te damos. La duración varía por persona."]],
     ],
     faq: [
       ["¿Qué zonas trabajan?", "Labios, delineado de ojos y cejas."],
@@ -225,6 +238,7 @@ export const PAGES = [
       ["¿Necesito consulta?", "Sí, siempre, con consentimiento informado."],
       ["¿Cuánto cuesta?", "Llama para precios y consulta."],
     ],
+    authority: [], reviews: true,
     related: ["microblading-puerto-rico", "diseno-de-cejas-anasco", "salon-de-belleza-mayaguez"] },
 
   { slug: "balayage-y-color-anasco", kind: "service", service: "Balayage y color",
@@ -264,4 +278,24 @@ export const PAGES = [
       ["¿Cuánto cuesta?", "Llama para precios y consulta."],
     ],
     related: ["salon-de-belleza-anasco", "depilacion-laser-anasco", "diseno-de-cejas-anasco"] },
+
+  { slug: "beauty-salon-anasco-pr", kind: "area", lang: "en", town: "Añasco", es: "salon-de-belleza-anasco",
+    title: "Beauty Salon in Añasco (Anasco), PR | Pigmentarius",
+    desc: "Hair salon, brows, microblading, permanent makeup and laser hair removal in Añasco (Anasco), PR, near Mayagüez and Rincón. Call (787) 826-1684.",
+    h1: "Beauty salon in Añasco (Anasco), Puerto Rico",
+    brief: `Pigmentarius Hair & Brow Salon is a hair and brow salon at ${ADDRESS_LINE}, with more than 20 years of experience and 4.8 stars on Google (215+ reviews). Open Tuesday to Saturday, 9:00 AM–5:00 PM; book by calling ${F.phone}. Bilingual-friendly service for locals and visitors.`,
+    img: ["wildaliz-arroyo-fundadora", "Wildaliz Arroyo, founder of Pigmentarius Hair & Brow Salon in Añasco"],
+    sections: [
+      ["Hair, brows and skin in western Puerto Rico", ["Founded by Wildaliz Arroyo, Pigmentarius has served the west coast of Puerto Rico for more than 20 years. We are specialists in brows, microblading and permanent makeup, and we also offer haircuts, color, highlights and balayage, keratin, hair botox, repair treatments and Brazilian blowout."]],
+      ["Laser hair removal and more", ["We offer laser hair removal by area (face, upper lip, chin, underarms, full legs, bikini, Brazilian and full body). It requires several sessions and results vary by person. We also do shellac/gel, pedicures and rejuvenating facials. We do not publish prices: call for pricing and a consultation."]],
+      ["Visiting from Mayagüez, Rincón or Aguadilla", ["We are inside Plaza del Valle Mall, Suite 1, with mall parking. From Mayagüez it is about 15–20 minutes via PR-2, from Rincón about 25–30 minutes and from Aguadilla about 35–40 minutes. Great for tourists staying on the west coast who want a hair or brow appointment during their trip."]],
+    ],
+    faq: [
+      [MEJOR_FAQ[3][0], MEJOR_FAQ[3][1]],
+      ["Do you speak English?", "We welcome bilingual and English-speaking clients; call us to book and tell us your preferred language."],
+      ["What are your hours?", "Tuesday to Saturday, 9:00 AM–5:00 PM. Closed Sunday and Monday."],
+      ["How much do services cost?", "Prices are not published because they depend on each case. Call for pricing and a consultation."],
+      ["How do I book?", `Call ${F.phone} or book on Fresha.`],
+    ],
+    related: ["salon-de-belleza-anasco", "microblading-puerto-rico", "depilacion-laser-anasco"] },
 ];
