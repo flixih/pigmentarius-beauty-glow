@@ -8,6 +8,7 @@ import Index from "./pages/Index.tsx";
 import Shop from "./pages/Shop.tsx";
 import Servicios from "./pages/Servicios.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import Legal from "./pages/Legal.tsx";
 
 const queryClient = new QueryClient();
 
@@ -17,11 +18,16 @@ const App = () => (
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
           <Toaster />
+          <a href="#main" className="skip-link">Saltar al contenido</a>
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/tienda" element={<Shop />} />
               <Route path="/servicios" element={<Servicios />} />
+              <Route path="/privacidad" element={<Legal slug="privacidad" />} />
+              <Route path="/cookies" element={<Legal slug="cookies" />} />
+              <Route path="/terminos" element={<Legal slug="terminos" />} />
+              <Route path="/accesibilidad" element={<Legal slug="accesibilidad" />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>

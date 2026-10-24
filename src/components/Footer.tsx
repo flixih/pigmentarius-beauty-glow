@@ -18,10 +18,10 @@ const Footer = () => {
             </p>
             <div className="flex gap-4">
               {[
-                { href: "https://www.instagram.com/pigmentariushs/", Icon: Instagram },
-                { href: "https://www.facebook.com/pigmentariuspr/", Icon: Facebook },
-              ].map(({ href, Icon }) => (
-                <a key={href} href={href} target="_blank" rel="noopener noreferrer"
+                { href: "https://www.instagram.com/pigmentariushs/", Icon: Instagram, label: "Instagram" },
+                { href: "https://www.facebook.com/pigmentariuspr/", Icon: Facebook, label: "Facebook" },
+              ].map(({ href, Icon, label }) => (
+                <a key={href} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
                   className="w-9 h-9 rounded-full flex items-center justify-center transition-all hover:opacity-80"
                   style={{ border: "1px solid rgba(250,247,244,0.2)" }}>
                   <Icon size={14} color="rgba(250,247,244,0.7)" />
@@ -74,6 +74,11 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row items-center justify-between pt-10 mt-10 text-xs gap-3"
           style={{ borderTop: "1px solid rgba(250,247,244,0.1)", color: "rgba(250,247,244,0.3)" }}>
           <span>© {new Date().getFullYear()} Pigmentarius Hair & Brow Salon. {lang === "es" ? "Todos los derechos reservados." : "All rights reserved."}</span>
+          <nav aria-label={lang === "es" ? "Legal" : "Legal"} className="flex flex-wrap gap-4">
+            {[["/privacidad", "Privacidad", "Privacy"], ["/cookies", "Cookies", "Cookies"], ["/terminos", "Términos", "Terms"], ["/accesibilidad", "Accesibilidad", "Accessibility"]].map(([h, es, en]) => (
+              <a key={h} href={h} className="hover:opacity-100 transition-opacity" style={{ color: "rgba(250,247,244,0.6)" }}>{lang === "es" ? es : en}</a>
+            ))}
+          </nav>
           <span>Añasco, Puerto Rico</span>
         </div>
       </div>

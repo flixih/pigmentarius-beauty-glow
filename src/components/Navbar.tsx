@@ -51,17 +51,17 @@ const Navbar = () => {
 
         {/* Right controls */}
         <div className="flex items-center gap-2 md:gap-3">
-          <button onClick={toggleLang}
+          <button onClick={toggleLang} aria-label={lang === "es" ? "Cambiar a inglés" : "Switch to Spanish"}
             className="flex items-center gap-1 text-xs tracking-widest font-medium px-3 py-1.5 rounded-full transition-all"
             style={{ color: "var(--ink-mid)", border: "1px solid var(--border)" }}>
-            <Globe size={11} />{lang === "es" ? "EN" : "ES"}
+            <Globe size={11} aria-hidden="true" />{lang === "es" ? "EN" : "ES"}
           </button>
           <a href="#contacto"
             className="hidden md:inline-flex items-center px-5 py-2.5 rounded-full text-xs tracking-widest uppercase font-semibold text-white transition-all duration-300 hover:opacity-90"
             style={{ background: "var(--pink)", letterSpacing: "0.15em" }}>
             {lang === "es" ? "Reservar" : "Book Now"}
           </a>
-          <button onClick={() => setOpen(!open)} className="md:hidden p-1" style={{ color: "var(--ink)" }}>
+          <button onClick={() => setOpen(!open)} aria-label={open ? (lang === "es" ? "Cerrar menú" : "Close menu") : (lang === "es" ? "Abrir menú" : "Open menu")} aria-expanded={open} className="md:hidden p-1 min-w-[44px] min-h-[44px] flex items-center justify-center" style={{ color: "var(--ink)" }}>
             {open ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>

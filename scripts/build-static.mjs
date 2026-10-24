@@ -28,7 +28,8 @@ img{max-width:100%;height:auto;display:block;border-radius:12px;margin:16px 0}
 const contactBox = () => `<div class="box">
 <p><strong>${esc(F.name)}</strong><br>${esc(ADDRESS_LINE)}<br>Teléfono: <a href="tel:${F.tel}">${F.phone}</a><br>Horario: ${esc(F.hours)}<br>4.8 estrellas en Google (215+ reseñas reales). Más de 20 años de experiencia.</p>
 <a class="btn" href="tel:${F.tel}">Llamar ahora</a><a class="btn alt" href="${F.maps}" rel="noopener noreferrer">Cómo llegar</a><a class="btn alt" href="${F.fresha}" rel="noopener noreferrer">Reservar en Fresha</a>
-<p>Precios: llama para precios y consulta.</p></div>`;
+<p>Precios: llama para precios y consulta.</p>
+<p>Para reservar, llama durante el horario del salón o reserva en Fresha. Al confirmar tu cita te indicamos fecha, hora y cualquier preparación previa que necesites, y puedes hacernos todas tus preguntas antes de venir.</p></div>`;
 
 const footer = () => `<footer><div class="w">
 <p>© ${esc(F.name)} · ${esc(ADDRESS_LINE)} · <a href="tel:${F.tel}">${F.phone}</a></p>
