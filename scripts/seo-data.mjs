@@ -104,7 +104,7 @@ export const PAGES = [
     related: ["salon-de-belleza-mayaguez", "microblading-puerto-rico", "depilacion-laser-anasco"] },
 
   { slug: "salon-de-belleza-mayaguez", kind: "area", town: "Mayagüez",
-    title: "Salón cerca de Mayagüez, en Añasco (Anasco) | Pigmentarius",
+    title: "Salón cerca de Mayagüez en Añasco (Anasco) | Pigmentarius",
     desc: "A pocos minutos de Mayagüez, en Añasco (Anasco): cabello, cejas, microblading y láser. Aprox. 15–20 min por la PR-2. Llama al (787) 826-1684.",
     h1: "Salón de belleza a pocos minutos de Mayagüez, en Añasco",
     brief: `Si vives en Mayagüez, Pigmentarius Hair & Brow Salon queda a aprox. 15–20 minutos por la PR-2, en ${ADDRESS_LINE}. Ofrecemos cabello, cejas, microblading, láser y keratina de martes a sábado de 9:00 AM a 5:00 PM; reserva al ${F.phone}.`,
