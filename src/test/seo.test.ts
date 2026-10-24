@@ -16,7 +16,7 @@ describe("static SEO pages", () => {
       expect(graph.map((g: { "@type": string }) => g["@type"])).toContain("FAQPage");
       expect(html).toContain("martes a sábado, 9:00 AM – 5:00 PM");
       expect(html).toContain("tel:+17878261684");
-      expect(html).not.toMatch(/el mejor|#1/i);
+      expect(html).not.toMatch(/el mejor|#1(?![0-9a-f])/i);
     });
   }
 });
