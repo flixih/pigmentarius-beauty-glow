@@ -46,7 +46,7 @@ const contactBox = () => `<div class="box">
 
 const footer = () => `<footer><div class="w">
 <p>© ${esc(F.name)} · ${esc(ADDRESS_LINE)} · <a href="tel:${F.tel}">${F.phone}</a></p>
-<ul><li><a href="${SITE}/">Sitio principal</a></li><li><a href="${SITE}/servicios">Todos los servicios</a></li>${LEGAL.map(([h, l]) => `<li><a href="${SITE}${h}">${l}</a></li>`).join("")}<li><a href="${F.ig}" rel="noopener noreferrer">Instagram</a></li><li><a href="${F.fb}" rel="noopener noreferrer">Facebook</a></li></ul>
+<ul><li><a href="${SITE}/">Sitio principal</a></li><li><a href="${SITE}/servicios">Todos los servicios</a></li><li><a href="/beauty-salon-anasco-pr/" hreflang="en-US">English</a></li>${LEGAL.map(([h, l]) => `<li><a href="${SITE}${h}">${l}</a></li>`).join("")}<li><a href="${F.ig}" rel="noopener noreferrer">Instagram</a></li><li><a href="${F.fb}" rel="noopener noreferrer">Facebook</a></li></ul>
 </div></footer>`;
 
 function page(p) {
